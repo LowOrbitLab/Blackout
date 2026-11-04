@@ -1,34 +1,41 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'language-selection-settings.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h3 [innerHTML]="'language-selection-settings.heading' | translate"></h3>
+<ion-content>
+  <div class="ok-lang-top">
+    <div class="ok-settings-section">
+      <ion-item button lines="none" detail="false" (click)="defaultToDevice()">
+        <ion-icon name="globe-outline" slot="start"></ion-icon>
+        <ion-label>
+          {{ 'language-selection-settings.selector.device' | translate }}
+        </ion-label>
+        <ion-badge *ngIf="isDeviceLanguageSelected" color="success" class="ok-lang-system-badge" slot="end">
+          ✓
+        </ion-badge>
+      </ion-item>
+    </div>
 
-  <ion-list lines="none" class="ion-padding-vertical" (ionChange)="changeLanguage($event.detail.value)">
-    <ion-radio-group [(ngModel)]="selectedType">
-      <ng-container *ngFor="let language of languages">
-        <ion-item detail="false" class="ion-no-padding">
-          <ion-label color="white">{{ 'language-selection-settings.selector.' + language | translate }}</ion-label>
-          <ion-radio class="ion-no-margin" slot="end" [value]="language"></ion-radio>
+    <ion-list-header>
+      <ion-label>{{ 'language-selection-settings.heading' | translate }}</ion-label>
+    </ion-list-header>
+
+    <div class="ok-settings-section ok-settings-section--last">
+      <ion-radio-group [value]="selectedType" (ionChange)="changeLanguage($event.detail.value)">
+        <ion-item
+          *ngFor="let language of languages; let last = last"
+          [lines]="last ? 'none' : 'inset'"
+          detail="false"
+        >
+          <ion-label>{{ 'language-selection-settings.selector.' + language | translate }}</ion-label>
+          <ion-radio slot="end" [value]="language"></ion-radio>
         </ion-item>
-      </ng-container>
-    </ion-radio-group>
-  </ion-list>
-  <ion-button color="tertiary" shape="round" (click)="defaultToDevice()">
-    {{ 'language-selection-settings.selector.device' | translate }}
-  </ion-button>
-
-  <p><i>{{ 'interaction-selection-settings.description' | translate }}</i></p>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button color="primary" shape="round" (click)="goToNextPage()">
-      {{ 'interaction-selection-settings.continue_label' | translate }}
-    </ion-button>
-  </ion-fab>
+      </ion-radio-group>
+    </div>
+  </div>
 </ion-content>

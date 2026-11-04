@@ -8,24 +8,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>{{ 'vault-interaction-settings.title' | translate }}</ion-card-subtitle>
-      </ion-card-header>
+  <div class="ok-vault-interaction-top">
+    <div class="ok-settings-section">
+      <ion-item lines="none">
+        <ion-icon name="wifi-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">{{ 'vault-interaction-settings.device-connected_text' | translate }}</ion-label>
+        <ion-toggle [checked]="connectionEnabled" (ionChange)="toggleEnableConnection($event)" slot="end"></ion-toggle>
+      </ion-item>
+    </div>
+    <p class="ok-settings-note" [innerHTML]="'vault-interaction-settings.note_text' | translate"></p>
 
-      <ion-card-content>
-        <ion-item lines="none">
-          <ion-icon name="wifi-outline" slot="start"></ion-icon>
-          {{ 'vault-interaction-settings.device-connected_text' | translate }}
-          <ion-toggle [checked]="connectionEnabled" (ionChange)="toggleEnableConnection($event)" slot="end"></ion-toggle>
-        </ion-item>
-        <airgap-interaction-selection *ngIf="connectionEnabled"></airgap-interaction-selection>
-
-        <ion-item lines="none">
-          <p [innerHTML]="'vault-interaction-settings.note_text' | translate"></p>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+    <ng-container *ngIf="connectionEnabled">
+      <ion-list-header>
+        <ion-label>{{ 'interaction-selection-settings.title' | translate }}</ion-label>
+      </ion-list-header>
+      <airgap-interaction-selection></airgap-interaction-selection>
+    </ng-container>
+  </div>
 </ion-content>

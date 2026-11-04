@@ -1,3 +1,49 @@
-ion-item {
-    margin-bottom: 3%;
+.ok-self-check-top {
+  padding-top: 12px;
+}
+
+.ok-self-check-summary {
+  padding: 16px;
+  margin-bottom: 12px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ok-text);
+    }
+  }
+
+  &__desc {
+    margin: 0 0 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+}
+
+.ok-self-check-progress {
+  width: 100%;
+  height: 6px;
+  border-radius: var(--ok-radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+
+  &__bar {
+    height: 100%;
+    border-radius: var(--ok-radius-full);
+    background: var(--ok-brand);
+    transition: width var(--ok-duration-base) var(--ok-ease-out);
+  }
+}
+
+.ok-self-check-label--done {
+  color: var(--ok-text) !important;
 }

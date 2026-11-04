@@ -15,8 +15,12 @@ export class LanguagesSelectionSettingsPage implements OnInit {
   public selectedType: LanguagesType | undefined
   public isEdit: boolean = false
 
-  public get languages(): string[] {
+  public get languages(): LanguagesType[] {
     return Object.values(LanguagesType)
+  }
+
+  public get isDeviceLanguageSelected(): boolean {
+    return this.selectedType === this.getNormalizedBrowserLanguage()
   }
 
   constructor(
@@ -27,7 +31,7 @@ export class LanguagesSelectionSettingsPage implements OnInit {
 
   public async ngOnInit(): Promise<void> {
     const currentLanguage = await this.getCurrentLanguage()
-    this.changeLanguage(currentLanguage)
+    await this.applyLanguage(currentLanguage, false)
   }
 
   public async getCurrentLanguage(): Promise<LanguagesType> {
@@ -37,9 +41,9 @@ export class LanguagesSelectionSettingsPage implements OnInit {
     return savedLanguage || deviceLanguage || LanguagesType.EN
   }
 
-  public async defaultToDevice() {
+  public async defaultToDevice(): Promise<void> {
     const deviceLanguage = this.getNormalizedBrowserLanguage()
-    this.changeLanguage(deviceLanguage)
+    await this.changeLanguage(deviceLanguage)
   }
 
   private getNormalizedBrowserLanguage(): LanguagesType {
@@ -58,8 +62,18 @@ export class LanguagesSelectionSettingsPage implements OnInit {
   }
 
   public async changeLanguage(language: LanguagesType): Promise<void> {
-    await this.translateService.use(language).toPromise()
+    if (!language) {
+      return
+    }
+    await this.applyLanguage(language, true)
+  }
+
+  private async applyLanguage(language: LanguagesType, persist: boolean): Promise<void> {
     this.selectedType = language
+    await this.translateService.use(language).toPromise()
+    if (persist) {
+      await this.storageService.set(VaultStorageKey.LANGUAGE_TYPE, language)
+    }
   }
 
   public goToNextPage(): void {

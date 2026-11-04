@@ -1,6 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'onboarding-advanced-mode.title' | translate }}</ion-title>
+    <ion-buttons slot="end" *ngIf="isSettingsModal">
+      <ion-button class="button-has-icon-only" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -46,7 +51,9 @@
       <img src="assets/img/onboarding-terms.svg" />
       <h1>{{ 'onboarding-welcome.slide-6.title' | translate }}</h1>
 
-      <ion-button (click)="readDisclaimer()">{{ 'onboarding-welcome.slide-6.button_label' | translate }}</ion-button>
+      <ion-button shape="round" color="primary" (click)="readDisclaimer()">
+        {{ 'onboarding-welcome.slide-6.button_label' | translate }}
+      </ion-button>
     </swiper-slide>
   </swiper-container>
 </ion-content>

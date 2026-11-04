@@ -1,22 +1,25 @@
-<ion-list lines="none" class="ion-padding-vertical radio-list" (ionChange)="changeInteraction($event.detail.value)">
-  <ion-radio-group [(ngModel)]="selectedType" class="radio-group">
+<div class="ok-settings-section ok-interaction-section">
+  <ion-radio-group [(ngModel)]="selectedType" (ionChange)="changeInteraction($event.detail.value)">
     <ion-item detail="false">
-      <ion-radio slot="start" [value]="interactionType.DEEPLINK" labelPlacement="end"></ion-radio>
-      <ion-label [ngClass]="{ selected: selectedType === interactionType.DEEPLINK }" color="white">
+      <ion-icon name="phone-portrait-outline" slot="start"></ion-icon>
+      <ion-label [ngClass]="{ selected: selectedType === interactionType.DEEPLINK }">
         {{ 'interaction-selection-settings.selector.same-device' | translate }}
       </ion-label>
+      <ion-radio slot="end" [value]="interactionType.DEEPLINK"></ion-radio>
     </ion-item>
     <ion-item detail="false">
-      <ion-radio slot="start" [value]="interactionType.QR_CODE" labelPlacement="end"></ion-radio>
-      <ion-label [ngClass]="{ selected: selectedType === interactionType.QR_CODE }" color="white">
+      <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+      <ion-label [ngClass]="{ selected: selectedType === interactionType.QR_CODE }">
         {{ 'interaction-selection-settings.selector.offline-device' | translate }}
       </ion-label>
+      <ion-radio slot="end" [value]="interactionType.QR_CODE"></ion-radio>
     </ion-item>
-    <ion-item detail="false">
-      <ion-radio slot="start" [value]="interactionType.ALWAYS_ASK" labelPlacement="end"></ion-radio>
-      <ion-label [ngClass]="{ selected: selectedType === interactionType.ALWAYS_ASK }" color="white">
+    <ion-item lines="none" detail="false">
+      <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+      <ion-label [ngClass]="{ selected: selectedType === interactionType.ALWAYS_ASK }">
         {{ 'interaction-selection-settings.selector.always' | translate }}
       </ion-label>
+      <ion-radio slot="end" [value]="interactionType.ALWAYS_ASK"></ion-radio>
     </ion-item>
   </ion-radio-group>
-</ion-list>
+</div>

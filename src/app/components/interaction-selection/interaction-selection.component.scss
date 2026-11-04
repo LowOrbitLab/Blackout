@@ -1,72 +1,10 @@
-ion-list {
-  background: transparent;
-  ion-radio-group {
-    ion-item {
-      --background: var(--ok-bg);
-      background: var(--ok-bg);
-      border: 1px solid var(--ok-border-subdued);
-      border-radius: var(--ok-radius-md);
-      margin-bottom: 10px;
-      ion-label {
-        margin-left: 12px;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--ok-text);
-      }
-    }
+:host {
+  display: block;
+}
+
+.ok-interaction-section {
+  ion-label.selected {
+    color: var(--ok-text);
+    font-weight: 600;
   }
-}
-
-.item-text-wrap {
-  white-space: normal !important;
-}
-
-.radio-list {
-  border: 1px solid var(--ok-border-subdued);
-  border-radius: var(--ok-radius-lg);
-  background: var(--ok-bg);
-  padding: 12px;
-}
-
-.radio-group {
-  background-color: transparent;
-}
-
-.custom-item {
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
-.selected {
-  color: var(--ok-brand);
-  font-weight: 700;
-  font-size: 28px;
-}
-
-ion-radio::part(container) {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid var(--ok-border);
-}
-
-ion-radio::part(mark) {
-  background: none;
-  transition: none;
-  transform: none;
-  border-radius: 0;
-}
-
-ion-radio.radio-checked::part(container) {
-  background: var(--ok-brand);
-  border-color: transparent;
-}
-
-ion-radio.radio-checked::part(mark) {
-  width: 5px;
-  height: 9px;
-  border-width: 0px 2px 2px 0px;
-  border-style: solid;
-  border-color: #111111;
-  transform: rotate(45deg);
 }

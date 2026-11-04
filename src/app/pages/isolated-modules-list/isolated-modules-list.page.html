@@ -7,7 +7,7 @@
     <ion-title>{{ 'isolated-modules-list-page.title' | translate }}</ion-title>
 
     <ion-buttons slot="primary">
-      <ion-button (click)="addModule()">
+      <ion-button class="button-has-icon-only" (click)="addModule()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,15 +15,27 @@
 
   <ng-container *ngrxLet="facade.modules$ as modules">
     <ion-toolbar *ngIf="modules.value.length > 0" color="secondary">
-      <ion-searchbar placeholder="{{ 'isolated-modules-list-page.items.search_placeholder' | translate }}" (ionInput)="filterModules($event)"></ion-searchbar>
+      <ion-searchbar
+        placeholder="{{ 'isolated-modules-list-page.items.search_placeholder' | translate }}"
+        (ionInput)="filterModules($event)"
+      ></ion-searchbar>
     </ion-toolbar>
   </ng-container>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <airgap-isolated-modules-list 
-    [modules]="facade.modules$ | ngrxPush" 
-    [filter]="facade.filter$ | ngrxPush" 
+  <airgap-isolated-modules-list
+    [modules]="facade.modules$ | ngrxPush"
+    [filter]="facade.filter$ | ngrxPush"
     (onModuleSelected)="onModuleSelected($event)"
   ></airgap-isolated-modules-list>
+
+  <ng-container *ngrxLet="facade.modules$ as modules">
+    <div *ngIf="modules.value && modules.value.length === 0" class="ok-isolated-empty-action">
+      <ion-button color="primary" shape="round" (click)="addModule()">
+        <ion-icon name="add-outline" slot="start"></ion-icon>
+        {{ 'isolated-modules-details-page.button.install_label' | translate }}
+      </ion-button>
+    </div>
+  </ng-container>
 </ion-content>

@@ -1,31 +1,53 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
-
     <ion-title [innerHTML]="'advanced-mode.label' | translate"></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle [innerHTML]="'advanced-mode.label' | translate"></ion-card-subtitle>
-      </ion-card-header>
+  <div class="ok-advanced-mode-top">
+    <div class="ok-settings-section">
+      <ion-item lines="none">
+        <ion-icon name="build-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'advanced-mode.label' | translate }}</ion-label>
+        <ion-toggle [checked]="advancedModeEnabled" (ionChange)="toggleEnableAdvancedMode($event)" slot="end"></ion-toggle>
+      </ion-item>
+    </div>
+    <p class="ok-settings-note" [innerHTML]="'advanced-mode.note_text' | translate"></p>
 
-      <ion-card-content>
-        <ion-item lines="none">
-          <ion-icon name="build-outline" slot="start"></ion-icon>
-          {{'advanced-mode.label' | translate }}
-          <ion-toggle [checked]="advancedModeEnabled" (ionChange)="toggleEnableAdvancedMode($event)" slot="end"></ion-toggle>
-        </ion-item>
-
-        <ion-item lines="none">
-          <p [innerHTML]="'advanced-mode.note_text' | translate"></p>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
+    <ion-list-header>
+      <ion-label>{{ 'tab-settings.advanced-features_label' | translate }}</ion-label>
+    </ion-list-header>
+    <div class="ok-settings-section ok-settings-section--last">
+      <ion-item detail="false">
+        <ion-icon name="key-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>{{ 'onboarding-advanced-mode.advanced.feature_1' | translate }}</h3>
+          <p>{{ 'secret-edit.passphrase.text' | translate }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-icon name="git-branch-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>{{ 'secret-edit.bip85.generate' | translate }}</h3>
+          <p>{{ 'secret-edit.bip85.text' | translate }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item detail="false">
+        <ion-icon name="code-working-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>{{ 'wallet-select-coins.custom-path.label' | translate }}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none" detail="false">
+        <ion-icon name="grid-outline" slot="start"></ion-icon>
+        <ion-label class="ion-text-wrap">
+          <h3>{{ 'onboarding-advanced-mode.advanced.feature_2' | translate }}</h3>
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

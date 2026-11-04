@@ -7,11 +7,24 @@ import { Platform } from '@ionic/angular'
   styleUrls: ['./secure-setup.page.scss']
 })
 export class SecureSetupPage {
-  public isIos: boolean
-  public isAndroid: boolean
+  public selectedPlatform: 'android' | 'ios'
+
+  public get isIos(): boolean {
+    return this.selectedPlatform === 'ios'
+  }
+
+  public get isAndroid(): boolean {
+    return this.selectedPlatform === 'android'
+  }
 
   constructor(private readonly platform: Platform) {
-    this.isIos = this.platform.is('ios')
-    this.isAndroid = this.platform.is('android')
+    this.selectedPlatform = this.platform.is('ios') ? 'ios' : 'android'
+  }
+
+  public onPlatformChange(event: Event): void {
+    const val = (event as CustomEvent).detail?.value
+    if (val === 'ios' || val === 'android') {
+      this.selectedPlatform = val
+    }
   }
 }

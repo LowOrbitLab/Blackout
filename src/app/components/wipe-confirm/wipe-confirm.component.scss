@@ -1,0 +1,96 @@
+.ok-wipe-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: var(--ok-color-danger-soft);
+  border: 1px solid rgba(255, 91, 91, 0.28);
+  border-radius: var(--ok-radius-card);
+
+  &__icon {
+    flex-shrink: 0;
+    font-size: 22px;
+    color: var(--ok-color-danger);
+    margin-top: 1px;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #ffb8b8;
+  }
+}
+
+.ok-settings-section {
+  background: var(--ok-bg-surface);
+  border: 1px solid var(--ok-border);
+  border-radius: var(--ok-radius-card);
+  overflow: hidden;
+  margin-bottom: 16px;
+
+  ion-list {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  ion-item {
+    --background: transparent;
+    --padding-start: 16px;
+    --inner-padding-end: 16px;
+    --min-height: 56px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--ok-border);
+    }
+
+    ion-label {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ok-text);
+      margin: 12px 0;
+    }
+  }
+}
+
+.ok-wipe-input-card {
+  background: var(--ok-bg-surface);
+  border: 1px solid var(--ok-border);
+  border-radius: var(--ok-radius-card);
+  padding: 16px;
+
+  &__label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ok-text-subdued);
+    margin-bottom: 12px;
+  }
+}
+
+.ok-wipe-input {
+  --background: var(--ok-bg-canvas);
+  --color: var(--ok-text);
+  --placeholder-color: var(--ok-text-muted);
+  --padding-start: 14px;
+  --padding-end: 14px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  border: 1px solid var(--ok-border-strong);
+  border-radius: var(--ok-radius-control);
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.ok-wipe-actions {
+  gap: 8px;
+
+  ion-button {
+    margin: 0;
+    height: 46px;
+    font-weight: 600;
+  }
+}

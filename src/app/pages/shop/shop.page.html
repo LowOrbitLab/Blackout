@@ -1,31 +1,37 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>{{"shop.label" | translate}}</ion-title>
+    <ion-title>{{ 'shop.label' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h1 [innerHTML]="'shop.page-description_label' | translate"></h1>
-  <h6 [innerHTML]="'shop.page-description_description' | translate"></h6>
+<ion-content>
+  <div class="ok-shop">
+    <div class="ok-shop__hero">
+      <h1 [innerHTML]="'shop.page-description_label' | translate"></h1>
+      <p [innerHTML]="'shop.page-description_description' | translate"></p>
+    </div>
 
-  <p [innerHTML]="'shop.QR-code_label' | translate"></p>
+    <div class="ok-settings-section ok-shop__qr-card">
+      <p class="ok-shop__qr-hint" [innerHTML]="'shop.QR-code_label' | translate"></p>
+      <div class="ok-shop__qr-box">
+        <img src="./assets/img/shop.png" alt="QR-Code with link to https://shop.airgap.it/?ref=Link-Vault" />
+      </div>
+      <span class="ok-shop__qr-link" (click)="open()">https://shop.airgap.it/?ref=Link-Vault</span>
+    </div>
 
-  <ion-row class="ion-justify-content-center ion-padding-top ion-padding-bottom">
-    <figure style="margin: auto; display: block">
-      <img width="30%" src="./assets/img/shop.png" alt="QR-Code with link to https://shop.airgap.it/?ref=Link-Vault" />
-      <figcaption><i>https://shop.airgap.it/?ref=Link-Vault</i></figcaption>
-    </figure>
-  </ion-row>
-
-  <!-- <h3 [innerHTML]="'shop.AirGap-Knox_label' | translate"></h3>
-  <p [innerHTML]="'shop.AirGap-Knox_description' | translate"></p> -->
-  <h3 [innerHTML]="'shop.AirGap-Recovery-Plate_label' | translate"></h3>
-  <p [innerHTML]="'shop.AirGap-Recovery-Plate_description' | translate"></p>
-  <h6 [innerHTML]="'shop.promo-description' | translate"></h6>
+    <div class="ok-settings-section ok-shop__product-card">
+      <div class="ok-shop__product-header">
+        <ion-icon name="shield-checkmark-outline"></ion-icon>
+        <h3 [innerHTML]="'shop.AirGap-Recovery-Plate_label' | translate"></h3>
+      </div>
+      <p [innerHTML]="'shop.AirGap-Recovery-Plate_description' | translate"></p>
+      <div class="ok-shop__promo" [innerHTML]="'shop.promo-description' | translate"></div>
+    </div>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button color="primary" (click)="open()" shape="round">{{ 'shop.copy_label' | translate }}</ion-button>

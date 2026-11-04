@@ -2,3 +2,68 @@ cdk-virtual-scroll-viewport {
   height: 100%;
   width: 100%;
 }
+
+.ok-wordlist {
+  padding-top: 0;
+
+  ion-item {
+    --min-height: 52px;
+    cursor: default;
+  }
+}
+
+.ok-wordlist-filtered {
+  padding-top: 8px;
+
+  .ok-settings-section ion-item {
+    cursor: default;
+  }
+}
+
+.ok-wordlist-empty {
+  margin: 8px 16px 12px;
+  padding: 20px 16px;
+  border-radius: var(--ok-radius-lg);
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  ion-icon {
+    font-size: 22px;
+    color: var(--ok-icon-subdued);
+    flex-shrink: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+}
+
+.ok-wordlist__index {
+  min-width: 48px;
+  font-family: var(--ok-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ok-text-placeholder);
+  margin-inline-end: 8px;
+}
+
+.ok-wordlist__word {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ok-text);
+}
+
+.ok-wordlist__binary {
+  padding: 2px 8px;
+  border-radius: var(--ok-radius-xs);
+  background: var(--ok-bg-hover);
+  font-family: var(--ok-font-mono);
+  font-size: 12px;
+  color: var(--ok-text-subdued);
+}

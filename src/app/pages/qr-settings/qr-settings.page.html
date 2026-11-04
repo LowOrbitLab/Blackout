@@ -4,9 +4,95 @@
       <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'qr-settings-page.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="button-has-icon-only" (click)="resetSettings()">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <airgap-qr-settings></airgap-qr-settings>
+  <div class="ok-qr-settings-top">
+    <div class="ok-settings-section">
+      <ion-item lines="none">
+        <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'qr-settings.enable-new-serializer_label' | translate }}</ion-label>
+        <ion-toggle
+          slot="end"
+          [(ngModel)]="serializerService.useV3"
+          (ionChange)="onToggleChange($event)"
+        ></ion-toggle>
+      </ion-item>
+    </div>
+
+    <div class="ok-settings-section ok-qr-sliders-card">
+      <div class="ok-qr-slider-group">
+        <div class="ok-qr-slider-header">
+          <span class="ok-qr-slider-title">{{ 'qr-settings.page-time_label' | translate }}</span>
+          <span class="ok-value-badge">{{ serializerService.displayTimePerChunk }} ms</span>
+        </div>
+        <ion-range
+          (ionChange)="onRangeChange($event, 'displayTimePerChunk')"
+          [(ngModel)]="serializerService.displayTimePerChunk"
+          min="50"
+          max="500"
+          step="25"
+          pin="true"
+          snaps="false"
+          ngDefaultControl
+        >
+          <ion-label slot="start">50 ms</ion-label>
+          <ion-label slot="end">500 ms</ion-label>
+        </ion-range>
+      </div>
+
+      <div class="ok-qr-slider-group">
+        <div class="ok-qr-slider-header">
+          <span class="ok-qr-slider-title">{{ 'qr-settings.single-page-size_label' | translate }}</span>
+          <span class="ok-value-badge">{{ serializerService.singleChunkSize }} bytes</span>
+        </div>
+        <ion-range
+          (ionChange)="onRangeChange($event, 'singleChunkSize')"
+          [(ngModel)]="serializerService.singleChunkSize"
+          min="100"
+          max="2000"
+          step="50"
+          pin="true"
+          snaps="false"
+          ngDefaultControl
+        >
+          <ion-label slot="start">100 B</ion-label>
+          <ion-label slot="end">2000 B</ion-label>
+        </ion-range>
+      </div>
+
+      <div class="ok-qr-slider-group">
+        <div class="ok-qr-slider-header">
+          <span class="ok-qr-slider-title">{{ 'qr-settings.multi-page-size_label' | translate }}</span>
+          <span class="ok-value-badge">{{ serializerService.multiChunkSize }} bytes</span>
+        </div>
+        <ion-range
+          (ionChange)="onRangeChange($event, 'multiChunkSize')"
+          [(ngModel)]="serializerService.multiChunkSize"
+          min="20"
+          max="1000"
+          step="20"
+          pin="true"
+          snaps="false"
+          ngDefaultControl
+        >
+          <ion-label slot="start">20 B</ion-label>
+          <ion-label slot="end">1000 B</ion-label>
+        </ion-range>
+      </div>
+    </div>
+
+    <div class="ok-settings-section ok-settings-section--last">
+      <ion-item button lines="none" detail="false" (click)="resetSettings()">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        <ion-label>{{ 'qr-settings.reset' | translate }}</ion-label>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

@@ -1,11 +1,11 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar color="secondary">
     <ion-buttons *ngIf="!isModal" slot="start">
       <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'wordlist.title' | translate }}</ion-title>
     <ion-buttons *ngIf="isModal" slot="end">
-      <ion-button (click)="close()">
+      <ion-button class="button-has-icon-only" (click)="close()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -15,47 +15,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ng-container>
-    <p *ngIf="filteredWordlist.length === 0" class="ion-padding">
-      {{ 'wordlist.no_match' | translate }}
-    </p>
-    <cdk-virtual-scroll-viewport *ngIf="filteredWordlist.length > 0" itemSize="50" minBufferPx="1000" maxBufferPx="1000">
-      <ion-list>
-        <ion-item *cdkVirtualFor="let item of filteredWordlist">
-          <ion-label>
-            <h2>
-              <strong>
-                <ion-text color="medium"><span class="typography--mono">{{item.index + 1}}.</span></ion-text>
-                {{item.word}}
-              </strong>
-            </h2>
-          </ion-label>
-
-          <ion-text color="medium">
-            <p>{{ 'wordlist.binary_label' | translate }} {{item.binary}}</p>
-          </ion-text>
-        </ion-item>
-      </ion-list>
-    </cdk-virtual-scroll-viewport>
-    <cdk-virtual-scroll-viewport *ngIf="filteredWordlist.length < 20" itemSize="50" minBufferPx="1000" maxBufferPx="1000">
-      <ion-list>
-        <ion-list-header>{{ 'wordlist.similar_words' | translate }}</ion-list-header>
-        <ion-item *cdkVirtualFor="let item of similarWords">
-          <ion-label>
-            <h2>
-              <strong>
-                <ion-text color="medium"><span class="typography--mono">{{item.index + 1}}.</span></ion-text>
-                {{item.word}}
-              </strong>
-            </h2>
-          </ion-label>
-
-          <ion-text color="medium">
-            <p>{{ 'wordlist.binary_label' | translate }} {{item.binary}}</p>
-          </ion-text>
+<ion-content [scrollY]="filteredWordlist.length < 20">
+  <ng-container *ngIf="filteredWordlist.length >= 20">
+    <cdk-virtual-scroll-viewport itemSize="52" minBufferPx="1000" maxBufferPx="1000">
+      <ion-list class="ok-wordlist">
+        <ion-item *cdkVirtualFor="let item of filteredWordlist" detail="false">
+          <span class="ok-wordlist__index" slot="start">#{{ item.index + 1 }}</span>
+          <ion-label class="ok-wordlist__word">{{ item.word }}</ion-label>
+          <span class="ok-wordlist__binary" slot="end">{{ item.binary }}</span>
         </ion-item>
       </ion-list>
     </cdk-virtual-scroll-viewport>
   </ng-container>
+
+  <div *ngIf="filteredWordlist.length < 20" class="ok-wordlist-filtered">
+    <div *ngIf="filteredWordlist.length === 0" class="ok-wordlist-empty">
+      <ion-icon name="search-outline"></ion-icon>
+      <p>{{ 'wordlist.no_match' | translate }}</p>
+    </div>
+
+    <div *ngIf="filteredWordlist.length > 0" class="ok-settings-section">
+      <ion-item
+        *ngFor="let item of filteredWordlist; let last = last"
+        [lines]="last ? 'none' : 'inset'"
+        detail="false"
+      >
+        <span class="ok-wordlist__index" slot="start">#{{ item.index + 1 }}</span>
+        <ion-label class="ok-wordlist__word">{{ item.word }}</ion-label>
+        <span class="ok-wordlist__binary" slot="end">{{ item.binary }}</span>
+      </ion-item>
+    </div>
+
+    <ng-container *ngIf="similarWords.length > 0">
+      <ion-list-header>
+        <ion-label>{{ 'wordlist.similar_words' | translate }}</ion-label>
+      </ion-list-header>
+      <div class="ok-settings-section ok-settings-section--last">
+        <ion-item
+          *ngFor="let item of similarWords; let last = last"
+          [lines]="last ? 'none' : 'inset'"
+          detail="false"
+        >
+          <span class="ok-wordlist__index" slot="start">#{{ item.index + 1 }}</span>
+          <ion-label class="ok-wordlist__word">{{ item.word }}</ion-label>
+          <span class="ok-wordlist__binary" slot="end">{{ item.binary }}</span>
+        </ion-item>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>

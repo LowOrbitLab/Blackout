@@ -22,6 +22,10 @@ export class OnboardingWelcomePage {
 
   constructor(private readonly modalController: ModalController, private readonly storageService: VaultStorageService) {}
 
+  public dismiss(): void {
+    this.modalController.dismiss().catch(handleErrorLocal(ErrorCategory.IONIC_MODAL))
+  }
+
   public next() {
     // TODO: Option to show disclaimer
 

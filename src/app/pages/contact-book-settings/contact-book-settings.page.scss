@@ -1,17 +1,7 @@
-ion-content {
-  --padding-bottom: 84px;
-}
+.ok-contact-settings-top {
+  padding-top: 12px;
 
-.delete-button {
-  width: calc(100% - 24px);
-  background-color: var(--ok-critical-bg);
-  border: 1px solid var(--ok-critical-border);
-  color: var(--ok-critical);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 0 16px;
-  height: 44px;
-  border-radius: var(--ok-radius-full);
-  margin: 24px 12px 0px 12px;
-  cursor: pointer;
+  .ok-settings-section + .ok-settings-section {
+    margin-top: 12px;
+  }
 }

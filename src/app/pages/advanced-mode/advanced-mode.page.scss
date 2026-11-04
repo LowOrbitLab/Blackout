@@ -1,0 +1,21 @@
+.ok-advanced-mode-top {
+  padding-top: 12px;
+
+  .ok-settings-section ion-item {
+    cursor: default;
+
+    h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ok-text);
+    }
+
+    p {
+      margin: 3px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ok-text-subdued);
+    }
+  }
+}

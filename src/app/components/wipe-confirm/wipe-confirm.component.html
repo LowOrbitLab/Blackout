@@ -1,48 +1,60 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'danger-zone.wipe.confirm.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="button-has-icon-only" (click)="cancel()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <p class="ion-padding-horizontal ion-text-wrap">{{ 'danger-zone.wipe.confirm.description' | translate }}</p>
+<ion-content class="ion-padding">
+  <div class="ok-wipe-banner">
+    <ion-icon name="warning-outline" class="ok-wipe-banner__icon"></ion-icon>
+    <p class="ok-wipe-banner__text">{{ 'danger-zone.wipe.confirm.description' | translate }}</p>
+  </div>
 
-  <ion-list>
-    <ion-item>
-      <ion-label class="ion-text-wrap">{{ 'danger-zone.wipe.confirm.backup_label' | translate }}</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="hasBackup"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label class="ion-text-wrap">{{ 'danger-zone.wipe.confirm.acknowledge_label' | translate }}</ion-label>
-      <ion-checkbox slot="end" [(ngModel)]="acknowledgesLoss"></ion-checkbox>
-    </ion-item>
-    <ion-item mode="md">
-      <ion-label class="ion-no-margin ion-text-wrap" position="stacked">
-        {{ 'danger-zone.wipe.confirm.input_label' | translate: { phrase: confirmationPhrase } }}
-      </ion-label>
-      <ion-input
-        type="text"
-        autocapitalize="off"
-        autocorrect="off"
-        spellcheck="false"
-        [placeholder]="confirmationPhrase"
-        [(ngModel)]="typedPhrase"
-      ></ion-input>
-    </ion-item>
-  </ion-list>
+  <div class="ok-settings-section">
+    <ion-list lines="none">
+      <ion-item button detail="false" (click)="hasBackup = !hasBackup">
+        <ion-label class="ion-text-wrap">{{ 'danger-zone.wipe.confirm.backup_label' | translate }}</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="hasBackup" (click)="$event.stopPropagation()"></ion-checkbox>
+      </ion-item>
+      <ion-item button detail="false" (click)="acknowledgesLoss = !acknowledgesLoss">
+        <ion-label class="ion-text-wrap">{{ 'danger-zone.wipe.confirm.acknowledge_label' | translate }}</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="acknowledgesLoss" (click)="$event.stopPropagation()"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="ok-wipe-input-card">
+    <label class="ok-wipe-input-card__label">
+      {{ 'danger-zone.wipe.confirm.input_label' | translate: { phrase: confirmationPhrase } }}
+    </label>
+    <ion-input
+      class="ok-wipe-input"
+      type="text"
+      autocapitalize="off"
+      autocorrect="off"
+      spellcheck="false"
+      [placeholder]="confirmationPhrase"
+      [(ngModel)]="typedPhrase"
+    ></ion-input>
+  </div>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-grid>
-      <ion-row>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-padding-horizontal ion-padding-bottom">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ok-wipe-actions">
         <ion-col>
-          <ion-button expand="block" fill="outline" (click)="cancel()">
+          <ion-button expand="block" fill="outline" shape="round" (click)="cancel()">
             {{ 'danger-zone.wipe.confirm.cancel_label' | translate }}
           </ion-button>
         </ion-col>
         <ion-col>
-          <ion-button expand="block" color="danger" [disabled]="!canWipe" (click)="confirm()">
+          <ion-button expand="block" color="danger" shape="round" [disabled]="!canWipe" (click)="confirm()">
             {{ 'danger-zone.wipe.confirm.confirm_label' | translate }}
           </ion-button>
         </ion-col>

@@ -8,14 +8,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <h3 [innerHTML]="'security-level-self-check.heading' | translate"></h3>
-  {{'security-level-self-check.description' | translate}}
-  <ion-list lines="none" class="ion-padding-vertical">
-    <ion-item detail="false" class="ion-no-padding" *ngFor="let phrase of checkPhrases">
-      <ion-checkbox slot="start"></ion-checkbox>
-      {{ phrase | translate }}
-    </ion-item>
-  </ion-list>
-  <ion-card></ion-card>
+<ion-content>
+  <div class="ok-self-check-top">
+    <div class="ok-settings-section ok-self-check-summary">
+      <div class="ok-self-check-summary__header">
+        <h3 [innerHTML]="'security-level-self-check.heading' | translate"></h3>
+        <span class="ok-value-badge">{{ checkedCount }} / {{ checkPhrases.length }}</span>
+      </div>
+      <p class="ok-self-check-summary__desc">{{ 'security-level-self-check.description' | translate }}</p>
+      <div class="ok-self-check-progress">
+        <div class="ok-self-check-progress__bar" [style.width.%]="progressPercentage"></div>
+      </div>
+    </div>
+
+    <div class="ok-settings-section ok-settings-section--last">
+      <ion-item
+        *ngFor="let phrase of checkPhrases; let i = index; let last = last"
+        [lines]="last ? 'none' : 'inset'"
+        detail="false"
+      >
+        <ion-checkbox slot="start" [checked]="checkedItems[i]" (ionChange)="onCheckChange(i, $event)"></ion-checkbox>
+        <ion-label class="ion-text-wrap" [class.ok-self-check-label--done]="checkedItems[i]">
+          {{ phrase | translate }}
+        </ion-label>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

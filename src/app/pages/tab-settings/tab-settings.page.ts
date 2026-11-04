@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { AlertController, ModalController } from '@ionic/angular'
+import { AlertController, ModalController, ToastController } from '@ionic/angular'
 import { Observable } from 'rxjs'
 
 import { MnemonicSecret } from '../../models/secret'
@@ -36,6 +36,7 @@ export class TabSettingsPage implements OnInit {
     private readonly contactsService: ContactsService,
     private readonly translateService: TranslateService,
     private readonly alertCtrl: AlertController,
+    private readonly toastController: ToastController,
     private readonly secureStorage: SecureStorageService,
     public readonly storageService: VaultStorageService,
     private readonly environmentService: VaultEnvironmentService
@@ -94,7 +95,8 @@ export class TabSettingsPage implements OnInit {
   public async goToOnboarding(): Promise<void> {
     const modal: HTMLIonModalElement = await this.modalController.create({
       component: OnboardingWelcomePage,
-      backdropDismiss: false
+      componentProps: { isSettingsModal: true },
+      backdropDismiss: true
     })
 
     modal.present().catch(handleErrorLocal(ErrorCategory.IONIC_MODAL))
@@ -120,13 +122,27 @@ export class TabSettingsPage implements OnInit {
   public pasteClipboard(): void {
     this.clipboardService.paste().then(
       (text: string) => {
-        console.log('pasteClipboard', text)
+        if (!text || !text.trim()) {
+          this.showClipboardEmptyToast()
+
+          return
+        }
         this.iacService.handleRequest(text, IACMessageTransport.PASTE).catch((err) => console.error(err))
       },
       (err: string) => {
         console.error('Error: ' + err)
+        this.showClipboardEmptyToast()
       }
     )
+  }
+
+  private async showClipboardEmptyToast(): Promise<void> {
+    const toast: HTMLIonToastElement = await this.toastController.create({
+      message: 'Clipboard is empty',
+      duration: 2000,
+      position: 'bottom'
+    })
+    toast.present().catch(handleErrorLocal(ErrorCategory.IONIC_MODAL))
   }
 
   public async resetVault() {

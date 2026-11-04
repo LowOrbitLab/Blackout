@@ -1,0 +1,35 @@
+.ok-qr-settings-top {
+  padding-top: 12px;
+}
+
+.ok-qr-sliders-card {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.ok-qr-slider-group {
+  padding: 16px 16px 10px;
+  border-bottom: 1px solid var(--ok-divider);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  ion-range {
+    padding-inline: 0;
+  }
+}
+
+.ok-qr-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.ok-qr-slider-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ok-text);
+}

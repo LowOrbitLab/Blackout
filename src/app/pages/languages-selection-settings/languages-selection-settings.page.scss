@@ -1,3 +1,15 @@
-ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+.ok-lang-top {
+  padding-top: 12px;
+}
+
+.ok-lang-system-badge {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
 }
