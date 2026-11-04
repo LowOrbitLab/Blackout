@@ -73,6 +73,7 @@ export class ScanBasePage {
   protected stopScan() {
     if (this.isMobile) {
       this.scanner.destroy()
+      this.setCameraBackdrop(false)
     } else if (this.zxingScanner) {
       this.zxingScanner.enable = false
     }
@@ -91,6 +92,7 @@ export class ScanBasePage {
   }
 
   private startScanMobile() {
+    this.setCameraBackdrop(true)
     this.scanner.scan(
       (text) => {
         this.checkScan(text)
@@ -100,6 +102,16 @@ export class ScanBasePage {
         this.startScan()
       }
     )
+  }
+
+  /**
+   * The native preview renders behind the WebView, so the document itself must
+   * not paint. Ionic's core.css gives <body> `var(--ion-background-color)`, and
+   * the plugin's own background clearing only runs when QRScanner.show() gets a
+   * callback, which QrScannerService never passes. Toggle a root class instead.
+   */
+  private setCameraBackdrop(active: boolean): void {
+    document.documentElement.classList.toggle('ok-camera-active', active)
   }
 
   private startScanBrowser() {

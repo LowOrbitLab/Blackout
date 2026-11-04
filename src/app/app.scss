@@ -194,3 +194,10 @@ pre {
   --background: none transparent !important;
   background: transparent !important;
 }
+
+/* Set on <html> by ScanBasePage while the native scanner runs: the canvas
+   colour on html/body would otherwise cover the preview and leave it black. */
+html.ok-camera-active,
+html.ok-camera-active body {
+  background: transparent !important;
+}
