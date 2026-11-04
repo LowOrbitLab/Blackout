@@ -70,7 +70,8 @@ const vector = '<vector xmlns:android="http://schemas.android.com/apk/res/androi
 for (const folder of ['drawable', 'drawable-night']) write(`android/app/src/main/res/${folder}/splash_icon.xml`, vector)
 write('src/assets/icon/favicon.png', png(64))
 for (const size of [72, 96, 128, 192, 256, 512]) write(`icons/icon-${size}.png`, png(size))
-for (const file of ['ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png', 'electron/resources/icons/icon.png', 'fastlane/metadata/android/en-US/images/icon.png']) write(file, png(1024))
+for (const file of ['ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png', 'electron/resources/icons/icon.png']) write(file, png(1024))
+write('fastlane/metadata/android/en-US/images/icon.png', png(512))
 const splash = png(2732, 2732, 512)
 for (const scale of [1, 2, 3]) {
   for (const theme of ['', '-dark']) write(`ios/App/App/Assets.xcassets/Splash.imageset/Default@${scale}x~universal~anyany${theme}.png`, splash)

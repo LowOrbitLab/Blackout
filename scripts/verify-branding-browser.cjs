@@ -5,6 +5,8 @@ const http = require('node:http')
 const { spawn } = require('node:child_process')
 const assert = require('node:assert/strict')
 
+if (typeof WebSocket === 'undefined') throw new Error('浏览器验收需要 Node.js 22 或更高版本')
+
 const root = path.resolve(__dirname, '..')
 const web = path.join(root, 'www')
 const output = path.resolve(process.env.BLACKOUT_REVIEW_OUTPUT || path.join(root, 'tmp/blackout-review'))

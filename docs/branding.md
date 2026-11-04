@@ -41,7 +41,7 @@ Android 版本名来自根 package.json；构建号通过 `-PblackoutVersionCode
 
 ## 验收
 
-运行 `yarn verify:branding`、`yarn smoke:evm` 和生产构建。品牌验证覆盖多平台身份、协议边界、持久化隔离、依赖补丁幂等性、实际 MetaMask 账户分享二维码解码、第三方协议保留和译文完整性。运行 `node scripts/verify-branding-browser.cjs` 验证实际构建中的欢迎页、关于页、中文设置、图标、页面布局和旧应用数据保留；Chrome 路径可通过 `BLACKOUT_CHROME` 指定。浏览器验收不等同于原生账户导入与签名的完整设备验证。
+运行 `yarn verify:branding`、`yarn smoke:evm` 和生产构建。品牌验证覆盖多平台身份、协议边界、持久化隔离、依赖补丁幂等性、实际 MetaMask 账户分享二维码解码、第三方协议保留和译文完整性。使用 Node.js 22 运行 `node scripts/verify-branding-browser.cjs` 验证实际构建中的欢迎页、关于页、中文设置、图标、页面布局和旧应用数据保留；Chrome 路径可通过 `BLACKOUT_CHROME` 指定。浏览器验收不等同于原生账户导入与签名的完整设备验证。
 
 发布前还需在原生设备上安装两款应用，验证独立启动、重启与升级保留数据、生物识别、相机和重置范围。仅浏览器或源码检查不能代替系统密钥库的真机验证。
 
