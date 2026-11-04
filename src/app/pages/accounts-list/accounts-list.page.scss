@@ -7,35 +7,57 @@
   margin-top: 8px;
   margin-bottom: 24px;
 
-  ion-item-sliding:last-child {
-    airgap-account-item ion-item,
-    > ion-item {
-      --border-width: 0;
+  ion-item-sliding {
+    border-bottom: 1px solid var(--ok-divider);
+
+    &:last-child {
+      border-bottom: 0;
     }
+  }
+
+  // Delete mode wraps the account row in an extra ion-item; keep it flush
+  ion-item-sliding > ion-item {
+    --padding-start: 14px;
+    --inner-padding-end: 0;
+    --border-width: 0;
+
+    ion-checkbox {
+      margin-inline-end: 4px;
+    }
+
+    airgap-account-item {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  ion-item-option {
+    --background: var(--ok-critical-strong);
+    min-width: 72px;
   }
 }
 
 .ok-empty-state {
-  background: var(--ok-bg);
-  border: 1px solid var(--ok-border-subdued);
-  border-radius: var(--ok-radius-lg);
-  padding: 32px 20px;
-  margin-top: 16px;
+  margin-top: 40px;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 16px;
+  gap: 20px;
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
 
   strong {
+    max-width: 280px;
     color: var(--ok-text-subdued);
     font-size: 14px;
     font-weight: 500;
+    line-height: 1.5;
   }
 }
 
 .empty-img {
-  width: 60%;
-  max-width: 220px;
-  opacity: 0.75;
+  width: 56%;
+  max-width: 200px;
+  opacity: 0.85;
 }

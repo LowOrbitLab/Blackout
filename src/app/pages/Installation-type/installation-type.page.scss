@@ -4,5 +4,66 @@
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 96px;
+}
+
+.ok-install-intro {
+  margin: 18vh 0 20px;
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ok-text);
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+}
+
+// Selection cards: the global ion-card.ion-color-primary rule supplies the
+// selected surface + active border; here only spacing and press feedback.
+.ok-install-card {
+  margin: 0 0 12px;
+  cursor: pointer;
+  transition: transform var(--ok-duration-fast) var(--ok-ease-out), border-color var(--ok-duration-base) var(--ok-ease-out),
+    background-color var(--ok-duration-base) var(--ok-ease-out);
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) 60ms backwards;
+
+  & + & {
+    animation-delay: 100ms;
+  }
+
+  &:active {
+    transform: scale(var(--ok-press-scale));
+  }
+
+  ion-card-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+
+    ion-icon {
+      font-size: 18px;
+      color: var(--ok-text-subdued);
+    }
+  }
+
+  ion-col[size='1'] {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  ion-checkbox {
+    pointer-events: none;
+    animation: ok-qr-in var(--ok-duration-base) var(--ok-ease-out) backwards;
+  }
 }

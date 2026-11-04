@@ -99,14 +99,14 @@ export class AppComponent implements AfterViewInit {
 
     if (this.platform.is('hybrid')) {
       this.statusBar.setStyle({ style: Style.Dark })
-      this.statusBar.setBackgroundColor({ color: '#311B58' })
+      this.statusBar.setBackgroundColor({ color: '#0F0F0F' })
       this.splashScreen.hide()
 
       await this.securityUtils.toggleAutomaticAuthentication({ automatic: true })
     }
 
     if (this.platform.is('android')) {
-      await EdgeToEdge.setBackgroundColor({ color: '#311B58' })
+      await EdgeToEdge.setBackgroundColor({ color: '#0F0F0F' })
     }
 
     this.initChecks()

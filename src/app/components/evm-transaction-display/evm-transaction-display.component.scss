@@ -20,7 +20,7 @@
   margin: 12px 0 16px;
   background: var(--ok-bg);
   border: 1px solid var(--ok-border-subdued);
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--ok-radius-lg);
   overflow: hidden;
 
   &__header {
@@ -53,22 +53,18 @@
     &--high {
       --background: var(--ok-brand-bg);
       --color: var(--ok-brand);
-      border: 1px solid var(--ok-brand-border);
     }
     &--medium {
       --background: var(--ok-info-bg);
       --color: var(--ok-info);
-      border: 1px solid rgba(96, 165, 250, 0.28);
     }
     &--low {
       --background: var(--ok-caution-bg);
       --color: var(--ok-caution);
-      border: 1px solid var(--ok-caution-border);
     }
     &--unknown {
       --background: var(--ok-critical-bg);
       --color: var(--ok-critical);
-      border: 1px solid var(--ok-critical-border);
     }
   }
 
@@ -125,6 +121,12 @@
       border-radius: var(--ok-radius-sm);
       padding: 8px 10px;
       cursor: pointer;
+      transition: border-color var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out);
+
+      &:active {
+        border-color: var(--ok-border);
+        background: var(--ok-bg-subdued);
+      }
     }
 
     &--expanded {
@@ -156,6 +158,7 @@
     --padding-start: 6px;
     --padding-end: 6px;
     --background: var(--ok-bg-hover);
+    --background-activated: var(--ok-bg-active);
     --border-radius: var(--ok-radius-sm);
     color: var(--ok-text-subdued);
     height: 32px;
@@ -205,7 +208,7 @@
 
   &__warning {
     margin: 10px 14px;
-    border-radius: var(--ok-radius-sm) !important;
+    border-radius: var(--ok-radius-md) !important;
 
     ion-card-content {
       display: flex;
@@ -239,6 +242,7 @@
 
     .evm-decoded {
       background: var(--ok-bg-app);
+      border-radius: var(--ok-radius-md);
       margin: 8px 0;
     }
   }

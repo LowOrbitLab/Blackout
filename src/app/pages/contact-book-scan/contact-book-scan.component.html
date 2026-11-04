@@ -1,13 +1,13 @@
-<ion-header class="ion-no-border ok-scan-header" no-shadow>
+<ion-header class="ion-no-border ok-scan-header" [class.is-camera]="isMobile && (hasCameraPermission | async)">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="ok-scan-title">{{ 'contact-book-scan.title' | translate }}</ion-title>
+    <ion-title>{{ 'contact-book-scan.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content forceOverscroll="false" [class.transparent]="hasCameraPermission | async">
+<ion-content forceOverscroll="false" [scrollY]="false" [class.transparent]="hasCameraPermission | async">
   <div *ngIf="hasCameraPermission | async" class="ok-scan-layout">
     <zxing-scanner
       #scanner
@@ -25,7 +25,7 @@
         <span class="ok-corner ok-corner--tr"></span>
         <span class="ok-corner ok-corner--bl"></span>
         <span class="ok-corner ok-corner--br"></span>
-        <div class="ok-laser-line"></div>
+        <div class="ok-laser-track"><div class="ok-laser"></div></div>
       </div>
     </div>
 
@@ -34,16 +34,9 @@
     </div>
   </div>
 
-  <ion-grid *ngIf="(hasCameraPermission | async) === false" fixed="true" class="ion-no-padding">
-    <ion-row
-      class="row--height__100 ion-justify-content-center ion-align-items-center"
-      (click)="requestPermission()"
-    >
-      <ion-col class="ion-text-center ion-padding">
-        <img src="../assets/img/permission_onboarding_camera.svg" />
-        <h3 class="ion-padding-horizontal" [innerHTML]="'contact-book-scan.empty-state_heading' | translate"></h3>
-        <ion-button shape="round" color="primary">{{ 'contact-book-scan.grant-permission_label' | translate }}</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div *ngIf="(hasCameraPermission | async) === false" class="ok-scan-permission" (click)="requestPermission()">
+    <img src="../assets/img/permission_onboarding_camera.svg" alt="" />
+    <h3 [innerHTML]="'contact-book-scan.empty-state_heading' | translate"></h3>
+    <ion-button shape="round" color="primary">{{ 'contact-book-scan.grant-permission_label' | translate }}</ion-button>
+  </div>
 </ion-content>

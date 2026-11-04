@@ -110,7 +110,13 @@ export function createTranslateLoader(http: HttpClient): AirGapTranslateLoader {
       }
     }),
     EffectsModule.forRoot(),
-    IonicModule.forRoot({ innerHTMLTemplatesEnabled: true }),
+    IonicModule.forRoot({
+      innerHTMLTemplatesEnabled: true,
+      // OneKey-style header: a bare chevron on every platform. iOS would otherwise
+      // render an untranslated "Back" label next to the icon.
+      backButtonText: '',
+      backButtonIcon: 'chevron-back-outline'
+    }),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

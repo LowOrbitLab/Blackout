@@ -1,0 +1,291 @@
+// Shared scanner viewfinder, imported by tab-scan and contact-book-scan.
+// Over a live camera feed the area outside the window is dimmed with a spread
+// box-shadow, so headings stay legible regardless of what the camera sees.
+
+:host {
+  --scan-accent: var(--ok-brand);
+  --scan-accent-glow: rgba(62, 220, 47, 0.38);
+  --scan-box: min(70vw, 264px);
+  /* One dim for everything outside the window, header included */
+  --scan-dim: rgba(0, 0, 0, 0.55);
+}
+
+ion-content {
+  --background: var(--ok-bg-app);
+}
+
+// Title and spacing follow the global header so the tab roots match. With a
+// live camera the native preview sits behind the whole transparent WebView,
+// so an opaque toolbar would cut a hard black band above the dimmed feed.
+.ok-scan-header ion-toolbar {
+  --background: var(--ok-bg-app);
+}
+
+.ok-scan-header.is-camera ion-toolbar {
+  --background: var(--scan-dim);
+}
+
+.ok-scan-layout {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ok-zxing-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+}
+
+.ok-viewfinder-stage {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ok-viewfinder-box {
+  position: relative;
+  width: var(--scan-box);
+  height: var(--scan-box);
+  border-radius: 28px;
+  box-shadow: 0 0 0 100vmax var(--scan-dim);
+}
+
+// The dim itself is static (it must match the header from the first frame);
+// the corners slide in from just outside the window and lock on.
+@keyframes ok-corner-in {
+  from {
+    opacity: 0;
+    transform: translate(calc(var(--cx) * 10px), calc(var(--cy) * 10px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ok-corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 0 solid var(--scan-accent);
+  pointer-events: none;
+  transition: transform var(--ok-duration-slow) var(--ok-ease-out);
+  animation: ok-corner-in 420ms var(--ok-ease-out) 60ms backwards;
+
+  &--tl {
+    --cx: -1;
+    --cy: -1;
+    top: 0;
+    left: 0;
+    border-top-width: 3px;
+    border-left-width: 3px;
+    border-top-left-radius: 28px;
+  }
+
+  &--tr {
+    --cx: 1;
+    --cy: -1;
+    top: 0;
+    right: 0;
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-top-right-radius: 28px;
+  }
+
+  &--bl {
+    --cx: -1;
+    --cy: 1;
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-bottom-left-radius: 28px;
+  }
+
+  &--br {
+    --cx: 1;
+    --cy: 1;
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 3px;
+    border-right-width: 3px;
+    border-bottom-right-radius: 28px;
+  }
+}
+
+// Corners tighten slightly once frames start arriving
+.ok-viewfinder-box.is-receiving {
+  .ok-corner--tl {
+    transform: translate(4px, 4px);
+  }
+  .ok-corner--tr {
+    transform: translate(-4px, 4px);
+  }
+  .ok-corner--bl {
+    transform: translate(4px, -4px);
+  }
+  .ok-corner--br {
+    transform: translate(-4px, -4px);
+  }
+}
+
+// The track is the sweep range; the line sits at the vertical centre of a
+// track-sized box, so translateY(±50%) moves it exactly from edge to edge.
+.ok-laser-track {
+  position: absolute;
+  inset: 16% 12%;
+  pointer-events: none;
+  transition: opacity var(--ok-duration-slow) var(--ok-ease-out);
+  animation: ok-fade var(--ok-duration-slow) var(--ok-ease-out) 260ms backwards;
+}
+
+// Once multi-part frames arrive the progress bar is the feedback; the idle
+// sweep would only compete with it
+.ok-viewfinder-box.is-receiving .ok-laser-track {
+  opacity: 0;
+}
+
+.ok-laser {
+  position: absolute;
+  inset: 0;
+  animation: ok-laser-sweep 2.4s var(--ok-ease-in-out) infinite alternate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--scan-accent) 18%, var(--scan-accent) 82%, transparent);
+    box-shadow: 0 0 18px 4px var(--scan-accent-glow);
+  }
+}
+
+@keyframes ok-laser-sweep {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0.35;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50%);
+    opacity: 0.35;
+  }
+}
+
+.ok-scan-footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 340px;
+  padding: 8px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+  /* Sits on the live feed: a soft shadow keeps it legible over bright scenes */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) 120ms backwards;
+
+  &__heading {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--ok-text);
+  }
+
+  &__subtext {
+    margin: 8px 0 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+}
+
+.ok-scan-progress {
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
+}
+
+.ok-scan-segments {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  margin: 0 auto 10px;
+  max-width: 280px;
+}
+
+.ok-scan-segment {
+  position: relative;
+  height: 5px;
+  border-radius: var(--ok-radius-full);
+  background: var(--ok-bg-active);
+  overflow: hidden;
+
+  &__fill {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--scan-accent);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform var(--ok-duration-slow) var(--ok-ease-out);
+  }
+}
+
+.ok-scan-frame-counter {
+  font-family: var(--ok-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--ok-text-subdued);
+}
+
+.ok-scan-permission {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 32px 48px;
+  text-align: center;
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
+
+  img {
+    width: 56%;
+    max-width: 220px;
+    opacity: 0.9;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+
+  ion-button {
+    min-width: 160px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ok-laser {
+    animation: none;
+  }
+}

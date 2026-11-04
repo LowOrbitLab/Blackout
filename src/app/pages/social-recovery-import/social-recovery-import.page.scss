@@ -6,5 +6,26 @@
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 96px;
+}
+
+// Each share is its own input surface
+ion-list ion-item.ion-no-padding {
+  --background: var(--ok-bg);
+  --padding-start: 14px;
+  --inner-padding-end: 14px;
+  --border-width: 0;
+  --inner-border-width: 0;
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
+  transition: border-color var(--ok-duration-base) var(--ok-ease-out);
+
+  &.item-has-focus {
+    border-color: var(--ok-border);
+  }
+
+  ion-textarea {
+    font-family: var(--ok-font-mono);
+    font-size: 13px;
+  }
 }

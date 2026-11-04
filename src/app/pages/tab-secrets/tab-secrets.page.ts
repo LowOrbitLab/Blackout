@@ -17,6 +17,8 @@ import { ModeStrategy } from 'src/app/services/mode/strategy/ModeStrategy'
 export class TabSecretsPage {
   public secrets: Observable<MnemonicSecret[]>
   public secretFilter: string | undefined
+  /** Set on the first search input; disables the list entrance stagger from then on. */
+  public searchUsed: boolean = false
 
   constructor(
     private readonly popoverCtrl: PopoverController,
@@ -43,6 +45,7 @@ export class TabSecretsPage {
 
     const value: unknown = event.target.value
 
+    this.searchUsed = true
     this.secretFilter = isValidSymbol(value) ? value.trim().toLowerCase() : undefined
   }
 
@@ -68,6 +71,10 @@ export class TabSecretsPage {
   public async syncWallets(): Promise<void> {
     const strategy: ModeStrategy = await this.modeService.strategy()
     await strategy.syncAll()
+  }
+
+  public trackBySecretId(_index: number, secret: MnemonicSecret): string {
+    return secret.id
   }
 
   addSecret() {

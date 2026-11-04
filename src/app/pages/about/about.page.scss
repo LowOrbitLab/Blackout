@@ -1,4 +1,42 @@
+.ok-about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 32px 8px;
+  text-align: center;
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
+
+  &__logo {
+    width: 96px;
+    height: auto;
+  }
+
+  &__text {
+    margin: 0;
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ok-text-subdued);
+  }
+}
+
+.ok-about-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+
+  p {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: var(--ok-text-subdued);
+  }
+}
+
 .small-text {
   font-size: 12px;
-  color: var(--ok-text-subdued);
+  color: var(--ok-text-placeholder);
 }

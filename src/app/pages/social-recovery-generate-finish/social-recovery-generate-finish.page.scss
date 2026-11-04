@@ -70,8 +70,9 @@ svg {
 }
 
 .warning-container {
-  border: 1px dashed white;
-  border-radius: 4px;
+  background: var(--ok-caution-bg);
+  border: 1px solid var(--ok-caution-border);
+  border-radius: var(--ok-radius-md);
   padding: 1rem;
   margin-bottom: 1rem;
 
@@ -91,5 +92,15 @@ svg {
       margin: 0px;
       font-weight: bold;
     }
+  }
+}
+
+.warning-container .warning-title-wrapper {
+  svg {
+    fill: var(--ok-caution);
+  }
+
+  h2 {
+    color: var(--ok-caution);
   }
 }

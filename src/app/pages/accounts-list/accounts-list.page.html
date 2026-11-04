@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button (click)="navigateToSecretsTab()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title *ngIf="secret">{{ 'tab-wallets.title' | translate }} {{ secret.label }}</ion-title>
@@ -25,7 +25,7 @@
 
 <ion-content *ngIf="wallets$" class="ion-padding-horizontal">
   <ng-container *ngIf="wallets$ && (wallets$ | async | walletFilter: { status: AirGapWalletStatus.ACTIVE } | async) as wallets">
-    <ion-list class="ok-accounts-card" *ngIf="wallets.length > 0">
+    <ion-list class="ok-accounts-card ok-stagger" *ngIf="wallets.length > 0">
       <ng-container *ngFor="let wallet of wallets">
         <ion-item-sliding>
           <ng-container *ngIf="deleteView">

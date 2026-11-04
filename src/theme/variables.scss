@@ -19,6 +19,7 @@
   --ok-text: #eeeeee;
   --ok-text-subdued: #b4b4b4;
   --ok-text-placeholder: #6e6e6e;
+  --ok-text-disabled: #6e6e6e;
   --ok-text-inverse: #111111;
 
   --ok-icon: #e0e0e0;
@@ -41,6 +42,10 @@
   --ok-info: #60a5fa;
   --ok-info-bg: rgba(59, 130, 246, 0.14);
 
+  /* Radius scale. Pick by role, never by eye:
+     xs  tags, badges, chips          sm  inline code boxes, small square buttons
+     md  inputs, warnings, nested     lg  cards, grouped lists, popovers, alerts
+     xl  sheets, QR quiet-zone card   full buttons and pills */
   --ok-radius-xs: 6px;
   --ok-radius-sm: 8px;
   --ok-radius-md: 12px;
@@ -50,6 +55,14 @@
 
   --ok-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --ok-font-mono: 'GeistMono-Regular', 'JetBrains Mono', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Motion: one easing family and three durations, used everywhere */
+  --ok-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ok-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ok-duration-fast: 120ms;
+  --ok-duration-base: 200ms;
+  --ok-duration-slow: 320ms;
+  --ok-press-scale: 0.98;
 
   /** 2. Ionic Global Application Surfaces & Stepped Colors **/
   --ion-font-family: var(--ok-font-sans);
@@ -190,13 +203,12 @@
   --ion-color-tint: #ffffff !important;
 }
 
-/* Ensure all pages share the unified OneKey V5 Dark Canvas (#0f0f0f) and Surface (#1b1b1b) */
-ion-app,
+/* Page canvas. Only the --background custom property is set here: painting a
+   background-color on ion-app / the ion-content host would sit in front of the
+   native camera preview, which renders behind a transparent WebView. */
 ion-content {
   --background: var(--ok-bg-app);
   --color: var(--ok-text);
-  background-color: var(--ok-bg-app);
-  color: var(--ok-text);
 }
 
 ion-header ion-toolbar {

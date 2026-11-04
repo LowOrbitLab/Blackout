@@ -3,27 +3,26 @@
     <ion-title>{{ 'installation-type.title' | translate }}</ion-title>
     <ion-buttons *ngIf="isSettingsModal" slot="end">
       <ion-button (click)="close()" color="light">
-        <ion-icon name="close"></ion-icon>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
       </ion-button>
     </ion-buttons>
 
     <ion-buttons slot="start" *ngIf="isOnboardingFlow">
       <ion-button (click)="goToOnboardingWelcomePage()">
-        <ion-icon name="arrow-back"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-header style="margin-top: 30%; margin-bottom: 5%;">
-    <h1><strong>{{ 'installation-type.setup_label' | translate }}</strong></h1>
-  </ion-header>
-  <p style="margin-bottom: 5%;">
-    {{ 'installation-type.setup_text' | translate }}
-  </p>
+  <div class="ok-install-intro">
+    <h1>{{ 'installation-type.setup_label' | translate }}</h1>
+    <p>{{ 'installation-type.setup_text' | translate }}</p>
+  </div>
   <!-- TODO: Use better colors for "not selected" and "selected"-->
   <ion-card
+    class="ok-install-card"
     [color]="installationType === installationTypes.ONLINE ? 'primary' : 'tertiary'"
     (click)="installationType = installationTypes.ONLINE"
   >
@@ -53,6 +52,7 @@
 
   <!-- TODO: Use better colors for "not selected" and "selected"-->
   <ion-card
+    class="ok-install-card"
     [color]="installationType === installationTypes.OFFLINE ? 'primary' : 'tertiary'"
     (click)="installationType = installationTypes.OFFLINE"
   >

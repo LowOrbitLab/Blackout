@@ -1,9 +1,11 @@
 .ok-tab-bar {
   --background: var(--ok-bg-app);
-  --border: 1px solid var(--ok-divider);
+  --border: 0;
   height: 60px;
-  padding-inline: 12px;
-  background: var(--ok-bg-app);
+  /* Ionic pads the host with the safe-area insets; add the gutter on top of
+     them instead of replacing them */
+  padding-left: calc(var(--ion-safe-area-left, 0px) + 12px);
+  padding-right: calc(var(--ion-safe-area-right, 0px) + 12px);
   border-top: 1px solid var(--ok-divider);
 }
 
@@ -11,25 +13,57 @@
   --color: var(--ok-text-placeholder);
   --color-selected: var(--ok-text);
   --ripple-color: transparent;
+  --background-focused: transparent;
+  --padding-top: 6px;
+  --padding-bottom: 6px;
   background: transparent;
 
-  ion-icon {
-    font-size: 20px;
-    margin-bottom: 3px;
-  }
-
   ion-label {
+    margin-top: 4px;
     font-size: 11px;
-    font-weight: 500;
+    /* Same weight in both states: a bolder selected label would change width
+       and nudge the icon above it on every switch */
+    font-weight: 600;
     letter-spacing: -0.01em;
+    transition: color var(--ok-duration-base) var(--ok-ease-out);
+  }
+}
+
+// Outline icon when idle, filled icon when selected, cross-faded in place
+.ok-tab-icon {
+  position: relative;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  transition: transform var(--ok-duration-fast) var(--ok-ease-out);
+
+  ion-icon {
+    position: absolute;
+    inset: 0;
+    font-size: 24px;
+    margin: 0;
+    transition: opacity var(--ok-duration-base) var(--ok-ease-out), transform var(--ok-duration-slow) var(--ok-ease-out);
   }
 
-  &.tab-selected {
-    ion-label {
-      font-weight: 600;
-      color: var(--ok-text);
-    }
+  &__active {
+    opacity: 0;
+    transform: scale(0.8);
   }
+}
+
+.ok-tab-button.tab-selected .ok-tab-icon {
+  .ok-tab-icon__idle {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  .ok-tab-icon__active {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.ok-tab-button:active .ok-tab-icon {
+  transform: scale(0.88);
 }
 
 .ok-tab-button--scan {
@@ -40,29 +74,42 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: var(--ok-radius-full);
     background: var(--ok-text);
     color: var(--ok-text-inverse);
-    padding: 8px 18px;
-    border-radius: var(--ok-radius-full);
-    font-weight: 600;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition: transform var(--ok-duration-fast) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out),
+      box-shadow var(--ok-duration-base) var(--ok-ease-out);
 
     ion-icon {
-      font-size: 17px;
+      font-size: 18px;
       margin: 0;
       color: var(--ok-text-inverse);
     }
 
     ion-label {
-      font-size: 12px;
-      font-weight: 600;
       margin: 0;
+      font-size: 13px;
+      font-weight: 600;
       color: var(--ok-text-inverse);
     }
   }
 
+  // While the scanner is open the pill carries a soft ring, so the bar still
+  // shows which tab is current even though the other two icons are idle
+  &.tab-selected .ok-scan-pill {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.14);
+  }
+
+  @media (hover: hover) {
+    &:hover .ok-scan-pill {
+      background: #ffffff;
+    }
+  }
+
   &:active .ok-scan-pill {
-    transform: scale(0.96);
-    opacity: 0.9;
+    transform: scale(0.95);
+    background: #d8d8d8;
   }
 }

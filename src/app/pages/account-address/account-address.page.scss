@@ -85,11 +85,24 @@
     color: var(--ok-text);
     word-break: break-all;
     cursor: pointer;
+    transition: border-color var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out),
+      transform var(--ok-duration-fast) var(--ok-ease-out);
+
+    &:active {
+      transform: scale(0.99);
+      border-color: var(--ok-border);
+      background: var(--ok-bg-subdued);
+
+      ion-icon {
+        color: var(--ok-text);
+      }
+    }
 
     ion-icon {
       font-size: 16px;
       color: var(--ok-text-subdued);
       flex-shrink: 0;
+      transition: color var(--ok-duration-base) var(--ok-ease-out);
     }
   }
 

@@ -12,6 +12,8 @@ import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/er
 import { ScanBasePage } from '../scan-base/scan-base'
 import { EdgeToEdge } from '@capawesome/capacitor-android-edge-to-edge-support'
 
+const PROGRESS_SEGMENTS: number = 8
+
 @Component({
   selector: 'airgap-tab-scan',
   templateUrl: './tab-scan.page.html',
@@ -28,27 +30,10 @@ export class TabScanPage extends ScanBasePage {
 
   public isMultiQr: boolean = false
 
-  public readonly progressSegments: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
+  public readonly progressSegments: number[] = Array.from({ length: PROGRESS_SEGMENTS }, (_, i) => i)
 
+  public torchAvailable: boolean = false
   public torchEnabled: boolean = false
-
-  public get scannedFramesCount(): number {
-    return this.parts.size
-  }
-
-  public get estimatedTotalFrames(): number {
-    if (this.percentageScanned > 0 && this.parts.size > 0) {
-      return Math.max(this.parts.size, Math.round(this.parts.size / this.percentageScanned))
-    }
-    return 8
-  }
-
-  public get filledSegmentsCount(): number {
-    if (!this.isMultiQr || this.percentageScanned <= 0) {
-      return 0
-    }
-    return Math.max(1, Math.min(8, Math.round(this.percentageScanned * 8)))
-  }
 
   constructor(
     platform: Platform,
@@ -61,18 +46,37 @@ export class TabScanPage extends ScanBasePage {
     super(platform, scanner, permissionsProvider, securityUtils)
   }
 
+  /** Fill ratio (0..1) of a progress segment, so the last active segment fills smoothly. */
+  public segmentFill(index: number): number {
+    return Math.min(1, Math.max(0, this.percentageScanned * PROGRESS_SEGMENTS - index))
+  }
+
+  /** Reported by zxing in the browser / Electron once the active camera is known. */
+  public onTorchCompatible(compatible: boolean): void {
+    this.torchAvailable = compatible
+    if (!compatible) {
+      this.torchEnabled = false
+    }
+  }
+
   public toggleTorch(): void {
-    this.torchEnabled = !this.torchEnabled
-    if (this.zxingScanner) {
-      try {
-        ;(this.zxingScanner as any).torch = this.torchEnabled
-      } catch {
-        // Ignore if device does not support torch in browser/electron
+    const next: boolean = !this.torchEnabled
+    const nativeScanner = this.nativeScanner
+    if (this.isMobile && nativeScanner) {
+      const done = (error: unknown) => this.ngZone.run(() => (this.torchEnabled = error ? this.torchEnabled : next))
+      if (next) {
+        nativeScanner.enableLight(done)
+      } else {
+        nativeScanner.disableLight(done)
       }
+    } else {
+      // Bound to [torch] on <zxing-scanner>
+      this.torchEnabled = next
     }
   }
 
   async ionViewWillLeave() {
+    this.switchOffTorch()
     super.ionViewWillLeave()
   }
 
@@ -83,6 +87,11 @@ export class TabScanPage extends ScanBasePage {
     if (this.platform.is('android')) {
       await EdgeToEdge.disable()
     }
+  }
+
+  public ionViewDidEnter(): void {
+    super.ionViewDidEnter()
+    this.refreshNativeTorchAvailability()
   }
 
   private resetScannerPage(): void {
@@ -124,4 +133,37 @@ export class TabScanPage extends ScanBasePage {
         .catch(handleErrorLocal(ErrorCategory.SCHEME_ROUTING))
     })
   }
+
+  /** cordova-plugin-qrscanner global, present only in the native app. */
+  private get nativeScanner(): NativeQrScanner | undefined {
+    return (window as unknown as { QRScanner?: NativeQrScanner }).QRScanner
+  }
+
+  private refreshNativeTorchAvailability(): void {
+    const nativeScanner = this.nativeScanner
+    if (!this.isMobile || !nativeScanner) {
+      return
+    }
+    // The camera is prepared asynchronously after scan() starts; ask once it has settled.
+    setTimeout(() => {
+      nativeScanner.getStatus((status) => this.ngZone.run(() => (this.torchAvailable = !!status?.canEnableLight)))
+    }, 800)
+  }
+
+  private switchOffTorch(): void {
+    if (!this.torchEnabled) {
+      return
+    }
+    this.torchEnabled = false
+    const nativeScanner = this.nativeScanner
+    if (this.isMobile && nativeScanner) {
+      nativeScanner.disableLight(() => undefined)
+    }
+  }
+}
+
+interface NativeQrScanner {
+  enableLight(callback: (error: unknown, status?: unknown) => void): void
+  disableLight(callback: (error: unknown, status?: unknown) => void): void
+  getStatus(callback: (status: { canEnableLight?: boolean } | undefined) => void): void
 }

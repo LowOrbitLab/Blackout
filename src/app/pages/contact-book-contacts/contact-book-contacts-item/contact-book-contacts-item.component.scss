@@ -3,14 +3,21 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
   padding: 10px 14px;
   background: var(--ok-bg);
   border: 1px solid var(--ok-border-subdued);
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--ok-radius-lg);
+  transition: transform var(--ok-duration-fast) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out);
 
-  &:hover {
-    background-color: var(--ok-bg-hover);
+  &:active {
+    transform: scale(var(--ok-press-scale));
+    background-color: var(--ok-bg-strong);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--ok-bg-hover);
+    }
   }
 
   .contact-image-wrapper {

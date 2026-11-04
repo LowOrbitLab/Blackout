@@ -15,11 +15,10 @@
    ========================================================================== */
 body {
   font-family: var(--ok-font-sans);
-  background-color: var(--ok-bg-app);
-  color: var(--ok-text);
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1,
@@ -47,21 +46,26 @@ h6 {
 /* ==========================================================================
    OneKey V5 Header, Toolbar & Navigation
    ========================================================================== */
+/* Flat headers on both platforms. Only the MD drop shadow and the iOS hairline
+   are removed; the iOS toolbar itself must stay visible. */
 ion-header {
-  background: var(--ok-bg-app);
+  &.header-md {
+    box-shadow: none;
+  }
 
-  &.header-md::after,
   &.header-ios ion-toolbar:last-of-type {
-    display: none;
     --border-width: 0;
   }
 
+  /* Inner padding goes through --padding-*: setting padding on the host would
+     replace Ionic's safe-area insets, and iOS / MD ship different defaults. */
   ion-toolbar {
     --background: var(--ok-bg-app);
     --color: var(--ok-text);
     --border-width: 0 !important;
     --min-height: 52px;
-    padding-inline: 4px;
+    --padding-start: 8px;
+    --padding-end: 8px;
 
     ion-title {
       font-size: 18px;
@@ -69,12 +73,69 @@ ion-header {
       letter-spacing: -0.02em;
       color: var(--ok-text);
     }
+
+    ion-buttons {
+      gap: 4px;
+    }
+
+    /* Header icon actions follow OneKey's tertiary IconButton: no resting
+       surface, a round highlight only while hovered or pressed. Back button
+       and icon-only buttons share it (the scanner torch toggle mirrors it). */
+    ion-back-button,
+    ion-buttons ion-button.button-has-icon-only {
+      --background: transparent;
+      --background-hover: var(--ok-bg-hover);
+      --background-hover-opacity: 1;
+      --background-activated: var(--ok-bg-active);
+      --background-activated-opacity: 1;
+      --background-focused: var(--ok-bg-active);
+      --background-focused-opacity: 1;
+      --ripple-color: transparent;
+      --border-radius: var(--ok-radius-full);
+      --padding-start: 0;
+      --padding-end: 0;
+      --color: var(--ok-text);
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      --min-width: 36px;
+      --min-height: 36px;
+      margin: 0;
+      transition: transform var(--ok-duration-fast) var(--ok-ease-out);
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    ion-back-button {
+      --icon-font-size: 22px;
+      --icon-margin-start: 0;
+      --icon-margin-end: 0;
+      --icon-padding-start: 0;
+      --icon-padding-end: 0;
+    }
+
+    ion-buttons ion-button.button-has-icon-only ion-icon {
+      font-size: 20px;
+    }
+  }
+
+  /* MD left-aligns the title with 20px of its own padding; trim it so a root
+     page title lines up with the 16px content gutter */
+  &.header-md ion-toolbar ion-title {
+    padding-inline: 8px;
   }
 }
 
 ion-footer {
   background: var(--ok-bg-app);
   border-top: 1px solid var(--ok-divider);
+
+  &.footer-md {
+    box-shadow: none;
+  }
 
   &.footer-md::before {
     display: none;
@@ -95,11 +156,21 @@ ion-footer {
 ion-button {
   --border-radius: var(--ok-radius-full);
   --box-shadow: none;
+  --transition: background-color var(--ok-duration-base) var(--ok-ease-out), opacity var(--ok-duration-base) var(--ok-ease-out);
   font-family: var(--ok-font-sans);
   font-weight: 600;
   font-size: 14px;
   letter-spacing: -0.01em;
   text-transform: none;
+  transition: transform var(--ok-duration-fast) var(--ok-ease-out), opacity var(--ok-duration-base) var(--ok-ease-out);
+
+  &:not(.button-disabled):active {
+    transform: scale(var(--ok-press-scale));
+  }
+
+  &.button-disabled {
+    opacity: 0.4;
+  }
 
   &.button-solid.ion-color-primary {
     --background: var(--ok-text);
@@ -136,19 +207,22 @@ ion-searchbar {
   --background: var(--ok-bg-hover) !important;
   --color: var(--ok-text) !important;
   --placeholder-color: var(--ok-text-placeholder) !important;
+  --placeholder-opacity: 1;
   --icon-color: var(--ok-text-placeholder) !important;
   --clear-button-color: var(--ok-text-subdued) !important;
   --border-radius: var(--ok-radius-md) !important;
   --box-shadow: none !important;
   padding-top: 4px !important;
   padding-bottom: 8px !important;
-  padding-inline: 16px !important;
+  /* toolbar --padding-start (8px) + 8px = the 16px content gutter */
+  padding-inline: 8px !important;
+  height: auto !important;
 
   .searchbar-input-container {
-    min-height: 38px !important;
+    min-height: 40px !important;
     border-radius: var(--ok-radius-md) !important;
     border: 1px solid transparent;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+    transition: border-color var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out);
   }
 
   &.searchbar-has-focus .searchbar-input-container {
@@ -157,9 +231,30 @@ ion-searchbar {
   }
 
   input.searchbar-input {
-    font-size: 14px !important;
+    font-size: 15px !important;
     padding-top: 6px !important;
     padding-bottom: 6px !important;
+  }
+
+  /* MD reserves 55px for a 21px icon; tighten to OneKey's compact field */
+  &.md {
+    .searchbar-search-icon {
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      margin-top: -9px;
+      inset-inline-start: 12px;
+    }
+
+    input.searchbar-input {
+      padding-inline-start: 38px !important;
+      padding-inline-end: 38px !important;
+      line-height: 26px;
+    }
+
+    .searchbar-clear-button {
+      inset-inline-end: 6px;
+    }
   }
 }
 
@@ -175,7 +270,7 @@ ion-card {
   border: 1px solid var(--ok-border-subdued);
   box-shadow: none !important;
   margin: 12px 16px;
-
+  transition: border-color var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out);
   &.ion-color-tertiary,
   &.ion-color-secondary,
   &.ion-color-light {
@@ -183,6 +278,20 @@ ion-card {
     --color: var(--ok-text) !important;
     background: var(--ok-bg) !important;
     color: var(--ok-text) !important;
+  }
+
+  /* "Selected" cards (e.g. installation type) keep the dark surface and gain
+     the active border, rather than turning into a solid white slab */
+  &.ion-color-primary {
+    --background: var(--ok-bg-strong) !important;
+    --color: var(--ok-text) !important;
+    background: var(--ok-bg-strong) !important;
+    color: var(--ok-text) !important;
+    border-color: var(--ok-border-active) !important;
+
+    ion-card-title {
+      color: var(--ok-text);
+    }
   }
 
   &.ion-color-warning {
@@ -245,17 +354,26 @@ ion-list-header {
   }
 }
 
+/* Items are transparent by default: the surrounding card or grouped section
+   supplies the surface and the rounded clip. Painting every item would leave
+   square-cornered slabs on any page whose list is not inside such a container. */
 ion-item {
-  --background: var(--ok-bg);
+  --background: transparent;
   --background-hover: var(--ok-bg-hover);
+  --background-hover-opacity: 1;
   --background-activated: var(--ok-bg-active);
+  --background-activated-opacity: 1;
+  /* OneKey rows answer a press with a flat highlight, not a material ripple */
+  --ripple-color: transparent;
   --color: var(--ok-text);
   --border-color: var(--ok-divider);
   --detail-icon-color: var(--ok-text-placeholder);
   --detail-icon-opacity: 1;
+  --detail-icon-font-size: 16px;
   --min-height: 52px;
   --padding-start: 16px;
   --inner-padding-end: 16px;
+  --transition: background-color var(--ok-duration-base) var(--ok-ease-out);
   font-size: 15px;
 
   ion-icon[slot='start'] {
@@ -267,14 +385,19 @@ ion-item {
   &.ion-color-light {
     --background: var(--ok-bg-strong) !important;
     --color: var(--ok-text) !important;
+  }
+
+  /* Any item given a colour (light, warning, danger, tertiary, ...) becomes a
+     standalone surface, so it must carry its own rounded clip */
+  &[class*='ion-color-'] {
     border-radius: var(--ok-radius-md);
+    overflow: hidden;
   }
 
   &.ion-color-warning {
     --background: var(--ok-caution-bg) !important;
     --color: var(--ok-caution) !important;
     border: 1px solid var(--ok-caution-border);
-    border-radius: var(--ok-radius-md);
 
     ion-label,
     ion-icon,
@@ -311,14 +434,65 @@ ion-icon.ion-color-light {
   color: var(--ok-text) !important;
 }
 
+/* Grouped list section (OneKey MobileTabSettingsSection): one rounded surface,
+   rows separated by inset dividers. Used by Settings and About. */
+.ok-settings-section {
+  background: var(--ok-bg);
+  border-radius: var(--ok-radius-lg);
+  overflow: hidden;
+  margin: 0 16px 8px;
+
+  &--last {
+    margin-bottom: 28px;
+  }
+
+  ion-item {
+    --background: var(--ok-bg);
+    --border-color: var(--ok-divider);
+    --min-height: 50px;
+    cursor: pointer;
+
+    ion-label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ok-text);
+    }
+
+    ion-icon[slot='start'] {
+      font-size: 20px;
+      color: var(--ok-icon);
+    }
+  }
+}
+
+.ok-settings-item--danger {
+  ion-label,
+  ion-icon[slot='start'] {
+    color: var(--ok-critical) !important;
+  }
+}
+
 /* ==========================================================================
    OneKey V5 Form Controls (Toggles, Checkboxes, Radios, Inputs, Chips, Badges)
    ========================================================================== */
+/* OneKey Switch: checked track is $bgPrimary (the same light surface as the
+   primary pill button) with an inverse thumb. Ionic 7 reads --track-*; the
+   parts also cover color="primary" toggles, whose .ion-color rules would
+   otherwise paint a white thumb onto a white track on MD. */
 ion-toggle {
-  --background: rgba(255, 255, 255, 0.16);
-  --background-checked: var(--ok-brand) !important;
+  --track-background: rgba(255, 255, 255, 0.16);
+  --track-background-checked: var(--ok-text);
   --handle-background: #ffffff;
-  --handle-background-checked: #0c130c !important;
+  --handle-background-checked: var(--ok-text-inverse);
+  --handle-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+
+  &.toggle-checked::part(track) {
+    background: var(--ok-text);
+  }
+
+  &.toggle-checked::part(handle) {
+    background: var(--ok-text-inverse);
+  }
 }
 
 ion-checkbox {
@@ -327,7 +501,7 @@ ion-checkbox {
   --border-color: rgba(255, 255, 255, 0.28);
   --border-color-checked: var(--ok-brand) !important;
   --checkmark-color: #0c130c !important;
-  --border-radius: 6px;
+  --border-radius: var(--ok-radius-xs);
 }
 
 ion-radio {
@@ -344,10 +518,12 @@ ion-textarea {
 ion-chip {
   --background: var(--ok-bg-hover);
   --color: var(--ok-text-subdued);
-  border-radius: var(--ok-radius-sm);
+  border-radius: var(--ok-radius-xs);
   font-size: 12px;
   font-weight: 500;
-  height: 26px;
+  height: 24px;
+  padding-inline: 8px;
+  margin: 0;
 
   &.ion-color-light {
     --background: var(--ok-bg-strong) !important;
@@ -370,20 +546,120 @@ ion-popover {
   --color: var(--ok-text);
   --box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
 
+  &::part(content) {
+    border-radius: var(--ok-radius-lg);
+    border: 1px solid var(--ok-border-subdued);
+    /* iOS "translucent" popovers otherwise fall back to an 80% canvas tint,
+       which reads as a different menu colour than on Android */
+    background: var(--ok-bg-strong);
+  }
+
+  /* OneKey menus float without a pointer; the iOS arrow would also be painted
+     in the translucent canvas colour rather than the menu surface */
+  &::part(arrow) {
+    display: none;
+  }
+
   ion-content {
     --background: var(--ok-bg-strong);
   }
 
+  ion-list {
+    padding: 6px !important;
+  }
+
+  /* The content part paints the surface; rows only highlight when pressed */
   ion-list,
   ion-item {
-    --background: var(--ok-bg-strong);
+    --background: transparent;
     --color: var(--ok-text);
   }
+
+  ion-list-header {
+    padding: 8px 10px 4px;
+    min-height: 28px;
+  }
+
+  ion-item {
+    --border-width: 0;
+    --inner-border-width: 0;
+    --min-height: 44px;
+    --padding-start: 10px;
+    --inner-padding-end: 10px;
+    --background-hover: var(--ok-bg-hover);
+    --background-activated: var(--ok-bg-active);
+    border-radius: var(--ok-radius-md);
+    font-size: 15px;
+
+    ion-icon[slot='start'] {
+      font-size: 18px;
+      margin-inline-end: 12px;
+    }
+
+    /* Several menus tint their icons color="dark" (#191919), which vanishes
+       on the dark menu surface */
+    ion-icon[slot='end'],
+    ion-icon.ion-color-dark {
+      --ion-color-base: var(--ok-icon-subdued) !important;
+      color: var(--ok-icon-subdued) !important;
+      font-size: 18px;
+    }
+  }
+}
+
+/* Only sheet / card modals float; full-screen modals keep square edges */
+ion-modal.modal-sheet,
+ion-modal.modal-card {
+  --border-radius: var(--ok-radius-xl);
 }
 
 ion-modal {
   --background: var(--ok-bg-app);
   --color: var(--ok-text);
+}
+
+ion-toast {
+  --background: var(--ok-bg-elevated);
+  --color: var(--ok-text);
+  --border-radius: var(--ok-radius-md);
+  --box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+
+ion-loading {
+  --background: var(--ok-bg-strong);
+  --spinner-color: var(--ok-text);
+  color: var(--ok-text);
+
+  .loading-wrapper {
+    border-radius: var(--ok-radius-lg) !important;
+    border: 1px solid var(--ok-border-subdued);
+  }
+}
+
+ion-segment {
+  --background: var(--ok-bg-hover);
+  border-radius: var(--ok-radius-full);
+  padding: 3px;
+
+  ion-segment-button {
+    --border-radius: var(--ok-radius-full);
+    --indicator-color: var(--ok-bg-elevated);
+    --indicator-box-shadow: none;
+    --indicator-height: 100%;
+    --color: var(--ok-text-subdued);
+    --color-checked: var(--ok-text);
+    --background-hover: transparent;
+    min-height: 32px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  ion-segment-button::part(indicator-background) {
+    border-radius: var(--ok-radius-full);
+  }
 }
 
 ion-alert {
@@ -411,6 +687,27 @@ ion-alert {
     font-weight: 600;
     text-transform: none;
   }
+
+  /* The blanket text colour above must not flatten button roles */
+  .alert-button-role-cancel {
+    color: var(--ok-text-subdued) !important;
+    font-weight: 500;
+  }
+
+  .alert-button-role-destructive,
+  .alert-button.danger,
+  .alert-button.alert-button-danger {
+    color: var(--ok-critical) !important;
+  }
+
+  .alert-input {
+    border: 1px solid var(--ok-border-subdued) !important;
+    border-radius: var(--ok-radius-md) !important;
+    background: var(--ok-bg-app) !important;
+    color: var(--ok-text) !important;
+    padding: 10px 12px !important;
+    margin-top: 8px;
+  }
 }
 
 ion-action-sheet {
@@ -418,6 +715,29 @@ ion-action-sheet {
   --color: var(--ok-text) !important;
   --button-color: var(--ok-text) !important;
   --button-background-selected: var(--ok-bg-active) !important;
+
+  .action-sheet-container {
+    padding: 8px;
+  }
+
+  .action-sheet-group {
+    border-radius: var(--ok-radius-lg) !important;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .action-sheet-button {
+    text-transform: none;
+  }
+
+  .action-sheet-destructive {
+    --button-color: var(--ok-critical);
+    color: var(--ok-critical) !important;
+  }
+
+  .action-sheet-cancel {
+    color: var(--ok-text-subdued) !important;
+  }
 }
 
 /* ==========================================================================
@@ -478,21 +798,131 @@ airgap-currency-symbol {
   }
 }
 
-/* Ensure QR codes always have a crisp white quiet-zone card for reliable optical scanning */
+/* QR codes get a white quiet-zone card for reliable optical scanning.
+   Only the outermost renderer is carded: airgap-qr wraps <qrcode>, and
+   airgap-iac-qr wraps airgap-qr plus a format selector and a part count that
+   must stay on the dark surface to remain readable. */
 airgap-qr,
-airgap-iac-qr,
 qrcode {
   display: inline-flex;
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  padding: 16px;
-  border-radius: var(--ok-radius-lg);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  padding: 14px;
+  border-radius: var(--ok-radius-xl);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  animation: ok-qr-in var(--ok-duration-slow) var(--ok-ease-out) backwards;
 
   img,
   canvas {
+    display: block;
     border-radius: 4px;
+  }
+}
+
+airgap-qr qrcode {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  animation: none;
+}
+
+airgap-iac-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+
+  > p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ok-text-subdued);
+    text-align: center;
+  }
+
+  ion-select {
+    --placeholder-color: var(--ok-text-subdued);
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: var(--ok-radius-full);
+    background: var(--ok-bg-hover);
+    color: var(--ok-text);
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+/* Camera preview from zxing (browser / Electron) fills its layer */
+zxing-scanner video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Motion
+   ========================================================================== */
+@keyframes ok-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ok-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ok-qr-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Entrance animations use `backwards` fill, never `both`: their end state is
+   the element's natural state, and a held `transform: none` from the last
+   keyframe would outrank every :active press-scale rule on the same element. */
+
+/* List entrance: short rise, capped stagger so long lists never feel slow */
+.ok-stagger > * {
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) backwards;
+}
+@for $i from 1 through 8 {
+  .ok-stagger > *:nth-child(#{$i}) {
+    animation-delay: #{($i - 1) * 35}ms;
+  }
+}
+.ok-stagger > *:nth-child(n + 9) {
+  animation-delay: 280ms;
+}
+
+ion-fab[vertical='bottom'] ion-button {
+  animation: ok-rise var(--ok-duration-slow) var(--ok-ease-out) 80ms backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
   }
 }
 

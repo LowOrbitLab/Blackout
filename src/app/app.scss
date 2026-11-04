@@ -81,19 +81,35 @@ airgap-accounts-list {
   }
 }
 
-/* OneKey V5 styling for @airgap/angular-core account items */
+/* OneKey V5 styling for @airgap/angular-core account items.
+   The library renders <ion-item class="ion-no-padding">, which would pin the
+   identicon to the card edge; the element+class selector outranks the utility. */
 airgap-account-item {
   display: block;
 
-  ion-item {
-    --background: var(--ok-bg);
+  ion-item,
+  ion-item.ion-no-padding {
+    --background: transparent;
     --background-hover: var(--ok-bg-hover);
     --background-activated: var(--ok-bg-active);
     --color: var(--ok-text);
     --border-color: var(--ok-divider);
+    --padding-start: 14px;
+    --inner-padding-end: 14px;
     --padding-top: 6px;
     --padding-bottom: 6px;
     --min-height: 64px;
+    cursor: pointer;
+
+    ion-avatar {
+      position: relative;
+      overflow: visible;
+    }
+
+    airgap-currency-symbol img {
+      border: 2px solid var(--ok-bg);
+      background: var(--ok-bg-strong);
+    }
 
     ion-label {
       h2,
@@ -106,9 +122,19 @@ airgap-account-item {
       p,
       .typography--mono {
         color: var(--ok-text-subdued) !important;
-        font-size: 13px;
+        font-size: 12.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
+  }
+
+  /* The library row is not an Ionic "button" item, so it never receives the
+     activated state; the tap target is this host, so highlight from here */
+  &:active ion-item,
+  &:active ion-item.ion-no-padding {
+    --background: var(--ok-bg-hover);
   }
 }
 
@@ -118,18 +144,6 @@ airgap-account-item {
       .typography--mono {
         color: var(--ok-text-subdued);
       }
-    }
-  }
-}
-
-.airgap-currency-symbol-secret {
-  airgap-currency-symbol {
-    img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid var(--ok-bg);
-      background: var(--ok-bg-strong);
     }
   }
 }
@@ -144,10 +158,12 @@ airgap-account-item {
 
 .deserialized-content {
   airgap-account-item {
-    ion-item {
+    ion-item,
+    ion-item.ion-no-padding {
       --background: var(--ok-bg);
-      border-radius: var(--ok-radius-md);
+      border-radius: var(--ok-radius-lg);
       border: 1px solid var(--ok-border-subdued);
+      overflow: hidden;
       --border-width: 0;
 
       ion-label {
@@ -172,6 +188,9 @@ pre {
   word-wrap: break-word;
 }
 
+/* Toggled on ion-content / ion-toolbar while a camera preview is shown behind
+   the WebView; both the custom property and any painted background must go. */
 .transparent {
   --background: none transparent !important;
+  background: transparent !important;
 }
