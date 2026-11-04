@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'it.airgap.vault',
-  appName: 'AirGap Vault',
+  appId: 'io.github.loworbitlab.blackout',
+  appName: 'Blackout',
   bundledWebRuntime: false,
   webDir: 'www',
   plugins: {

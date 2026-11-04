@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators'
 type SingleWord = string
 
 @Component({
-  selector: 'airgap-secret-import',
+  selector: 'blackout-secret-import',
   templateUrl: './secret-import.page.html',
   styleUrls: ['./secret-import.page.scss']
 })

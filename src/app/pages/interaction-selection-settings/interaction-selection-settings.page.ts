@@ -7,7 +7,7 @@ import { ModalController } from '@ionic/angular'
 import { handleErrorLocal, ErrorCategory } from 'src/app/services/error-handler/error-handler.service'
 
 @Component({
-  selector: 'airgap-interaction-selection-settings',
+  selector: 'blackout-interaction-selection-settings',
   templateUrl: './interaction-selection-settings.page.html',
   styleUrls: ['./interaction-selection-settings.page.scss']
 })

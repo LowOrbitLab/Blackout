@@ -18,14 +18,14 @@ export class SecureStorageService {
 
   public isDeviceSecure(): Promise<any> {
     return this.securityUtils.isDeviceSecure({
-      alias: 'airgap-secure-storage',
+      alias: 'blackout-secure-storage',
       isParanoia: false
     })
   }
 
   public secureDevice(): Promise<void> {
     return this.securityUtils.secureDevice({
-      alias: 'airgap-secure-storage',
+      alias: 'blackout-secure-storage',
       isParanoia: false
     })
   }

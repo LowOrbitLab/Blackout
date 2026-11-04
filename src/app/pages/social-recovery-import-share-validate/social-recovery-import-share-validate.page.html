@@ -17,7 +17,7 @@
   <div class="content-wrapper">
     <div class="center-wrapper">
       <div class="states-wrapper">
-        <airgap-progress-indicator [currentShare]="currentShareNumber" [totalShares]="numberOfShares"></airgap-progress-indicator>
+        <blackout-progress-indicator [currentShare]="currentShareNumber" [totalShares]="numberOfShares"></blackout-progress-indicator>
       </div>
     </div>
   </div>
@@ -76,14 +76,14 @@
   <hr *ngIf="lastWordOptions.length > 0" />
 
   <div class="ion-padding-horizontal">
-    <airgap-mnemonic-keyboard
+    <blackout-mnemonic-keyboard
       [setWord]="setWordEmitter"
       [enabled]="keyboardEnabled && lastWordOptions.length <= 0"
       (wordSelected)="wordSelected($event)"
       (pasted)="paste($event)"
       (addNewWord)="addNewWord()"
       (maskInput)="mask($event)"
-    ></airgap-mnemonic-keyboard>
+    ></blackout-mnemonic-keyboard>
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

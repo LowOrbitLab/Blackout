@@ -9,7 +9,7 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 @Component({
-  selector: 'airgap-bip85-generate',
+  selector: 'blackout-bip85-generate',
   templateUrl: './bip85-generate.page.html',
   styleUrls: ['./bip85-generate.page.scss']
 })

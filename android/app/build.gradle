@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+def blackoutPackage = new groovy.json.JsonSlurper().parse(rootProject.file('../package.json'))
+def blackoutVersionCode = providers.gradleProperty('blackoutVersionCode').orElse('1').get().toInteger()
+if (blackoutVersionCode < 1 || blackoutVersionCode > 2100000000) {
+    throw new GradleException('Blackout versionCode must be between 1 and 2100000000')
+}
+
 android {
-    namespace "it.airgap.vault"
+    namespace "io.github.loworbitlab.blackout"
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 31
     defaultConfig {
-        applicationId "it.airgap.vault"
+        applicationId "io.github.loworbitlab.blackout"
         minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 21
         targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 31
-        versionCode 1
-        versionName "0.0.0"
+        versionCode blackoutVersionCode
+        versionName blackoutPackage.version
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {

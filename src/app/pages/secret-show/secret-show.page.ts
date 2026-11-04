@@ -13,7 +13,7 @@ import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/er
 import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-secret-show',
+  selector: 'blackout-secret-show',
   templateUrl: './secret-show.page.html',
   styleUrls: ['./secret-show.page.scss']
 })

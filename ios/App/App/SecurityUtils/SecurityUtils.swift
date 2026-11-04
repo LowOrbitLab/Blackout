@@ -25,7 +25,7 @@ public class SecurityUtils: CAPPlugin {
         
         queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
-        queue.name = "it.airgap.SecureStorageQueue"
+        queue.name = "io.github.loworbitlab.blackout.SecureStorageQueue"
         
         LocalAuthentication.shared.updateAutomaticAuthenticationIfNeeded()
         
@@ -221,7 +221,7 @@ public class SecurityUtils: CAPPlugin {
     }
     
     private func storage(forAlias alias: String, isParanoia: Bool) -> SecureStorage {
-        let tag = ("it.airgap.keys.biometrics.key-" + alias).data(using: .utf8)!
+        let tag = ("io.github.loworbitlab.blackout.keys.biometrics.key-" + alias).data(using: .utf8)!
         return SecureStorage(tag: tag, paranoiaMode: isParanoia)
     }
     

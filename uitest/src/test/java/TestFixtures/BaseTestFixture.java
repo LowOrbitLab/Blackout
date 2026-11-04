@@ -145,12 +145,15 @@ public abstract class BaseTestFixture {
 
             // android
             currentConfig.setAndroidVersion(jsonFile.getString("androidVersion"));
-            currentConfig.setApkPath(jsonFile.getString("apkPath"));
+            currentConfig.setApkPath(Paths.get(jsonFile.getString("apkPath")).toAbsolutePath().normalize().toString());
 
             // ios
             currentConfig.setiOSversion(jsonFile.getString("iOSversion"));
-            currentConfig.setAppPath(jsonFile.getString("appPath"));
+            currentConfig.setAppPath(Paths.get(jsonFile.getString("appPath")).toAbsolutePath().normalize().toString());
             currentConfig.setDeviceName(jsonFile.getString("deviceName"));
+            currentConfig.setBundleid(jsonFile.getString("bundleId"));
+            currentConfig.setXcodeOrgId(jsonFile.getString("xcodeOrgId"));
+            currentConfig.setUpdatedWDABundleId(jsonFile.getString("updatedWDABundleId"));
 
             return currentConfig;
 
@@ -182,8 +185,8 @@ public abstract class BaseTestFixture {
         } else if(config.getPlatform().equals("android")) {
             capabilities.setCapability(MobileCapabilityType.APP, config.getApkPath());
             capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, config.getAndroidVersion());
-//            capabilities.setCapability("appPackage", "it.airgap.vault");
-//            capabilities.setCapability("appActivity", "it.airgap.vault.MainActivity");
+            capabilities.setCapability("appPackage", "io.github.loworbitlab.blackout");
+            capabilities.setCapability("appActivity", "io.github.loworbitlab.blackout.MainActivity");
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "default");
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "android");
 //            capabilities.setCapability("ignoreUnimportantViews", true);
@@ -198,11 +201,11 @@ public abstract class BaseTestFixture {
         if(config.getPlatform().equals("iOS")) {
             capabilities.setCapability("udid", "auto");
             capabilities.setCapability("xcodeSigningId", "iPhone Developer");
-            if (isNullOrEmpty(config.getBundleid()))
+            if (!isNullOrEmpty(config.getBundleid()))
                 capabilities.setCapability("bundleId", config.getBundleid());
-            if (isNullOrEmpty(config.getXcodeOrgId()))
+            if (!isNullOrEmpty(config.getXcodeOrgId()))
                 capabilities.setCapability("xcodeOrgId", config.getXcodeOrgId());
-            if (isNullOrEmpty(config.getUpdatedWDABundleId()))
+            if (!isNullOrEmpty(config.getUpdatedWDABundleId()))
                 capabilities.setCapability("updatedWDABundleId", config.getUpdatedWDABundleId());
         }
         // optional

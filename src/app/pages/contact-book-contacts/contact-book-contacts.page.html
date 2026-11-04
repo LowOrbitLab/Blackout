@@ -29,13 +29,13 @@
         <h3 class="contacts-letter">{{key}}</h3>
       </ng-template>
       <div *ngFor="let contact of getContacts(contacts, key)">
-        <airgap-contact-book-contacts-item
+        <blackout-contact-book-contacts-item
           [name]="contact.name"
           [address]="contact.address"
           [date]="contact.date"
           [addedFrom]="contact.addedFrom"
           (click)="onClickItem(contact)"
-        ></airgap-contact-book-contacts-item>
+        ></blackout-contact-book-contacts-item>
       </div>
     </div>
   </ng-container>
@@ -43,11 +43,11 @@
     <div class="suggestions-wrapper">
       <h3 class="suggestions-header">{{ 'contact-book.label_suggestions' | translate }}</h3>
       <div *ngFor="let suggestion of suggestions">
-        <airgap-contact-book-contacts-suggestion
+        <blackout-contact-book-contacts-suggestion
           [address]="suggestion"
           (onClickAdd)="onClickAddSuggestion(suggestion)"
           (onClickClose)="onClickCloseSuggestion(suggestion)"
-        ></airgap-contact-book-contacts-suggestion>
+        ></blackout-contact-book-contacts-suggestion>
       </div>
     </div>
   </ng-container>

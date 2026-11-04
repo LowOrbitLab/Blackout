@@ -6,7 +6,7 @@ import { InstallationType, VaultStorageKey, VaultStorageService } from '../../se
 import { OnboardingWelcomePage } from '../onboarding-welcome/onboarding-welcome.page'
 
 @Component({
-  selector: 'airgap-installation-type',
+  selector: 'blackout-installation-type',
   templateUrl: './installation-type.page.html',
   styleUrls: ['./installation-type.page.scss']
 })

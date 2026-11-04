@@ -29,14 +29,14 @@
   </ng-container>
 
   <ng-container *ngFor="let airGapTx of airGapTxs; let i = index">
-    <airgap-transaction-warning [transaction]="airGapTx"></airgap-transaction-warning>
+    <blackout-transaction-warning [transaction]="airGapTx"></blackout-transaction-warning>
     <ng-container *ngIf="evmResults$ | async as evmResults">
-      <airgap-evm-transaction-display
+      <blackout-evm-transaction-display
         *ngIf="evmResults[i] as decoded"
         class="ion-padding-horizontal"
         [result]="decoded"
         [dbDate]="dbDate$ | async"
-      ></airgap-evm-transaction-display>
+      ></blackout-evm-transaction-display>
     </ng-container>
     <airgap-from-to
       class="ion-padding-horizontal"

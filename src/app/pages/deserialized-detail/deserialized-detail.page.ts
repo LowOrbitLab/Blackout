@@ -18,7 +18,7 @@ import { Alert, Modal, Mode, Task, UnsignedMessage } from './deserialized.detail
 type ModalOnDismissAction = (modalData: OverlayEventDetail<unknown>) => Promise<void>
 
 @Component({
-  selector: 'airgap-deserialized-detail',
+  selector: 'blackout-deserialized-detail',
   templateUrl: './deserialized-detail.page.html',
   styleUrls: ['./deserialized-detail.page.scss']
 })

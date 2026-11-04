@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular'
 import { TranslateService } from '@ngx-translate/core'
 
 @Component({
-  selector: 'airgap-wipe-confirm',
+  selector: 'blackout-wipe-confirm',
   templateUrl: './wipe-confirm.component.html',
   styleUrls: ['./wipe-confirm.component.scss']
 })

@@ -7,7 +7,7 @@ import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/er
 import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-secret-validate',
+  selector: 'blackout-secret-validate',
   templateUrl: './secret-validate.page.html',
   styleUrls: ['./secret-validate.page.scss']
 })

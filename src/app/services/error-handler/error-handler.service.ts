@@ -27,7 +27,7 @@ export type ErrorHistoryObject = [
 ]
 
 export class LocalErrorLogger {
-  private readonly errorHistoryKey: string = 'airgap-vault:ERROR_HISTORY'
+  private readonly errorHistoryKey: string = 'blackout:ERROR_HISTORY'
   constructor() {}
 
   public async addLog(category: ErrorCategory, error: Error): Promise<void> {

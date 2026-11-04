@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { TranslateService } from '@ngx-translate/core'
 
 @Component({
-  selector: 'airgap-shop',
+  selector: 'blackout-shop',
   templateUrl: './shop.page.html',
   styleUrls: ['./shop.page.scss']
 })

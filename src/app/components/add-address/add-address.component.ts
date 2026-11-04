@@ -5,7 +5,7 @@ import { ErrorCategory, handleErrorLocal } from 'src/app/services/error-handler/
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-add-address',
+  selector: 'blackout-add-address',
   templateUrl: './add-address.component.html',
   styleUrls: ['./add-address.component.scss']
 })

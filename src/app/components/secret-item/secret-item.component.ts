@@ -11,7 +11,7 @@ import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 @Component({
-  selector: 'airgap-secret-item',
+  selector: 'blackout-secret-item',
   templateUrl: './secret-item.component.html',
   styleUrls: ['./secret-item.component.scss']
 })

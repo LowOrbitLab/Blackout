@@ -6,7 +6,7 @@ import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/er
 import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-social-recovery-show-share',
+  selector: 'blackout-social-recovery-show-share',
   templateUrl: './social-recovery-show-share.page.html',
   styleUrls: ['./social-recovery-show-share.page.scss']
 })

@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "airgap",
+      "prefix": "blackout",
       "schematics": {},
       "architect": {
         "build": {
@@ -33,6 +33,16 @@
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
+              },
+              {
+                "glob": "manifest.webmanifest",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "*.png",
+                "input": "icons",
+                "output": "icons"
               }
             ],
             "styles": [
@@ -102,8 +112,7 @@
             "production": {
               "browserTarget": "app:build:production"
             },
-            "ci": {
-            }
+            "ci": {}
           }
         },
         "extract-i18n": {
@@ -131,6 +140,16 @@
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "/assets"
+              },
+              {
+                "glob": "manifest.webmanifest",
+                "input": "src",
+                "output": "."
+              },
+              {
+                "glob": "*.png",
+                "input": "icons",
+                "output": "icons"
               }
             ]
           },

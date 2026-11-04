@@ -34,9 +34,9 @@ public class SaveSecretPage extends BasePage {
 
     public SaveSecretPage enterPasswordAndConfirm(String password) {
         sleep(3000);
-        By passwordEntry = By.id("it.airgap.vault:id/password");
+        By passwordEntry = By.id("io.github.loworbitlab.blackout:id/password");
         enter(passwordEntry, password);
-        By passwordConfirmEntry = By.id("it.airgap.vault:id/password_confirmation");
+        By passwordConfirmEntry = By.id("io.github.loworbitlab.blackout:id/password_confirmation");
         enter(passwordConfirmEntry, password);
         sleep(3000);
         tapByClassAndText("android.widget.Button", "SET PASSWORD");
@@ -47,7 +47,7 @@ public class SaveSecretPage extends BasePage {
 
     public SaveSecretPage enterPassword(String password) {
         sleep(3000);
-        By passwordEntry = By.id("it.airgap.vault:id/password");
+        By passwordEntry = By.id("io.github.loworbitlab.blackout:id/password");
         enter(passwordEntry, password);
         sleep(3000);
         tapByClassAndText("android.widget.Button", "UNLOCK");

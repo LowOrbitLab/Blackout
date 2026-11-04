@@ -7,8 +7,9 @@ import { execSync } from 'child_process'
 import { mkdtempSync, writeFileSync, readFileSync } from 'fs'
 import { tmpdir } from 'os'
 import { join } from 'path'
+import { pathToFileURL } from 'url'
 
-const tmp = mkdtempSync(join(tmpdir(), 'agv-smoke-'))
+const tmp = mkdtempSync(join(tmpdir(), 'blackout-smoke-'))
 const projRoot = join(import.meta.dirname, '..')
 
 // Use tsc to emit JS for the files under test, then import.
@@ -42,13 +43,13 @@ writeFileSync(stubJs, 'export const Injectable = () => (_) => {}\n')
 const decFile = `${tmp}/src/app/services/evm/abi-decoder.service.js`
 const decSrc = readFileSync(decFile, 'utf8').replace(
   /from ['"]@angular\/core['"]/g,
-  `from "${stubJs.replace(/\\/g, '/')}"`
+  `from "${pathToFileURL(stubJs).href}"`
 )
 writeFileSync(decFile, decSrc)
 
-const { AbiDecoderService } = await import(`file://${decFile}`)
+const { AbiDecoderService } = await import(pathToFileURL(decFile).href)
 const { formatAmount, isUnlimitedApproval, lookupKnownToken } = await import(
-  `file://${tmp}/src/app/services/evm/known-tokens.js`
+  pathToFileURL(`${tmp}/src/app/services/evm/known-tokens.js`).href
 )
 
 let pass = 0

@@ -14,7 +14,7 @@ enum SortDirection {
 }
 
 @Component({
-  selector: 'airgap-contact-book-contacts',
+  selector: 'blackout-contact-book-contacts',
   templateUrl: './contact-book-contacts.page.html',
   styleUrls: ['./contact-book-contacts.page.scss']
 })

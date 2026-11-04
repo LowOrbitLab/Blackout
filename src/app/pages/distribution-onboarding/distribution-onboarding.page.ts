@@ -5,7 +5,7 @@ import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/er
 import { VaultStorageKey, VaultStorageService } from '../../services/storage/storage.service'
 
 @Component({
-  selector: 'airgap-distribution-onboarding',
+  selector: 'blackout-distribution-onboarding',
   templateUrl: './distribution-onboarding.page.html',
   styleUrls: ['./distribution-onboarding.page.scss']
 })

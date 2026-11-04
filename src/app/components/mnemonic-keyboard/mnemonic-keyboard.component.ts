@@ -28,7 +28,7 @@ function shuffle(arr: string): string {
 const ALPHABET = 'qwertyuiopasdfghjklzxcvbnm'
 
 @Component({
-  selector: 'airgap-mnemonic-keyboard',
+  selector: 'blackout-mnemonic-keyboard',
   templateUrl: './mnemonic-keyboard.component.html',
   styleUrls: ['./mnemonic-keyboard.component.scss']
 })

@@ -30,10 +30,3 @@
 
 <!--- if you already know, please add an estimate eg. 2h or 1d, else leave it as it is--->
 /estimate
-
-
-
-<!--- these standard labels will be added to this issue, leave it as it is --->
-/label ~"type::task" ~"proj::airgap"
-
-

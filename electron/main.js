@@ -1,5 +1,11 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
+const path = require('path')
+
+// 两个桌面启动入口使用同一独立数据目录。
+app.setName('Blackout')
+app.setPath('userData', path.join(app.getPath('appData'), 'Blackout'))
+if (process.platform === 'win32') app.setAppUserModelId('io.github.loworbitlab.blackout')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,10 +13,10 @@ let mainWindow
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600 })
+  mainWindow = new BrowserWindow({ width: 800, height: 600, icon: path.join(__dirname, 'resources', 'icons', 'icon.png') })
 
   // and load the index.html of the app.
-  mainWindow.loadFile('www/index.html')
+  mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'))
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

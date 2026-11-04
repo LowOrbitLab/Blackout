@@ -4,7 +4,7 @@ import { handleErrorLocal, ErrorCategory } from 'src/app/services/error-handler/
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-tab-secret-popover',
+  selector: 'blackout-tab-secret-popover',
   templateUrl: './tab-secret-popover.component.html',
   styleUrls: ['./tab-secret-popover.component.scss']
 })

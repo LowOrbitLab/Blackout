@@ -33,41 +33,41 @@ export class ContactsService {
   constructor(private readonly storageService: VaultStorageService) {}
 
   async getSuggestions(): Promise<string[]> {
-    return (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST)) as string[]
+    return (await this.storageService.get(VaultStorageKey.CONTACTS_RECOMMENDED_LIST)) as string[]
   }
 
   async addSuggestion(address: string): Promise<void> {
-    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST)) as string[]
+    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.CONTACTS_RECOMMENDED_LIST)) as string[]
 
     const index = storedRecommendations.findIndex((suggestion) => suggestion === address)
     if (index < 0) {
       storedRecommendations.push(address)
-      await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST, storedRecommendations)
+      await this.storageService.set(VaultStorageKey.CONTACTS_RECOMMENDED_LIST, storedRecommendations)
     } else console.error('Suggestion already stored')
   }
 
   async deleteSuggestion(address: string): Promise<void> {
-    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST)) as string[]
+    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.CONTACTS_RECOMMENDED_LIST)) as string[]
 
     const index = storedRecommendations.findIndex((suggestion) => suggestion === address)
     if (index >= 0) {
       storedRecommendations.splice(index, 1)
-      await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST, storedRecommendations)
+      await this.storageService.set(VaultStorageKey.CONTACTS_RECOMMENDED_LIST, storedRecommendations)
     } else console.error('Invalid suggestion')
   }
 
   async getContactsInfo(): Promise<ContactInfo[]> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
     return storedContacts
   }
 
   getContactsInfo$(): Observable<ContactInfo[]> {
-    return this.storageService.subscribe(VaultStorageKey.AIRGAP_CONTACTS_LIST) as Observable<ContactInfo[]>
+    return this.storageService.subscribe(VaultStorageKey.CONTACTS_LIST) as Observable<ContactInfo[]>
   }
 
   async createContact(name: string, address: string, addedFrom: AddType): Promise<void> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
-    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST)) as string[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
+    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.CONTACTS_RECOMMENDED_LIST)) as string[]
 
     storedContacts.push({
       id: `contact${storedContacts.length + 1}`,
@@ -81,13 +81,13 @@ export class ContactsService {
     const index = storedRecommendations.findIndex((recommendation) => recommendation === address)
     if (index >= 0) {
       storedRecommendations.splice(index, 1)
-      await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST, storedRecommendations)
+      await this.storageService.set(VaultStorageKey.CONTACTS_RECOMMENDED_LIST, storedRecommendations)
     }
-    await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_LIST, storedContacts)
+    await this.storageService.set(VaultStorageKey.CONTACTS_LIST, storedContacts)
   }
 
   async updateContact(id: string, name: string, address: string): Promise<void> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
 
     const index = storedContacts.findIndex((contact) => contact.id === id)
     if (index < 0) {
@@ -98,11 +98,11 @@ export class ContactsService {
     contact.name = name
     contact.address = address
 
-    await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_LIST, storedContacts)
+    await this.storageService.set(VaultStorageKey.CONTACTS_LIST, storedContacts)
   }
 
   async deleteContact(id: string): Promise<void> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
 
     const index = storedContacts.findIndex((contact) => contact.id === id)
     if (index < 0) {
@@ -110,11 +110,11 @@ export class ContactsService {
       return
     }
     storedContacts.splice(index, 1)
-    await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_LIST, storedContacts)
+    await this.storageService.set(VaultStorageKey.CONTACTS_LIST, storedContacts)
   }
 
   async deleteAllContacts(): Promise<void> {
-    await this.storageService.set(VaultStorageKey.AIRGAP_CONTACTS_LIST, [])
+    await this.storageService.set(VaultStorageKey.CONTACTS_LIST, [])
   }
 
   async isBookEnabled(): Promise<boolean> {
@@ -146,8 +146,8 @@ export class ContactsService {
   }
 
   async isAddressInContacts(address: string): Promise<boolean> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
-    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_RECOMMENDED_LIST)) as string[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
+    const storedRecommendations: string[] = (await this.storageService.get(VaultStorageKey.CONTACTS_RECOMMENDED_LIST)) as string[]
 
     const contactFound = storedContacts.find((contact) => contact.address === address)
     const recommendationFound = storedRecommendations.find((recommendation) => recommendation === address)
@@ -156,7 +156,7 @@ export class ContactsService {
   }
 
   async getContactName(address: string): Promise<string | undefined> {
-    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.AIRGAP_CONTACTS_LIST)) as ContactType[]
+    const storedContacts: ContactType[] = (await this.storageService.get(VaultStorageKey.CONTACTS_LIST)) as ContactType[]
     const contact = storedContacts.find((contact) => contact.address == address)
     if (contact) return contact.name
     else return undefined

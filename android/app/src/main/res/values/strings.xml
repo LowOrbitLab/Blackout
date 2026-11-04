@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">AirGap Vault</string>
-    <string name="title_activity_main">AirGap Vault</string>
-    <string name="package_name">it.airgap.vault</string>
-    <string name="custom_url_scheme">airgap-vault</string>
+    <string name="app_name">Blackout</string>
+    <string name="title_activity_main">Blackout</string>
+    <string name="package_name">io.github.loworbitlab.blackout</string>
+    <string name="custom_url_scheme">blackout</string>
 
     <string name="paranoia_input_alert_title">Enter your encryption password</string>
     <string name="paranoia_input_alert_setup_message">Choose an encryption password with at least 4 characters.</string>

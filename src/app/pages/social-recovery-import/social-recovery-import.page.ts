@@ -10,7 +10,7 @@ import { MnemonicValidator } from '../../validators/mnemonic.validator'
 // TODO Tim: remove
 
 @Component({
-  selector: 'airgap-social-recovery-import',
+  selector: 'blackout-social-recovery-import',
   templateUrl: './social-recovery-import.page.html',
   styleUrls: ['./social-recovery-import.page.scss']
 })

@@ -8,7 +8,7 @@ import { IACMessageDefinitionObjectV3 } from '@airgap/serializer'
 import { TezosSaplingProtocol } from '@airgap/tezos'
 
 @Component({
-  selector: 'airgap-signed-transaction',
+  selector: 'blackout-signed-transaction',
   templateUrl: './signed-transaction.component.html',
   styleUrls: ['./signed-transaction.component.scss']
 })

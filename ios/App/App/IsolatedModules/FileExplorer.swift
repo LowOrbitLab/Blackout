@@ -171,7 +171,7 @@ private struct AssetsExplorer: SourcesExplorer {
 private struct DocumentExplorer: SourcesExplorer, DynamicSourcesExplorer {
     typealias T = JSModule.Installed
     
-    private static let modulesDir: String = "__airgap_protocol_modules__"
+    private static let modulesDir: String = "__blackout_protocol_modules__"
     private static let symbolsDir: String = "__symbols__"
     
     private let fileManager: FileManager

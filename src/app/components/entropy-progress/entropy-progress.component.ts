@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core'
 
 @Component({
-  selector: 'airgap-entropy-progress',
+  selector: 'blackout-entropy-progress',
   templateUrl: './entropy-progress.component.html',
   styleUrls: ['./entropy-progress.component.scss']
 })

@@ -6,9 +6,9 @@
     "prettier": true,
     "strict-comparisons": true,
     "component-class-suffix": [true, "Component", "Page"],
-    "directive-selector": [true, "attribute", "airgap", "camelCase"],
-    "component-selector": [true, "element", "airgap", "kebab-case"],
-    "pipe-prefix": [true, "airgap"],
+    "directive-selector": [true, "attribute", "blackout", "camelCase"],
+    "component-selector": [true, "element", "blackout", "kebab-case"],
+    "pipe-prefix": [true, "blackout"],
     "semicolon": [true, "never"],
     "member-access": [true],
     "member-ordering": [

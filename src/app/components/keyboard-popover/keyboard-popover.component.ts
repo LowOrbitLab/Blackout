@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'airgap-keyboard-popover',
+  selector: 'blackout-keyboard-popover',
   templateUrl: './keyboard-popover.component.html',
   styleUrls: ['./keyboard-popover.component.scss']
 })

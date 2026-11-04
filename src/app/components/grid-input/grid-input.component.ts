@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core'
 
 @Component({
-  selector: 'airgap-grid-input',
+  selector: 'blackout-grid-input',
   templateUrl: './grid-input.component.html',
   styleUrls: ['./grid-input.component.scss']
 })

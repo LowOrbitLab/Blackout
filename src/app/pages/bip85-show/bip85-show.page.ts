@@ -15,7 +15,7 @@ import { SecureStorage, SecureStorageService } from 'src/app/services/secure-sto
 import { AdvancedModeType, VaultStorageKey, VaultStorageService } from 'src/app/services/storage/storage.service'
 
 @Component({
-  selector: 'airgap-bip85-show',
+  selector: 'blackout-bip85-show',
   templateUrl: './bip85-show.page.html',
   styleUrls: ['./bip85-show.page.scss']
 })

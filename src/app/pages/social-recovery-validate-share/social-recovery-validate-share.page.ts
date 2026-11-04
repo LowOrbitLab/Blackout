@@ -8,7 +8,7 @@ import { NavigationService } from '../../services/navigation/navigation.service'
 import { SecretsService } from '../../services/secrets/secrets.service'
 
 @Component({
-  selector: 'airgap-social-recovery-validate-share',
+  selector: 'blackout-social-recovery-validate-share',
   templateUrl: './social-recovery-validate-share.page.html',
   styleUrls: ['./social-recovery-validate-share.page.scss']
 })

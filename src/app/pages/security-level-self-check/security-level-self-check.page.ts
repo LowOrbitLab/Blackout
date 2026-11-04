@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 
-const SELF_CHECK_STORAGE_KEY = 'airgap_security_self_check_state'
+const SELF_CHECK_STORAGE_KEY = 'blackout_security_self_check_state'
 
 @Component({
-  selector: 'airgap-security-level-self-check',
+  selector: 'blackout-security-level-self-check',
   templateUrl: './security-level-self-check.page.html',
   styleUrls: ['./security-level-self-check.page.scss']
 })

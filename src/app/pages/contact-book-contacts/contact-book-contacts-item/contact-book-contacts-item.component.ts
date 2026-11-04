@@ -10,7 +10,7 @@ export enum SortType {
 }
 
 @Component({
-  selector: 'airgap-contact-book-contacts-item',
+  selector: 'blackout-contact-book-contacts-item',
   templateUrl: './contact-book-contacts-item.component.html',
   styleUrls: ['./contact-book-contacts-item.component.scss']
 })

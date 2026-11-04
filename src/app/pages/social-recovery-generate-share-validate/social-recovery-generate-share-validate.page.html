@@ -21,13 +21,13 @@
         </ion-button>
       </div>
       <h2>{{ 'social-recovery-validate-share.text' | translate }}</h2>
-      <airgap-verify-key-alt
+      <blackout-verify-key-alt
         *ngIf="shares"
         #verify
         [secret]="shares[currentShare]"
         (onComplete)="onComplete($event)"
         (onNext)="onNext()"
-      ></airgap-verify-key-alt>
+      ></blackout-verify-key-alt>
     </div>
 
     <div class="buttons-wrapper">

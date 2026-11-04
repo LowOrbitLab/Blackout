@@ -28,7 +28,7 @@ interface ProtocolDetails {
 }
 
 @Component({
-  selector: 'airgap-account-add',
+  selector: 'blackout-account-add',
   templateUrl: './account-add.page.html',
   styleUrls: ['./account-add.page.scss']
 })

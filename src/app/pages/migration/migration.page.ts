@@ -14,7 +14,7 @@ import { Alert, MigrationWalletGroup } from './migration.types'
 import { shortenAddress } from './migration.utils'
 
 @Component({
-  selector: 'airgap-migration',
+  selector: 'blackout-migration',
   templateUrl: './migration.page.html',
   styleUrls: ['./migration.page.scss']
 })

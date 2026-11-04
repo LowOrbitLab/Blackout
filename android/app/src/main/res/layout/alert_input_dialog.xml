@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/password_input_alert_hint"
         android:textColorHint="@android:color/darker_gray"
-        android:theme="@style/AirGapAlertDialogStyle"
+        android:theme="@style/BlackoutAlertDialogStyle"
         android:paddingStart="20dp"
         android:paddingEnd="20dp">
 

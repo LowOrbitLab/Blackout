@@ -23,7 +23,7 @@ const fromHex = (str: string) => {
 }
 
 @Component({
-  selector: 'airgap-message-sign-request',
+  selector: 'blackout-message-sign-request',
   templateUrl: './message-sign-request.component.html',
   styleUrls: ['./message-sign-request.component.scss']
 })

@@ -6,8 +6,9 @@ import { execSync } from 'child_process'
 import { mkdtempSync, writeFileSync, readFileSync, readdirSync, statSync } from 'fs'
 import { tmpdir } from 'os'
 import { join } from 'path'
+import { pathToFileURL } from 'url'
 
-const tmp = mkdtempSync(join(tmpdir(), 'agv-rsmoke-'))
+const tmp = mkdtempSync(join(tmpdir(), 'blackout-rsmoke-'))
 const projRoot = join(import.meta.dirname, '..')
 
 const files = [
@@ -75,7 +76,7 @@ function walk(dir) {
       for (const [k, v] of Object.entries(stubMap)) {
         const re = new RegExp(`from ['"]${k.replace(/[/.]/g, '\\$&')}['"]`, 'g')
         if (re.test(src)) {
-          src = src.replace(re, `from "${v.replace(/\\/g, '/')}"`)
+          src = src.replace(re, `from "${pathToFileURL(v).href}"`)
           changed = true
         }
       }
@@ -85,9 +86,9 @@ function walk(dir) {
 }
 walk(tmp)
 
-const { AbiDecoderService } = await import(`file://${tmp}/src/app/services/evm/abi-decoder.service.js`)
+const { AbiDecoderService } = await import(pathToFileURL(`${tmp}/src/app/services/evm/abi-decoder.service.js`).href)
 const { EvmTransactionRendererService } = await import(
-  `file://${tmp}/src/app/services/evm/transaction-renderer.service.js`
+  pathToFileURL(`${tmp}/src/app/services/evm/transaction-renderer.service.js`).href
 )
 
 class FakeDb {

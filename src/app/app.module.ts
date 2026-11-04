@@ -127,7 +127,7 @@ export function createTranslateLoader(http: HttpClient): AirGapTranslateLoader {
       }
     }),
     IonicStorageModule.forRoot({
-      name: '__airgap_storage',
+      name: '__blackout_storage',
       driverOrder: [CordovaSQLiteDriver._driver, Drivers.LocalStorage]
     }),
     WarningModalPageModule,

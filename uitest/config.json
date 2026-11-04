@@ -1,15 +1,15 @@
 {
   "platform": "android",
   "noReset": "false",
-  "appiumServer": "http://ale.papers.tech:4724/wd/hub",
+  "appiumServer": "http://127.0.0.1:4723/wd/hub",
 
   "androidVersion": "11.0",
-  "apkPath": "/home/airgap-signed.apk",
+  "apkPath": "../android/app/build/outputs/apk/debug/app-debug.apk",
 
   "iOSversion": "13.4",
-  "appPath": "/Users/aleksandr/Downloads/MOV-PA.app",
+  "appPath": "../ios/build/Build/Products/Debug-iphonesimulator/App.app",
   "deviceName": "iPhone 8 Plus",
-  "bundleId": "",
+  "bundleId": "io.github.loworbitlab.blackout",
   "xcodeOrgId": "",
   "updatedWDABundleId": ""
 }

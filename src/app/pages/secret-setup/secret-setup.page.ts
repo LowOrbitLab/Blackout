@@ -14,7 +14,7 @@ import { InstallationTypePage } from '../Installation-type/installation-type.pag
 import { OnboardingWelcomePage } from '../onboarding-welcome/onboarding-welcome.page'
 
 @Component({
-  selector: 'airgap-secret-setup',
+  selector: 'blackout-secret-setup',
   templateUrl: './secret-setup.page.html',
   styleUrls: ['./secret-setup.page.scss']
 })

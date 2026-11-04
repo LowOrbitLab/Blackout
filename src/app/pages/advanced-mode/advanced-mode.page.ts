@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { AdvancedModeType, VaultStorageService, VaultStorageKey } from 'src/app/services/storage/storage.service'
 
 @Component({
-  selector: 'airgap-advanced-mode',
+  selector: 'blackout-advanced-mode',
   templateUrl: './advanced-mode.page.html',
   styleUrls: ['./advanced-mode.page.scss']
 })

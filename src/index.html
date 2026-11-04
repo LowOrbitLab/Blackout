@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>AirGap Vault</title>
+    <title>Blackout</title>
 
     <base href="/" />
 
@@ -34,9 +34,13 @@
     />
 
     <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="application-name" content="Blackout" />
+    <meta name="theme-color" content="#0f0f0f" />
 
     <!-- add to homescreen for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Blackout" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- check if app has loaded after x seconds. If not, error alert is shown. -->
@@ -44,6 +48,6 @@
   </head>
 
   <body>
-    <airgap-root></airgap-root>
+    <blackout-root></blackout-root>
   </body>
 </html>

@@ -10,7 +10,7 @@ import * as fromDeserializedDetail from '../deserialized-detail/deserialized-det
 import { ContactsService } from 'src/app/services/contacts/contacts.service'
 
 @Component({
-  selector: 'airgap-interaction-selection',
+  selector: 'blackout-interaction-selection',
   templateUrl: './interaction-selection.page.html',
   styleUrls: ['./interaction-selection.page.scss']
 })

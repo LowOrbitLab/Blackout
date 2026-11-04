@@ -11,7 +11,7 @@ interface ErrorObject {
 }
 
 @Component({
-  selector: 'airgap-error-history',
+  selector: 'blackout-error-history',
   templateUrl: './error-history.page.html',
   styleUrls: ['./error-history.page.scss']
 })
@@ -42,7 +42,7 @@ export class ErrorHistoryPage implements OnInit {
         header: 'Copy Error History',
         subHeader: 'WARNING',
         message:
-          '<b>It is possible that the error history contains your private keys, so you should ONLY use this feature if you are testing your device without any funds on it.</b><br /><br />If you encounter an error while using AirGap Vault, sending the developers your local error history could help them pinpoint the problem.<br /><br />Send this error history <b>only</b> to hi@airgap.it, along with a detailed description of your problem.',
+          '<b>Error history may contain private keys. Only copy logs from a test wallet without funds.</b><br /><br />Keep the Blackout error report locally and remove sensitive information before sharing it.',
         inputs: [
           {
             name: 'understood',

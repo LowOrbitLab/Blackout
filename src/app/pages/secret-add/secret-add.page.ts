@@ -11,7 +11,7 @@ import { SecretsService } from '../../services/secrets/secrets.service'
 import { UiEventService } from '@airgap/angular-core'
 
 @Component({
-  selector: 'airgap-secret-add',
+  selector: 'blackout-secret-add',
   templateUrl: './secret-add.page.html',
   styleUrls: ['./secret-add.page.scss']
 })

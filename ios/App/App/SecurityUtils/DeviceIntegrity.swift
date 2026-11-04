@@ -22,7 +22,7 @@ public enum DeviceIntegrity {
 
     private static let RTLD_DEFAULT = UnsafeMutableRawPointer(bitPattern: -2)
 
-    private static let queue = DispatchQueue(label: "it.airgap.DI", qos: .default)
+    private static let queue = DispatchQueue(label: "io.github.loworbitlab.blackout.DI", qos: .default)
 
     @inline(__always) public static func assess(completion: @escaping (ResultSet) -> () ) {
         DeviceIntegrity.queue.async {

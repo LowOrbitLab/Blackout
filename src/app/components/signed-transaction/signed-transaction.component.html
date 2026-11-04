@@ -28,7 +28,7 @@
 </ng-container>
 
 <ng-container *ngFor="let airGapTx of airGapTxs">
-  <airgap-transaction-warning [transaction]="airGapTx"></airgap-transaction-warning>
+  <blackout-transaction-warning [transaction]="airGapTx"></blackout-transaction-warning>
   <airgap-from-to
     class="ion-padding-horizontal"
     [transaction]="airGapTx"

@@ -12,7 +12,7 @@ enum TransactionQRType {
 }
 
 @Component({
-  selector: 'airgap-transaction-signed',
+  selector: 'blackout-transaction-signed',
   templateUrl: './transaction-signed.page.html',
   styleUrls: ['./transaction-signed.page.scss']
 })

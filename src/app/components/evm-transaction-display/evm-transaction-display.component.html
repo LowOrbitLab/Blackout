@@ -66,11 +66,11 @@
 
   <div class="evm-decoded__nested" *ngIf="result.nested && result.nested.length">
     <h4>{{ 'evm-decoder.inner-calls' | translate }}</h4>
-    <airgap-evm-transaction-display
+    <blackout-evm-transaction-display
       *ngFor="let inner of result.nested"
       [result]="inner"
       [dbDate]="dbDate"
-    ></airgap-evm-transaction-display>
+    ></blackout-evm-transaction-display>
   </div>
 
   <small class="evm-decoded__meta" *ngIf="dbDate">

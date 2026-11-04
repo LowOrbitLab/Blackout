@@ -7,7 +7,7 @@ import { InstallationType, VaultStorageKey, VaultStorageService } from '../../se
 declare let cordova: any
 
 @Component({
-  selector: 'airgap-introduction',
+  selector: 'blackout-introduction',
   templateUrl: './introduction.page.html',
   styleUrls: ['./introduction.page.scss']
 })

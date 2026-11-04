@@ -11,7 +11,7 @@ import { EvmTransactionRendererService } from '../../services/evm/transaction-re
 import { AggregatedDetails, TransactionStore } from './transaction.store'
 
 @Component({
-  selector: 'airgap-transaction',
+  selector: 'blackout-transaction',
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.scss'],
   providers: [TransactionStore]

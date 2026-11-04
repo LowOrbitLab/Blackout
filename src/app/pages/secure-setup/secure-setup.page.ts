@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { Platform } from '@ionic/angular'
 
 @Component({
-  selector: 'airgap-secure-setup',
+  selector: 'blackout-secure-setup',
   templateUrl: './secure-setup.page.html',
   styleUrls: ['./secure-setup.page.scss']
 })

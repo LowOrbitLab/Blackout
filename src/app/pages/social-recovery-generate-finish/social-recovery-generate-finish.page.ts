@@ -3,7 +3,7 @@ import { ErrorCategory, handleErrorLocal } from 'src/app/services/error-handler/
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-social-recovery-generate-finish',
+  selector: 'blackout-social-recovery-generate-finish',
   templateUrl: './social-recovery-generate-finish.page.html',
   styleUrls: ['./social-recovery-generate-finish.page.scss']
 })

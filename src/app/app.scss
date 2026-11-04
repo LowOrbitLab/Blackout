@@ -34,8 +34,8 @@ p {
 }
 
 /* List styling */
-airgap-warning-modal,
-airgap-secret-rules {
+blackout-warning-modal,
+blackout-secret-rules {
   ul {
     padding-inline-start: 0;
     list-style: none;
@@ -53,7 +53,7 @@ airgap-secret-rules {
 }
 
 /* ion-textarea height fix */
-airgap-secret-import ion-textarea textarea {
+blackout-secret-import ion-textarea textarea {
   height: inherit;
 }
 
@@ -75,7 +75,7 @@ airgap-current-secret {
   }
 }
 
-airgap-accounts-list {
+blackout-accounts-list {
   airgap-current-secret ion-item {
     --padding-start: 16px;
   }

@@ -9,7 +9,7 @@ import { SecretsService } from '../../../services/secrets/secrets.service'
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-account-edit-popover',
+  selector: 'blackout-account-edit-popover',
   templateUrl: 'account-edit-popover.component.html',
   styleUrls: ['./account-edit-popover.component.scss']
 })

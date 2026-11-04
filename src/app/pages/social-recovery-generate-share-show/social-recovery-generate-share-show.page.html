@@ -9,7 +9,7 @@
 <ion-content class="ion-padding">
   <div class="content-wrapper">
     <div class="center-wrapper">
-      <airgap-progress-indicator [currentShare]="currentShare" [totalShares]="shares.length"></airgap-progress-indicator>
+      <blackout-progress-indicator [currentShare]="currentShare" [totalShares]="shares.length"></blackout-progress-indicator>
       <h2>{{ 'social-recovery-generate.share-show-heading' | translate }}</h2>
       <div class="tags-wrapper">
         <ion-button class="tag" shape="round" color="tertiary" *ngFor="let tag of currentShares; let i = index">

@@ -3,7 +3,7 @@ import { AirGapTransactionWarning, AirGapTransactionWarningType } from '@airgap/
 import { Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'airgap-transaction-warning',
+  selector: 'blackout-transaction-warning',
   templateUrl: './transaction-warning.component.html',
   styleUrls: ['./transaction-warning.component.scss']
 })

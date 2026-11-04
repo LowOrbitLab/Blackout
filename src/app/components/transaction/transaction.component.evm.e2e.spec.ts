@@ -134,7 +134,7 @@ describe('TransactionComponent — EVM decoder (e2e)', () => {
       // and sub-components (airgap-from-to) we don't bring in. Use NO_ERRORS_SCHEMA via
       // .overrideComponent to keep the template parse permissive.
       .overrideComponent(TransactionComponent, {
-        set: { template: '<airgap-evm-transaction-display *ngFor="let r of evmResults$ | async" [result]="r"></airgap-evm-transaction-display>' }
+        set: { template: '<blackout-evm-transaction-display *ngFor="let r of evmResults$ | async" [result]="r"></blackout-evm-transaction-display>' }
       })
       .compileComponents()
 

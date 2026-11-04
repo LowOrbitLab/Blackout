@@ -17,7 +17,7 @@ import { VaultEnvironmentContext, VaultEnvironmentService } from 'src/app/servic
 import { WipeConfirmComponent } from 'src/app/components/wipe-confirm/wipe-confirm.component'
 
 @Component({
-  selector: 'airgap-tab-settings',
+  selector: 'blackout-tab-settings',
   templateUrl: './tab-settings.page.html',
   styleUrls: ['./tab-settings.page.scss']
 })

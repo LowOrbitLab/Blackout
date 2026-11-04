@@ -16,7 +16,7 @@ import { SocialRecoveryImportErrorsPage } from '../social-recovery-import-errors
 type SingleWord = string
 
 @Component({
-  selector: 'airgap-social-recovery-import-share-validate',
+  selector: 'blackout-social-recovery-import-share-validate',
   templateUrl: './social-recovery-import-share-validate.page.html',
   styleUrls: ['./social-recovery-import-share-validate.page.scss']
 })

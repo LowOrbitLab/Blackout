@@ -45,11 +45,11 @@ describe('SecretsService', () => {
   })
 
   it('should save a newly added secret to the local storage', async () => {
-    // const storageStateBefore = await storage.get('airgap-secret-list')
+    // const storageStateBefore = await storage.get('blackout-secret-list')
     // expect(storageStateBefore).toBe(undefined)
     // const secret = new Secret('topSecret')
     // await secretsService.addOrUpdateSecret(secret)
-    // const storageStateAfter = await storage.get('airgap-secret-list')
+    // const storageStateAfter = await storage.get('blackout-secret-list')
     // expect(storageStateAfter.length).toBe(1)
   })
 })

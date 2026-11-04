@@ -5,7 +5,7 @@ import { LanguagesType, VaultStorageKey, VaultStorageService } from 'src/app/ser
 import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-languages-selection-settings',
+  selector: 'blackout-languages-selection-settings',
   templateUrl: './languages-selection-settings.page.html',
   styleUrls: ['./languages-selection-settings.page.scss']
 })

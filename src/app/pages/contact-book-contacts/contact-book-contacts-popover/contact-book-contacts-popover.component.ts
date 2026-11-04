@@ -9,7 +9,7 @@ export enum SortType {
 }
 
 @Component({
-  selector: 'airgap-contact-book-contacts-popover',
+  selector: 'blackout-contact-book-contacts-popover',
   templateUrl: './contact-book-contacts-popover.component.html',
   styleUrls: ['./contact-book-contacts-popover.component.scss']
 })

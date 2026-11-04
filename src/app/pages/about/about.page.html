@@ -14,37 +14,10 @@
     <p class="ok-about-hero__text">{{ 'about.open-source_text' | translate }}</p>
   </div>
 
-  <!-- TODO: Add rating plugin -->
-  <!-- <ion-row class="ion-justify-content-center ion-padding-bottom">
-    <ion-button color="primary" shape="round" (click)="review()">Rate AirGap Vault!</ion-button>
-  </ion-row> -->
-
-  <ion-list-header>
-    <ion-label>{{ 'about.social-media_header' | translate }}</ion-label>
-  </ion-list-header>
-  <div class="ok-settings-section">
-    <ion-item button (click)="twitter()" detail="true">
-      <ion-icon name="logo-twitter" slot="start"></ion-icon>
-      <ion-label>{{ 'tab-settings.twitter_label' | translate }}</ion-label>
-    </ion-item>
-    <ion-item button (click)="telegram()" detail="true">
-      <ion-icon name="chatbubbles-outline" slot="start"></ion-icon>
-      <ion-label>{{ 'tab-settings.telegram_label' | translate }}</ion-label>
-    </ion-item>
-    <ion-item button lines="none" (click)="discord()" detail="true">
-      <ion-icon name="logo-discord" slot="start"></ion-icon>
-      <ion-label>{{ 'tab-settings.discord_label' | translate }}</ion-label>
-    </ion-item>
-  </div>
-
   <ion-list-header>
     <ion-label>{{ 'about.help_header' | translate }}</ion-label>
   </ion-list-header>
   <div class="ok-settings-section">
-    <ion-item button (click)="feedback()" detail="true">
-      <ion-icon name="mail-outline" slot="start"></ion-icon>
-      <ion-label>{{ 'tab-settings.feedback_label' | translate }}</ion-label>
-    </ion-item>
     <ion-item button lines="none" (click)="documentation()" detail="true">
       <ion-icon name="document-text-outline" slot="start"></ion-icon>
       <ion-label>{{ 'tab-settings.documentation_label' | translate }}</ion-label>
@@ -63,7 +36,8 @@
 
   <div class="ok-about-footer">
     <p>{{ 'about.made-in_text' | translate }}</p>
-    <span class="small-text typography--mono">{{ appName }} {{ versionName }} (build {{ versionCode }})</span>
+    <span class="small-text typography--mono">{{ appName }} {{ versionName }}</span>
+    <span *ngIf="versionCode !== undefined" class="small-text typography--mono">{{ 'about.code' | translate }} {{ versionCode }}</span>
     <span class="small-text typography--mono">{{ packageName }}</span>
   </div>
 </ion-content>

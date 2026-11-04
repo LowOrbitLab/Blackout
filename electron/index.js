@@ -1,9 +1,13 @@
-const { app, BrowserWindow, Menu, ipcMain, globalShortcut } = require('electron')
+const { app, BrowserWindow, Menu, globalShortcut } = require('electron')
 const isDevMode = require('electron-is-dev')
 const { CapacitorSplashScreen, configCapacitor } = require('@capacitor/electron')
 
-const childProcess = require('child_process')
 const path = require('path')
+
+// 明确使用 Blackout 的配置目录，不读取旧应用的数据。
+app.setName('Blackout')
+app.setPath('userData', path.join(app.getPath('appData'), 'Blackout'))
+if (process.platform === 'win32') app.setAppUserModelId('io.github.loworbitlab.blackout')
 
 // Place holders for our windows so they don't get garbage collected.
 let mainWindow = null
@@ -69,7 +73,7 @@ async function createWindow() {
     splashScreen = new CapacitorSplashScreen(mainWindow, {})
     splashScreen.init(false)
   } else {
-    mainWindow.loadURL(`file://${__dirname}/app/index.html`)
+    mainWindow.loadFile(path.join(__dirname, 'app', 'index.html'))
     mainWindow.webContents.on('dom-ready', () => {
       mainWindow.show()
     })
@@ -102,10 +106,6 @@ app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    for (const [_, child] of childProcesses) {
-      child.kill()
-    }
-
     app.quit()
   }
 })

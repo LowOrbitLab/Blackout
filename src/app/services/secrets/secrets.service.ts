@@ -91,7 +91,7 @@ export class SecretsService {
   }
 
   private async read(): Promise<MnemonicSecret[]> {
-    const rawSecretsPayload: unknown = await this.storageService.get(VaultStorageKey.AIRGAP_SECRET_LIST)
+    const rawSecretsPayload: unknown = await this.storageService.get(VaultStorageKey.SECRET_LIST)
 
     // necessary due to double serialization bug we had
     let secrets: MnemonicSecret[] = typeof rawSecretsPayload === 'string' ? JSON.parse(rawSecretsPayload) : rawSecretsPayload
@@ -484,7 +484,7 @@ export class SecretsService {
       secret.flushSecret()
     })
 
-    const rawSecretsPayload: unknown = await this.storageService.get(VaultStorageKey.AIRGAP_SECRET_LIST)
+    const rawSecretsPayload: unknown = await this.storageService.get(VaultStorageKey.SECRET_LIST)
 
     // necessary due to double serialization bug we had
     const storedSecrets: MnemonicSecret[] = typeof rawSecretsPayload === 'string' ? JSON.parse(rawSecretsPayload) : rawSecretsPayload
@@ -519,7 +519,7 @@ export class SecretsService {
       })
     )
 
-    return this.storageService.set(VaultStorageKey.AIRGAP_SECRET_LIST, secrets)
+    return this.storageService.set(VaultStorageKey.SECRET_LIST, secrets)
   }
 
   public async updateWallet(wallet: AirGapWallet): Promise<void> {

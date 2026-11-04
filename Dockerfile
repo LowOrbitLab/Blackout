@@ -50,6 +50,7 @@ COPY --chown=node:node apply-diagnostic-modules.js /app
 COPY --chown=node:node patch-dependency-versions.js /app
 COPY --chown=node:node fix-qrscanner-gradle.js /app
 COPY --chown=node:node copy-builtin-modules.js /app
+COPY --chown=node:node scripts/apply-blackout-branding.cjs /app/scripts/apply-blackout-branding.cjs
 
 RUN yarn install-test-dependencies
 

@@ -15,7 +15,7 @@ import { EdgeToEdge } from '@capawesome/capacitor-android-edge-to-edge-support'
 const PROGRESS_SEGMENTS: number = 8
 
 @Component({
-  selector: 'airgap-tab-scan',
+  selector: 'blackout-tab-scan',
   templateUrl: './tab-scan.page.html',
   styleUrls: ['./tab-scan.page.scss'],
   providers: [PercentPipe]

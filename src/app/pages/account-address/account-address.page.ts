@@ -82,7 +82,7 @@ export interface CompanionApp {
 }
 
 @Component({
-  selector: 'airgap-account-address',
+  selector: 'blackout-account-address',
   templateUrl: './account-address.page.html',
   styleUrls: ['./account-address.page.scss']
 })

@@ -19,7 +19,7 @@ export enum SecretEditAction {
 }
 
 @Component({
-  selector: 'airgap-secret-edit',
+  selector: 'blackout-secret-edit',
   templateUrl: './secret-edit.page.html',
   styleUrls: ['./secret-edit.page.scss']
 })

@@ -6,7 +6,7 @@ import { VaultStorageKey, VaultStorageService } from '../../services/storage/sto
 import { Warning, WarningModalPage } from '../warning-modal/warning-modal.page'
 
 @Component({
-  selector: 'airgap-onboarding-welcome',
+  selector: 'blackout-onboarding-welcome',
   templateUrl: './onboarding-welcome.page.html',
   styleUrls: ['./onboarding-welcome.page.scss']
 })

@@ -1,10 +1,11 @@
 import { AppConfig } from '@airgap/angular-core'
+import { BLACKOUT } from './brand'
 
 export const appConfig: AppConfig = {
   app: {
-    name: 'AirGap Vault',
-    urlScheme: 'airgap-vault',
-    universalLink: 'vault.airgap.it'
+    name: BLACKOUT.name,
+    urlScheme: BLACKOUT.urlScheme,
+    universalLink: ''
   },
   otherApp: {
     name: 'AirGap Wallet',

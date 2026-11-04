@@ -16,23 +16,24 @@
   "about": {
     "label": "Über",
     "version": "Version:",
-    "code": "Code:"
+    "code": "Code:",
+    "made-in_text": "Ein unabhängiges Projekt auf Basis von AirGap Vault.",
+    "open-source_text": "Blackout ist ein freies Open-Source-Projekt."
   },
   "shop": {
     "label": "AirGap Shop",
     "page-description_label": "Entdecken Sie den AirGap Shop",
-    "page-description_description": "Fügen Sie mit Lösungen aus dem AirGap Shop eine zusätzliche Sicherheitsebene hinzu und bezahlen Sie mit Crypto",
+    "page-description_description": "Drittanbieterprodukte von AirGap. Blackout ist nicht mit diesem Shop verbunden.",
     "QR-code_label": "Um uns zu besuchen, scannen Sie den QR-Code oder gehen Sie auf die folgende Website:",
     "AirGap-Knox_label": "AirGap Knox",
-    "AirGap-Knox_description": "Mit AirGap Knox können Sie alle Arten der Konnektivität auf Ihrem Smartphone auf Systemebene deaktivieren und eine absolut sichere Umgebung für den AirGap Vault erstellen",
+    "AirGap-Knox_description": "Mit AirGap Knox können Sie alle Arten der Konnektivität auf Ihrem Smartphone auf Systemebene deaktivieren und eine absolut sichere Umgebung für den Blackout erstellen",
     "AirGap-Recovery-Plate_label": "AirGap-Wiederherstellungsplatte",
     "AirGap-Recovery-Plate_description": "Gravieren Sie Ihren Seed-Satz auf Edelstahl, um ihn vor Feuer oder Beschädigung zu schützen",
-    "promo-description": "Erhalten Sie 10 % Rabatt auf Ihren ersten Einkauf, wenn Sie den Promo-Code verwenden: <i>VaultUser23</i>",
     "copy_label": "Link kopieren"
   },
   "security-level-self-check": {
     "heading": "Sicherheitsstufe Selbstprüfung",
-    "description": "Bestimmen Sie Ihr Sicherheitsniveau, indem Sie Ihr persönliches Setup überprüfen. Wenn Sie alle Kästchen angekreuzt haben, können Sie sicher sein, dass Sie das volle Sicherheitspotenzial des AirGap Vault ausgenutzt haben."
+    "description": "Bestimmen Sie Ihr Sicherheitsniveau, indem Sie Ihr persönliches Setup überprüfen. Wenn Sie alle Kästchen angekreuzt haben, können Sie sicher sein, dass Sie das volle Sicherheitspotenzial des Blackout ausgenutzt haben."
   },
   "advanced-mode": {
     "label": "Fortgeschrittener Modus",
@@ -40,11 +41,11 @@
   },
   "distribution-onboarding": {
     "ask-permission": {
-      "heading": "AirGap ist <span class=\"style__strong color__primary\"> nicht persistent</span>, Geheimschlüssel werden nicht abgespeichert und müssen nach einem Neustart <span class=\"style__strong color__primary\">wieder importiert</span> werden",
+      "heading": "Blackout ist <span class=\"style__strong color__primary\"> nicht persistent</span>, Geheimschlüssel werden nicht abgespeichert und müssen nach einem Neustart <span class=\"style__strong color__primary\">wieder importiert</span> werden",
       "text": "Diese Distribution ist angedacht, um sicher Geheimschlüssel zu generieren und offline Transaktionen zu signieren, jedoch nicht, um Geheimschlüssel aufzubewahren."
     },
     "no-vm": {
-      "heading": "AirGap Vault Distribution sollte <span class=\"style__strong color__primary\">nicht</span> auf einer <span class=\"style__strong color__primary\">virtuellen Maschine</span> ausgeführt werden, wenn der Host eine Netzwerkverbindung hat, sogar wenn die Netzwerkverbindung vorübergehend deaktiviert wurde. ",
+      "heading": "Blackout Distribution sollte <span class=\"style__strong color__primary\">nicht</span> auf einer <span class=\"style__strong color__primary\">virtuellen Maschine</span> ausgeführt werden, wenn der Host eine Netzwerkverbindung hat, sogar wenn die Netzwerkverbindung vorübergehend deaktiviert wurde. ",
       "text": "Stellen Sie sicher, dass das Gerät von jedem Netzwerk getrennt wurde, befor Sie einen Geheimschlüssel generieren oder importieren."
     },
     "understood_label": "Verstanden"
@@ -55,7 +56,7 @@
     "authenticate_label": "Authentifizierung"
   },
   "secret-generate-onboarding": {
-    "heading": "AirGap wird Sie nach der Berechtigung für die <span class=\"style__strong color__primary\">Kamera</span> und dem <span class=\"style__strong color__primary\">Mikrofon</span> fragen.",
+    "heading": "Blackout wird Sie nach der Berechtigung für die <span class=\"style__strong color__primary\">Kamera</span> und dem <span class=\"style__strong color__primary\">Mikrofon</span> fragen.",
     "text": "Beide Berechtigungen werden für die zusätzliche Sicherheit bei der Geheimschlüsselgenerierung benötigt.",
     "grant-permission_label": "fortfahren"
   },
@@ -66,7 +67,7 @@
     "transaction-unreadable": "Wir konnten die Daten in dieser Transaktion nicht lesen. Dies bedeutet nicht, dass sie nicht gültig ist - Allerdings sollten Sie diese Transaktion nur bestätigen, falls Sie sich über die Risiken und deren Inhalt im Klaren sind."
   },
   "onboarding-advanced-mode": {
-    "title": "Welcome to AirGap"
+    "title": "Welcome to Blackout"
   },
   "installation-type": {
     "title": "Installationsart",
@@ -80,20 +81,20 @@
   "introduction": {
     "title": "Der Neue Krypto-Wallet Standard",
     "header": "Interaktion mit Ihrem {{installationType}}-Gerät",
-    "online-desc": "AirGap Vault ist von Design her nie mit einem Online-Dienst verbunden. Ihre Secrets verlassen AirGap Vault nie und sind daher vor Online-Bedrohungen geschützt. Verwenden Sie eine Begleit-App wie AirGap Wallet, um Ihren Kontostand zu überprüfen und Transaktionen durchzuführen.",
-    "offline-desc": "AirGap Vault ist von Design her nie mit einem Online-Dienst verbunden. Verwenden Sie eine Begleit-App wie AirGap Wallet, um Ihren Kontostand zu überprüfen und Transaktionen durchzuführen.",
-    "offline-companion_text": "Installieren Sie die Begleit-App auf einem Gerät mit Internetzugang und seien Sie versichert, dass nur öffentliche Informationen zwischen den beiden Apps ausgetauscht werden. Ihre Secrets verlassen nie den AirGap Vault und bleiben so vor Online-Bedrohungen geschützt.",
+    "online-desc": "Blackout ist von Design her nie mit einem Online-Dienst verbunden. Ihre Secrets verlassen Blackout nie und sind daher vor Online-Bedrohungen geschützt. Verwenden Sie eine Begleit-App wie AirGap Wallet, um Ihren Kontostand zu überprüfen und Transaktionen durchzuführen.",
+    "offline-desc": "Blackout ist von Design her nie mit einem Online-Dienst verbunden. Verwenden Sie eine Begleit-App wie AirGap Wallet, um Ihren Kontostand zu überprüfen und Transaktionen durchzuführen.",
+    "offline-companion_text": "Installieren Sie die Begleit-App auf einem Gerät mit Internetzugang und seien Sie versichert, dass nur öffentliche Informationen zwischen den beiden Apps ausgetauscht werden. Ihre Secrets verlassen nie den Blackout und bleiben so vor Online-Bedrohungen geschützt.",
     "highest": {
       "label": "Höchste Sicherheit",
-      "text": "Mit dem AirGap <b>zwei-Geräte Ansatz</b> wird der sichere Umgang mit Geheimschlüssel zugänglicher."
+      "text": "Mit dem Blackout <b>zwei-Geräte Ansatz</b> wird der sichere Umgang mit Geheimschlüssel zugänglicher."
     },
     "medium": {
       "label": "Mittlere Sicherheit",
-      "text": "Mit dem AirGap <b>zwei-App Ansatz</b> wird der sichere Umgang mit Geheimschlüssel zugänglicher."
+      "text": "Mit dem Blackout <b>zwei-App Ansatz</b> wird der sichere Umgang mit Geheimschlüssel zugänglicher."
     },
     "vault": {
-      "heading": "AirGap Vault",
-      "text": "Der Geheimschlüssel wird generiert und in der AirGap Vault App sicher aufbewahrt. <b>AirGap Vault muss installiert und mit AirGap Wallet verwendet werden.</b>"
+      "heading": "Blackout",
+      "text": "Der Geheimschlüssel wird generiert und in der Blackout App sicher aufbewahrt. <b>Blackout muss installiert und mit AirGap Wallet verwendet werden.</b>"
     },
     "wallet": {
       "heading": "AirGap Wallet",
@@ -108,7 +109,7 @@
     "skip_label": "Überspringen"
   },
   "secret-setup": {
-    "heading": "AirGap Einrichten!",
+    "heading": "Blackout Einrichten!",
     "generate": {
       "label": "Generieren",
       "text": "Gehen Sie auf Nummer sicher für Ihre Geldmittel, indem Sie einen Geheimschlüssel mit unserem sicheren Prozess erstellen."
@@ -250,7 +251,7 @@
   },
   "secret-import": {
     "title": "Geheimschlüssel importieren",
-    "text": "Ein bestehender Geheimschlüssel kann in AirGap importiert werden. Tragen Sie die Worte von Ihrem Wiederherstellungs-Satz ein.",
+    "text": "Ein bestehender Geheimschlüssel kann in Blackout importiert werden. Tragen Sie die Worte von Ihrem Wiederherstellungs-Satz ein.",
     "placeholder": "wife pulp island ...",
     "warning": "Bitte überprüfen Sie die Schreibweise des Wiederherstellungs-Satzes.",
     "import_label": "Importieren",
@@ -311,7 +312,7 @@
       "de": "German (KI übersetzt)",
       "es": "Spanish (KI übersetzt)",
       "ru": "Russisch",
-      "fr":"französisch (KI übersetzt)",
+      "fr": "französisch (KI übersetzt)",
       "pt_BR": "Portuguese (Brazil)",
       "zh_CN": "Chinese (China)"
     },
@@ -354,7 +355,7 @@
     "title": "Soziale Wiederherstellung",
     "text": "Ordnen Sie die Wörter in die richtige Reihenfolge, indem Sie jeweils das betreffende Wort anwählen."
   },
-  "isolated-module" : {
+  "isolated-module": {
     "text": "Sie können Ihre Lieblingsmünze nicht finden? Erstellen Sie ein isoliertes Modul, um sie zu integrieren"
   },
   "contact-book": {
@@ -401,18 +402,18 @@
   "contact-book-scan": {
     "title": "Kontakt Buch QR Code Scanner",
     "text": "Scannen Sie einen QR-Code einer Adresse, um sie zu Ihren Kontakten hinzuzufügen",
-    "empty-state_heading": "Zum Scannen von QR-Codes benötigt AirGap Vault die <span class=\"style__strong color__primary\">Kameraberechtigung</span>.",
+    "empty-state_heading": "Zum Scannen von QR-Codes benötigt Blackout die <span class=\"style__strong color__primary\">Kameraberechtigung</span>.",
     "grant-permission_label": "fortfahren"
   },
   "tab-scan": {
     "title": "QR Code Scanner",
     "text": "QR Code von AirGap Wallet einlesen.",
     "multi-qr_text": "Diese Transaktion besteht aus mehreren QR Codes. Halten Sie Ihre Kamera auf den wechselnden QR Codes und warten Sie, bis alle Codes gescannt sind.",
-    "empty-state_heading": "Um QR Codes einlesen zu können, benötigt AirGap Vault die <span class=\"style__strong color__primary\">Kamera Berechtigung</span>.",
+    "empty-state_heading": "Um QR Codes einlesen zu können, benötigt Blackout die <span class=\"style__strong color__primary\">Kamera Berechtigung</span>.",
     "grant-permission_label": "fortfahren"
   },
   "tab-settings": {
-    "about": "Über AirGap Vault",
+    "about": "Über Blackout",
     "shop": "AirGap Shop",
     "title": "Geheimschlüssel",
     "information_label": "Information",
@@ -481,7 +482,7 @@
     },
     "no-secret_alert": {
       "title": "Kein Konto gefunden",
-      "text": "Es existiert kein kompatibles Konto in AirGap. Bitte importieren Sie den dazugehörigen Geheimschlüssel, um diese Transaktion zu signieren.",
+      "text": "Es existiert kein kompatibles Konto in Blackout. Bitte importieren Sie den dazugehörigen Geheimschlüssel, um diese Transaktion zu signieren.",
       "okay_label": "Verstanden"
     },
     "raw-tx_alert": {
@@ -634,7 +635,7 @@
   "warnings-modal": {
     "root": {
       "title": "Ihr Gerät ist gerooted",
-      "description": "Scheinbar ist ihr Gerät gerooted. Obwohl wir das toll finden, schwächt es die Sicherheit Ihres Gerätes erheblich und mehrere Mechanismen von AirGap können mit anderen Apps umgangen werden. Deshalb ist AirGap auf diesem Gerät nicht verfügbar."
+      "description": "Scheinbar ist ihr Gerät gerooted. Obwohl wir das toll finden, schwächt es die Sicherheit Ihres Gerätes erheblich und mehrere Mechanismen von Blackout können mit anderen Apps umgangen werden. Deshalb ist Blackout auf diesem Gerät nicht verfügbar."
     },
     "screenshot": {
       "title": "Bildschirmfoto erkannt",
@@ -642,16 +643,16 @@
     },
     "secure-storage": {
       "title": "Gerät unsicher",
-      "description": "Ihr Sperrbildschirm muss aktiviert sein, um eine angemessene Verschlüsselung und Sicherheit Ihres Schlüssels zu gewährleisten. Nach dem Aktivieren bitte die AirGap App neu starten.",
+      "description": "Ihr Sperrbildschirm muss aktiviert sein, um eine angemessene Verschlüsselung und Sicherheit Ihres Schlüssels zu gewährleisten. Nach dem Aktivieren bitte die Blackout App neu starten.",
       "button-text_label": "Gerät sichern"
     },
     "network": {
       "title": "Netwerkverbindung erkannt",
-      "description": "Scheinbar ist ihr Gerät mit einem Netzwerk verbunden. Die AirGap App hat keine Netzwerkberechtigungen. Trotzdem empfehlen wir, das Gerät vollständig von jeglichem Netzwerk zu trennen.",
+      "description": "Scheinbar ist ihr Gerät mit einem Netzwerk verbunden. Die Blackout App hat keine Netzwerkberechtigungen. Trotzdem empfehlen wir, das Gerät vollständig von jeglichem Netzwerk zu trennen.",
       "button": "Sign Message"
     },
     "disclaimer": {
-      "title": "AirGap Haftungsausschluss",
+      "title": "Blackout Haftungsausschluss",
       "text": "Sie akzeptieren und bestätigen hiermit diese Bestimmungen sowie alle enthaltenen Informationen im vollumfänglichen Ausmass. Sie als Benutzer bestätigen, dass Sie den Inhalt dieses Haftungsausschlusses gelesen und verstanden haben.",
       "disclaimer-list": {
         "text": "Zum gesetzlichen vollumfänglichen Ausmass:",
@@ -667,7 +668,7 @@
     "text": "BIP85 allows you to securely derive a new mnemonic out of your main mnemonic. As long as you have access to your main mnemonic, you will always be able to re-generate your child mnemonics.",
     "mnemonic-length": "Mnemonic Length",
     "index": "Index",
-    "bip85-input-app-advance-mode":"Index (0-2147483647)",
+    "bip85-input-app-advance-mode": "Index (0-2147483647)",
     "generate": "Generate",
     "advanced_label": "Advanced Mode",
     "bip39-passphrase": "BIP-39 Passphrase",
@@ -752,11 +753,11 @@
   "danger-zone": {
     "label": "Danger Zone",
     "description": "The actions on this page are only intended for advanced users. Please be aware of the consequences if you use one of the following features.",
-    "wipe_label": "Reset AirGap Vault",
+    "wipe_label": "Reset Blackout",
     "wipe": {
       "confirm": {
         "title": "Wipe all secrets",
-        "description": "This deletes every secret on this device and resets AirGap Vault to its factory settings. There is no way to undo it.",
+        "description": "This deletes every secret on this device and resets Blackout to its factory settings. There is no way to undo it.",
         "backup_label": "Have you backed up all your secrets?",
         "acknowledge_label": "I understand that I cannot recover my secrets without a backup.",
         "input_label": "Type \"{{phrase}}\" to confirm.",
@@ -875,16 +876,16 @@
     "description": "In dieser Anleitung beschreiben wir die Schritte zur Einrichtung eines sicheren Offline-Geräts.",
     "simple": {
       "title": "Einfache Einrichtung",
-      "step1": "Besorgen Sie ein dediziertes Gerät, das ab sofort NUR für AirGap Vault verwendet wird, keine anderen Anwendungen.",
+      "step1": "Besorgen Sie ein dediziertes Gerät, das ab sofort NUR für Blackout verwendet wird, keine anderen Anwendungen.",
       "step2": "Aktualisieren Sie das Gerät auf die neueste Firmware und installieren Sie alle verfügbaren Updates.",
       "step3": "Führen Sie einen Werksreset durch.",
       "step4": "Richten Sie das Gerät ein und verwenden Sie ein starkes Passwort, optional mit biometrischem Schutz.",
-      "step5": "Installieren Sie AirGap Vault.",
+      "step5": "Installieren Sie Blackout.",
       "step6": "Schalten Sie den Flugmodus ein und schalten Sie ihn nie wieder aus."
     },
     "advanced": {
       "title": "Erweiterte Einrichtung",
-      "step1": "Besorgen Sie ein dediziertes Gerät, das ab sofort NUR für AirGap Vault verwendet wird, keine anderen Anwendungen.",
+      "step1": "Besorgen Sie ein dediziertes Gerät, das ab sofort NUR für Blackout verwendet wird, keine anderen Anwendungen.",
       "step2": "Aktualisieren Sie das Gerät auf die neueste Firmware und installieren Sie alle verfügbaren Updates.",
       "step3": "Führen Sie einen Werksreset durch.",
       "disable_wifi": "Deaktivieren Sie WiFi.",
@@ -892,24 +893,24 @@
       "enable_airplane": "Aktivieren Sie den Flugmodus.",
       "speakers_off": "Stellen Sie sicher, dass die Lautsprecher ausgeschaltet sind. Datenübertragung über Ton ist möglich, wenn auch mit begrenzter Kapazität. Wir empfehlen, sie auszuschalten, um ein wirklich air-gapped Gerät zu erreichen.",
       "ios": {
-        "step4": "Nehmen Sie Ihr alltägliches Telefon und erstellen Sie einen Hotspot. Verwenden Sie ein temporäres und kompliziertes Passwort. Wir verwenden diesen Hotspot, um vorübergehend eine Internetverbindung zum Herunterladen von AirGap Vault herzustellen.",
+        "step4": "Nehmen Sie Ihr alltägliches Telefon und erstellen Sie einen Hotspot. Verwenden Sie ein temporäres und kompliziertes Passwort. Wir verwenden diesen Hotspot, um vorübergehend eine Internetverbindung zum Herunterladen von Blackout herzustellen.",
         "step5": "Fahren Sie mit der Einrichtung Ihres dedizierten Geräts fort. Wenn Sie aufgefordert werden, einem WiFi-Netzwerk beizutreten, treten Sie dem oben erstellten Hotspot bei.",
         "step6": "Melden Sie sich mit Ihrer Apple ID an. Erstellen Sie idealerweise eine neue Apple ID nur für dieses Telefon.",
         "step7": "Legen Sie ein starkes Passwort fest und schützen Sie Ihr Gerät optional mit Biometrie.",
-        "step8": "Öffnen Sie den App Store und laden Sie AirGap Vault herunter. Stellen Sie sicher, dass Sie die richtige App herunterladen.",
+        "step8": "Installieren Sie eine signierte Blackout-Version des Projekts und prüfen Sie ihre Herkunft.",
         "disable_cellular": "Deaktivieren Sie Mobilfunk (deaktivieren Sie DATEN in den Einstellungen). Ein Mobilfunknetz verbindet Sie mit dem Internet, was den Zweck der Einrichtung eines Cold-Storage-Geräts zunichte macht.",
         "disconnect_hotspot": "Trennen Sie auf Ihrem Online-Gerät alle Geräte und ändern Sie das Passwort Ihres mobilen Hotspots."
       },
       "android": {
-        "step4": "Laden Sie auf einem Online-Gerät eine Kopie der AirGap Vault-Anwendung von GitHub herunter oder erstellen Sie sie selbst.",
+        "step4": "Laden Sie auf einem Online-Gerät eine Kopie der Blackout-Anwendung von GitHub herunter oder erstellen Sie sie selbst.",
         "step5": "Kopieren Sie die heruntergeladene Datei von Ihrem Online-Computer auf das Offline-Gerät über eine SD-Karte oder einen USB-Stick."
       }
     },
     "removing": {
-      "title": "AirGap Vault entfernen",
-      "step1": "Entfernen Sie alle Geheimnisse aus AirGap Vault.",
-      "step2": "Gehen Sie in den AirGap Vault-Einstellungen in die Gefahrenzone und wählen Sie Löschen.",
-      "step3": "Entfernen Sie AirGap Vault von Ihrem Gerät.",
+      "title": "Blackout entfernen",
+      "step1": "Entfernen Sie alle Geheimnisse aus Blackout.",
+      "step2": "Gehen Sie in den Blackout-Einstellungen in die Gefahrenzone und wählen Sie Löschen.",
+      "step3": "Entfernen Sie Blackout von Ihrem Gerät.",
       "ios": {
         "step4": "Gehen Sie zu den Einstellungen und wählen Sie Alle Inhalte und Einstellungen löschen."
       },
@@ -918,12 +919,12 @@
       }
     },
     "updating": {
-      "title": "AirGap Vault aktualisieren",
+      "title": "Blackout aktualisieren",
       "ios": {
-        "description": "Unter iOS gibt es keine Möglichkeit, AirGap Vault zu aktualisieren, während Ihr Gerät offline ist. Entfernen Sie AirGap Vault, löschen Sie das Gerät und beginnen Sie von vorne gemäß den obigen Schritten."
+        "description": "Unter iOS gibt es keine Möglichkeit, Blackout zu aktualisieren, während Ihr Gerät offline ist. Entfernen Sie Blackout, löschen Sie das Gerät und beginnen Sie von vorne gemäß den obigen Schritten."
       },
       "android": {
-        "step1": "Laden Sie auf einem Online-Gerät eine Kopie der AirGap Vault-Anwendung von GitHub herunter oder erstellen Sie sie selbst.",
+        "step1": "Laden Sie auf einem Online-Gerät eine Kopie der Blackout-Anwendung von GitHub herunter oder erstellen Sie sie selbst.",
         "step2": "Kopieren Sie die heruntergeladene Datei von Ihrem Online-Computer auf das Offline-Gerät über eine SD-Karte oder einen USB-Stick und ersetzen Sie die alte Installation."
       }
     }

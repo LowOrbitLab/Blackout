@@ -16,7 +16,7 @@ export enum Warning {
 }
 
 @Component({
-  selector: 'airgap-warning-modal',
+  selector: 'blackout-warning-modal',
   templateUrl: './warning-modal.page.html',
   styleUrls: ['./warning-modal.page.scss']
 })

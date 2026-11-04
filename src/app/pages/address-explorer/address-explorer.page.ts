@@ -37,7 +37,7 @@ interface AddressInfo {
 }
 
 @Component({
-  selector: 'airgap-address-explorer',
+  selector: 'blackout-address-explorer',
   templateUrl: './address-explorer.page.html',
   styleUrls: ['./address-explorer.page.scss']
 })

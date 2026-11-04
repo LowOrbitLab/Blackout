@@ -26,7 +26,7 @@ import { AcurastModule } from '@airgap/acurast'
 import { StellarModule } from '@airgap/stellar'
 import { HttpClient } from '@angular/common/http'
 import { AfterViewInit, Component, Inject, NgZone } from '@angular/core'
-import { AppPlugin, URLOpenListenerEvent } from '@capacitor/app'
+import { AppPlugin } from '@capacitor/app'
 import { SplashScreenPlugin } from '@capacitor/splash-screen'
 import { StatusBarPlugin, Style } from '@capacitor/status-bar'
 import { ModalController, Platform } from '@ionic/angular'
@@ -36,9 +36,8 @@ import { register } from 'swiper/element/bundle'
 
 import { SecurityUtilsPlugin } from './capacitor-plugins/definitions'
 import { SECURITY_UTILS_PLUGIN } from './capacitor-plugins/injection-tokens'
-import { DEEPLINK_VAULT_ADD_ACCOUNT, DEEPLINK_VAULT_PREFIX } from './constants/constants'
+import { parseAppLink } from './utils/app-link'
 import { ExposedPromise, exposedPromise } from './functions/exposed-promise'
-import { MnemonicSecret } from './models/secret'
 import { ErrorCategory, handleErrorLocal } from './services/error-handler/error-handler.service'
 import { IACService } from './services/iac/iac.service'
 import { VaultModulesService } from './services/modules/modules.service'
@@ -50,18 +49,13 @@ import { LanguagesType, VaultStorageKey, VaultStorageService } from './services/
 import { Router } from '@angular/router'
 import { EdgeToEdge } from '@capawesome/capacitor-android-edge-to-edge-support'
 
-declare let window: Window & { airGapHasStarted: boolean }
-
-const defer = (fn: () => void) => {
-  // fn()
-  setTimeout(fn, 200)
-}
+declare let window: Window & { blackoutHasStarted: boolean }
 
 // Swiper
 register()
 
 @Component({
-  selector: 'airgap-root',
+  selector: 'blackout-root',
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements AfterViewInit {
@@ -90,7 +84,7 @@ export class AppComponent implements AfterViewInit {
     @Inject(STATUS_BAR_PLUGIN) private readonly statusBar: StatusBarPlugin
   ) {
     // We set the app as started so no "error alert" will be shown in case the app fails to load. See error-check.js for details.
-    window.airGapHasStarted = true
+    window.blackoutHasStarted = true
     this.initializeApp().catch(handleErrorLocal(ErrorCategory.OTHER))
   }
 
@@ -133,39 +127,43 @@ export class AppComponent implements AfterViewInit {
         }
       })
     }
-    this.app.addListener('appUrlOpen', async (data: URLOpenListenerEvent) => {
-      await this.isInitialized.promise
-      if (data.url === DEEPLINK_VAULT_PREFIX || data.url.startsWith(DEEPLINK_VAULT_ADD_ACCOUNT)) {
-        this.secretsService
-          .getSecretsObservable()
-          .pipe(first())
-          .subscribe((secrets: MnemonicSecret[]) => {
-            if (secrets.length > 0) {
-              this.ngZone
-                .run(async () => {
-                  this.navigationService.routeToSecretsTab().catch(handleErrorLocal(ErrorCategory.IONIC_NAVIGATION))
+    if (this.platform.is('hybrid')) {
+      // 先注册事件，再读取冷启动链接；正在处理的同一链接只执行一次。
+      await this.app.addListener('appUrlOpen', ({ url }) => {
+        this.handleAppUrl(url).catch(handleErrorLocal(ErrorCategory.SCHEME_ROUTING))
+      })
+      const launch = await this.app.getLaunchUrl()
+      if (launch?.url) await this.handleAppUrl(launch.url)
+    }
+  }
 
-                  const protocol: string = data.url.substr(DEEPLINK_VAULT_ADD_ACCOUNT.length)
-                  if (protocol.length > 0) {
-                    this.navigationService
-                      .routeWithState('account-add', { protocol, secret: secrets[0] })
-                      .catch(handleErrorLocal(ErrorCategory.IONIC_NAVIGATION))
-                  } else {
-                    this.navigationService.route('account-add').catch(handleErrorLocal(ErrorCategory.IONIC_NAVIGATION))
-                  }
-                })
-                .catch(handleErrorLocal(ErrorCategory.OTHER))
-            }
-          })
-      } else {
-        this.ngZone.run(async () => {
-          // We defer this call because on iOS the app would sometimes get stuck on a black screen when handling deeplinks.
-          defer(() =>
-            this.iacService.handleRequest(data.url, IACMessageTransport.DEEPLINK).catch(handleErrorLocal(ErrorCategory.SCHEME_ROUTING))
-          )
+  private readonly activeAppLinks = new Set<string>()
+
+  private async handleAppUrl(url: string): Promise<void> {
+    const link = parseAppLink(url)
+    if (!link || this.activeAppLinks.has(url)) return
+    this.activeAppLinks.add(url)
+    try {
+      await this.isInitialized.promise
+      if (link.kind === 'account') {
+        const secrets = await this.secretsService.getSecretsObservable().pipe(first()).toPromise()
+        await this.ngZone.run(async () => {
+          if (!secrets?.length) {
+            await this.navigationService.routeToSecretsTab()
+          } else if (link.protocol) {
+            await this.navigationService.routeWithState('account-add', { protocol: link.protocol, secret: secrets[0] })
+          } else {
+            await this.navigationService.route('account-add')
+          }
         })
+      } else {
+        // iOS 恢复应用视图后再进入签名审核，避免切换期间黑屏。
+        await new Promise<void>((resolve) => setTimeout(resolve, 200))
+        await this.ngZone.run(() => this.iacService.handleRequest(link.url, IACMessageTransport.DEEPLINK))
       }
-    })
+    } finally {
+      this.activeAppLinks.delete(url)
+    }
   }
 
   private async initializeTranslations(): Promise<void> {

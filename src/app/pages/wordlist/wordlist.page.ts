@@ -32,7 +32,7 @@ interface Word {
 }
 
 @Component({
-  selector: 'airgap-wordlist',
+  selector: 'blackout-wordlist',
   templateUrl: './wordlist.page.html',
   styleUrls: ['./wordlist.page.scss']
 })

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
 
 @Component({
-  selector: 'airgap-secret-option-item',
+  selector: 'blackout-secret-option-item',
   templateUrl: './secret-option-item.component.html',
   styleUrls: ['./secret-option-item.component.scss']
 })

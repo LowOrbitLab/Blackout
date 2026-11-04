@@ -4,7 +4,7 @@ import { ErrorCategory, handleErrorLocal } from 'src/app/services/error-handler/
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-contact-book-onboarding',
+  selector: 'blackout-contact-book-onboarding',
   templateUrl: './contact-book-onboarding.page.html',
   styleUrls: ['./contact-book-onboarding.page.scss']
 })

@@ -13,7 +13,7 @@ import { GyroscopeNativeService } from '../../services/gyroscope/gyroscope.nativ
 import { NavigationService } from '../../services/navigation/navigation.service'
 
 @Component({
-  selector: 'airgap-secret-generate',
+  selector: 'blackout-secret-generate',
   templateUrl: './secret-generate.page.html',
   styleUrls: ['./secret-generate.page.scss']
 })

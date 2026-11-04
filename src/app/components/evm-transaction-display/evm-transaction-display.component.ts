@@ -6,7 +6,7 @@ import { DisplayRow, RenderResult } from '../../services/evm/abi-types'
 import { formatAmount } from '../../services/evm/known-tokens'
 
 @Component({
-  selector: 'airgap-evm-transaction-display',
+  selector: 'blackout-evm-transaction-display',
   templateUrl: './evm-transaction-display.component.html',
   styleUrls: ['./evm-transaction-display.component.scss']
 })

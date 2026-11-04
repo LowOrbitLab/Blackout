@@ -8,7 +8,7 @@ import { MnemonicSecret } from '../../models/secret'
 import { SecretsService } from '../../services/secrets/secrets.service'
 
 @Component({
-  selector: 'airgap-select-account',
+  selector: 'blackout-select-account',
   templateUrl: './select-account.page.html',
   styleUrls: ['./select-account.page.scss']
 })

@@ -14,7 +14,7 @@ import { SecretsService } from 'src/app/services/secrets/secrets.service'
 import { AccountsListEditPopoverComponent } from './accounts-list-edit-popover/accounts-list-edit-popover.component'
 
 @Component({
-  selector: 'airgap-accounts-list',
+  selector: 'blackout-accounts-list',
   templateUrl: './accounts-list.page.html',
   styleUrls: ['./accounts-list.page.scss']
 })

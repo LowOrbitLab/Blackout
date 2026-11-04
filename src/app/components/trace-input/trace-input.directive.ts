@@ -6,7 +6,7 @@ interface Point {
 }
 
 @Directive({
-  selector: '[airgapTraceInput]'
+  selector: '[blackoutTraceInput]'
 })
 export class TraceInputDirective implements OnInit {
   private readonly canvas: HTMLCanvasElement

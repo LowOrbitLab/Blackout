@@ -44,7 +44,7 @@ class LocalAuthentication {
     private var queue: OperationQueue = {
         let result = OperationQueue()
         result.maxConcurrentOperationCount = 1
-        result.name = "ch.papers.security-utils.LocalAuthentication"
+        result.name = "io.github.loworbitlab.blackout.LocalAuthentication"
         return result
     }()
 

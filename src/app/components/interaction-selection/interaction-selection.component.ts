@@ -3,7 +3,7 @@ import { IInteractionOptions, InteractionCommunicationType, InteractionService }
 import { InteractionType, VaultStorageKey, VaultStorageService } from 'src/app/services/storage/storage.service'
 
 @Component({
-  selector: 'airgap-interaction-selection',
+  selector: 'blackout-interaction-selection',
   templateUrl: './interaction-selection.component.html',
   styleUrls: ['./interaction-selection.component.scss']
 })

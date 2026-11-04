@@ -62,38 +62,37 @@
     "label": "关于",
     "version": "版本：",
     "code": "构建号：",
-    "open-source_text": "AirGap 是一个免费且开源的项目。",
+    "open-source_text": "Blackout 是一个免费且开源的项目。",
     "social-media_header": "社交媒体",
     "help_header": "帮助与支持",
     "developers_header": "开发者",
-    "made-in_text": "瑞士制造 🇨🇭"
+    "made-in_text": "基于 AirGap Vault 的独立项目。"
   },
   "shop": {
     "label": "AirGap 商店",
     "page-description_label": "探索 AirGap 商店",
-    "page-description_description": "选购 AirGap 商店的安全硬件方案，为资产增加额外安全保障，支持加密货币支付",
+    "page-description_description": "AirGap 提供的第三方产品，Blackout 与该商店无隶属关系。",
     "QR-code_label": "请扫描下方二维码或访问以下网址：",
     "AirGap-Knox_label": "AirGap Knox",
-    "AirGap-Knox_description": "借助 AirGap Knox，您可以在系统底层彻底禁用智能手机的一切网络连接，为 AirGap Vault 打造绝对安全的物理隔离环境",
+    "AirGap-Knox_description": "借助 AirGap Knox，您可以在系统底层彻底禁用智能手机的一切网络连接，为 Blackout 打造绝对安全的物理隔离环境",
     "AirGap-Recovery-Plate_label": "AirGap 金属助记词板",
     "AirGap-Recovery-Plate_description": "将您的助记词铭刻在不锈钢板上，有效抵御火灾或物理损坏",
-    "promo-description": "首次购买使用优惠码 <i>VaultUser23</i> 可享 9 折优惠",
     "copy_label": "复制链接"
   },
   "security-level-self-check": {
     "title": "安全等级自检",
     "heading": "安全等级自检",
-    "description": "对照您的实际配置自检安全等级。勾选全部项目即代表您已充分发挥 AirGap Vault 的全部安全潜力",
+    "description": "对照您的实际配置自检安全等级。勾选全部项目即代表您已充分发挥 Blackout 的全部安全潜力",
     "check_1": "助记词是在完全离线的环境中生成的",
     "check_2": "助记词已备份在金属助记词板上",
     "check_3": "助记词是通过抛硬币或掷骰子提供随机熵生成的",
     "check_4": "助记词已通过“社交恢复”进行分片备份",
     "check_5": "助记词已启用 BIP39 密码短语保护",
     "check_6": "助记词从未接触过互联网或联网设备",
-    "check_7": "AirGap Vault 安装在专用的离线设备上",
-    "check_8": "运行 AirGap Vault 的设备在安装前已恢复出厂设置",
-    "check_9": "更新 AirGap Vault 时设备从未连接互联网",
-    "check_10": "AirGap Vault 运行在受 AirGap Knox 保护的设备上"
+    "check_7": "Blackout 安装在专用的离线设备上",
+    "check_8": "运行 Blackout 的设备在安装前已恢复出厂设置",
+    "check_9": "更新 Blackout 时设备从未连接互联网",
+    "check_10": "Blackout 运行在受 AirGap Knox 保护的设备上"
   },
   "advanced-mode": {
     "label": "高级模式",
@@ -101,11 +100,11 @@
   },
   "distribution-onboarding": {
     "ask-permission": {
-      "heading": "此 AirGap 版本为<span class=\"style__strong color__primary\">非持久化运行</span>，生成的密钥不会被保存，重启后需要<span class=\"style__strong color__primary\">重新导入</span>",
+      "heading": "此 Blackout 版本为<span class=\"style__strong color__primary\">非持久化运行</span>，生成的密钥不会被保存，重启后需要<span class=\"style__strong color__primary\">重新导入</span>",
       "text": "本发行版专为安全生成助记词及离线签名交易而设计，不用于持久化存储密钥。"
     },
     "no-vm": {
-      "heading": "如果宿主机具备网络连接（即使已临时关闭网络），请<span class=\"style__strong color__primary\">切勿</span>在<span class=\"style__strong color__primary\">虚拟机</span>中运行 AirGap Vault 发行版。",
+      "heading": "如果宿主机具备网络连接（即使已临时关闭网络），请<span class=\"style__strong color__primary\">切勿</span>在<span class=\"style__strong color__primary\">虚拟机</span>中运行 Blackout 发行版。",
       "text": "在生成新密钥或导入现有密钥之前，请确保当前设备已完全断开一切网络连接。"
     },
     "understood_label": "我已了解"
@@ -116,7 +115,7 @@
     "authenticate_label": "验证身份"
   },
   "secret-generate-onboarding": {
-    "heading": "AirGap 需要请求<span class=\"style__strong color__primary\">摄像头</span>和<span class=\"style__strong color__primary\">麦克风</span>权限，以便采集环境随机熵来安全生成助记词。",
+    "heading": "Blackout 需要请求<span class=\"style__strong color__primary\">摄像头</span>和<span class=\"style__strong color__primary\">麦克风</span>权限，以便采集环境随机熵来安全生成助记词。",
     "text": "这两项权限仅用于为您提供更高强度的随机数安全性。",
     "grant-permission_label": "继续"
   },
@@ -132,11 +131,11 @@
   "onboarding-welcome": {
     "slide-1": {
       "title": "安心守护加密资产",
-      "description": "AirGap Vault 离线安全保管您的私钥，让您能够无缝、安全地与各主流钱包交互。"
+      "description": "Blackout 离线安全保管您的私钥，让您能够无缝、安全地与各主流钱包交互。"
     },
     "slide-2": {
       "title": "选择您的配对钱包",
-      "description": "将 AirGap Vault 与多款主流钱包连接，解锁更多使用场景。"
+      "description": "将 Blackout 与多款主流钱包连接，解锁更多使用场景。"
     },
     "slide-3": {
       "title": "彻底离线，达成最高安全等级",
@@ -152,12 +151,12 @@
       "description_p2": "例如：BIP39 密码短语、自定义派生路径、BIP85 派生子助记词等"
     },
     "slide-6": {
-      "title": "立即开始设置 AirGap Vault！",
+      "title": "立即开始设置 Blackout！",
       "button_label": "阅读免责声明"
     }
   },
   "onboarding-advanced-mode": {
-    "title": "欢迎使用 AirGap",
+    "title": "欢迎使用 Blackout",
     "simple": {
       "title": "标准模式",
       "description": "隐藏进阶专业功能，提供简洁易用的操作体验。"
@@ -182,20 +181,20 @@
   "introduction": {
     "title": "安装 AirGap Wallet",
     "header": "与您的{{installationType}}配合使用",
-    "online-desc": "根据架构设计，AirGap Vault 绝不连接任何在线服务。您的私钥与助记词绝不会离开 AirGap Vault，从而免受网络威胁。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
-    "offline-desc": "根据架构设计，AirGap Vault 绝不连接任何在线服务。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
-    "offline-companion_text": "请在另一台可联网的日常设备上安装配对观察钱包，两个应用之间仅通过二维码传输公开信息。您的密钥绝不会离开 AirGap Vault，确保免受一切网络威胁",
+    "online-desc": "根据架构设计，Blackout 绝不连接任何在线服务。您的私钥与助记词绝不会离开 Blackout，从而免受网络威胁。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
+    "offline-desc": "根据架构设计，Blackout 绝不连接任何在线服务。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
+    "offline-companion_text": "请在另一台可联网的日常设备上安装配对观察钱包，两个应用之间仅通过二维码传输公开信息。您的密钥绝不会离开 Blackout，确保免受一切网络威胁",
     "highest": {
       "label": "最高安全性（双设备）",
-      "text": "采用 AirGap <b>双设备离线方案</b>，让高安全性的冷钱包私钥管理变得简单易用。"
+      "text": "采用 Blackout <b>双设备离线方案</b>，让高安全性的冷钱包私钥管理变得简单易用。"
     },
     "medium": {
       "label": "中等安全性（同设备双应用）",
-      "text": "采用 AirGap <b>同设备双应用方案</b>，兼顾安全的私钥隔离与便捷的日常交互。"
+      "text": "采用 Blackout <b>同设备双应用方案</b>，兼顾安全的私钥隔离与便捷的日常交互。"
     },
     "vault": {
-      "heading": "AirGap Vault",
-      "text": "私钥在 AirGap Vault 应用内生成并安全存储。<b>您必须安装 AirGap Vault 才能配合使用 AirGap Wallet</b>"
+      "heading": "Blackout",
+      "text": "私钥在 Blackout 应用内生成并安全存储。<b>您必须安装 Blackout 才能配合使用 AirGap Wallet</b>"
     },
     "wallet": {
       "heading": "AirGap Wallet",
@@ -266,7 +265,7 @@
     },
     "interaction": {
       "label": "Vault 与钱包交互方式",
-      "text": "选择 AirGap Vault 与观察钱包是安装在同一台设备上，还是分别安装在两台独立设备上。"
+      "text": "选择 Blackout 与观察钱包是安装在同一台设备上，还是分别安装在两台独立设备上。"
     },
     "secret-recovery-key": {
       "label": "安全存储恢复码",
@@ -356,7 +355,7 @@
   },
   "secret-import": {
     "title": "导入助记词",
-    "text": "您可以将已有的助记词导入 AirGap Vault。请按顺序输入您的助记词单词。",
+    "text": "您可以将已有的助记词导入 Blackout。请按顺序输入您的助记词单词。",
     "placeholder": "wife pulp island ...",
     "warning": "请仔细核对每个助记词单词的拼写。",
     "import_label": "导入",
@@ -568,14 +567,14 @@
   "contact-book-scan": {
     "title": "扫描地址二维码",
     "text": "扫描地址二维码以将其添加到您的地址簿",
-    "empty-state_heading": "为了扫描二维码，AirGap Vault 需要获取<span class=\"style__strong color__primary\">摄像头权限</span>。",
+    "empty-state_heading": "为了扫描二维码，Blackout 需要获取<span class=\"style__strong color__primary\">摄像头权限</span>。",
     "grant-permission_label": "继续"
   },
   "tab-scan": {
     "title": "扫码签名",
     "text": "扫描来自 AirGap Wallet 或观察钱包的二维码",
     "multi-qr_text": "此交易包含多个分片动态二维码。请将摄像头保持对准动态变化的二维码，直到扫描进度完成。",
-    "empty-state_heading": "为了扫描二维码，AirGap Vault 需要获取<span class=\"style__strong color__primary\">摄像头权限</span>。",
+    "empty-state_heading": "为了扫描二维码，Blackout 需要获取<span class=\"style__strong color__primary\">摄像头权限</span>。",
     "grant-permission_label": "继续"
   },
   "tab-settings": {
@@ -648,7 +647,7 @@
     },
     "no-secret_alert": {
       "title": "未找到匹配账户",
-      "text": "AirGap Vault 中没有找到与该公钥匹配的账户。请先导入对应的助记词并创建相应币种账户，然后再签署此交易。",
+      "text": "Blackout 中没有找到与该公钥匹配的账户。请先导入对应的助记词并创建相应币种账户，然后再签署此交易。",
       "okay_label": "好的"
     },
     "raw-tx_alert": {
@@ -724,7 +723,7 @@
     "hd-wallet_chip": "HD 钱包",
     "bip39-passphrase_chip": "BIP39 密码短语",
     "sync-with_label": "您可以将此账户与以下钱包同步：",
-    "metamask-migration_text": "如需配合 MetaMask 或 Rabby 钱包使用 AirGap Vault，请先迁移此账户：只需将此以太坊（Ethereum）账户删除后重新添加即可。如需帮助，请查阅官方文档。",
+    "metamask-migration_text": "如需配合 MetaMask 或 Rabby 钱包使用 Blackout，请先迁移此账户：只需将此以太坊（Ethereum）账户删除后重新添加即可。如需帮助，请查阅官方文档。",
     "address-qr_title": "地址二维码",
     "close_label": "关闭",
     "sync_label": "同步账户",
@@ -819,7 +818,7 @@
   "warnings-modal": {
     "root": {
       "title": "检测到设备已 Root / 越狱",
-      "description": "检测到您的设备已获取 Root 权限或已越狱。这会严重削弱设备的系统级安全边界，导致其他应用可能绕过 AirGap 的安全防护机制。为了保障资产安全，AirGap 无法在此设备上运行。"
+      "description": "检测到您的设备已获取 Root 权限或已越狱。这会严重削弱设备的系统级安全边界，导致其他应用可能绕过 Blackout 的安全防护机制。为了保障资产安全，Blackout 无法在此设备上运行。"
     },
     "screenshot": {
       "title": "检测到截屏操作",
@@ -827,16 +826,16 @@
     },
     "secure-storage": {
       "title": "设备未设置安全锁屏",
-      "description": "您需要先为设备设置系统锁屏密码（PIN 码、密码或生物识别），以便硬件安全存储正常加密并保护您的密钥。设置完成后，请彻底关闭并重新打开 AirGap Vault。",
+      "description": "您需要先为设备设置系统锁屏密码（PIN 码、密码或生物识别），以便硬件安全存储正常加密并保护您的密钥。设置完成后，请彻底关闭并重新打开 Blackout。",
       "button-text_label": "前往设置设备锁屏"
     },
     "network": {
       "title": "检测到网络连接",
-      "description": "检测到当前设备已连接网络。虽然 AirGap Vault 应用本身不具备网络访问权限，但为确保物理隔离安全，强烈建议您完全断开设备的一切网络连接并开启飞行模式。",
+      "description": "检测到当前设备已连接网络。虽然 Blackout 应用本身不具备网络访问权限，但为确保物理隔离安全，强烈建议您完全断开设备的一切网络连接并开启飞行模式。",
       "button": "签署消息"
     },
     "disclaimer": {
-      "title": "AirGap 免责声明",
+      "title": "Blackout 免责声明",
       "text": "作为用户，您在此完全接受并认可本协议及其包含的全部条款。您确认已亲自审阅、测试并充分理解本软件的使用方式与本文档内容。",
       "disclaimer-list": {
         "text": "在适用法律允许的最大范围内：",
@@ -937,11 +936,11 @@
   "danger-zone": {
     "label": "高危操作区",
     "description": "本页面中的操作仅面向高级用户。在执行以下任何操作前，请务必清楚了解其不可逆后果。",
-    "wipe_label": "重置 AirGap Vault（清空数据）",
+    "wipe_label": "重置 Blackout（清空数据）",
     "wipe": {
       "confirm": {
         "title": "擦除所有密钥",
-        "description": "此操作将彻底删除本设备上的所有密钥与账户，并将 AirGap Vault 恢复至初始出厂状态。此操作不可撤销。",
+        "description": "此操作将彻底删除本设备上的所有密钥与账户，并将 Blackout 恢复至初始出厂状态。此操作不可撤销。",
         "backup_label": "我已妥善备份所有密钥的助记词",
         "acknowledge_label": "我明白如果没有备份助记词，擦除后将永久无法找回密钥与资产。",
         "input_label": "请输入“{{phrase}}”以确认重置：",
@@ -1065,16 +1064,16 @@
     "description": "本指南将一步步为您介绍如何配置一台高安全性的物理隔离离线冷钱包设备。",
     "simple": {
       "title": "基础安全配置",
-      "step1": "准备一台专用手机，从现在起仅用于运行 AirGap Vault，不安装任何其他无关应用。",
+      "step1": "准备一台专用手机，从现在起仅用于运行 Blackout，不安装任何其他无关应用。",
       "step2": "将设备系统更新至最新固件，并安装所有可用的安全补丁。",
       "step3": "对设备执行“恢复出厂设置”。",
       "step4": "重新初始化设备并设置高强度锁屏密码，同时建议启用指纹或面容识别。",
-      "step5": "安装 AirGap Vault 应用。",
+      "step5": "安装 Blackout 应用。",
       "step6": "将设备开启“飞行模式”，并从此永久保持断网状态。"
     },
     "advanced": {
       "title": "进阶安全配置",
-      "step1": "准备一台专用手机，从现在起仅用于运行 AirGap Vault，不安装任何其他无关应用。",
+      "step1": "准备一台专用手机，从现在起仅用于运行 Blackout，不安装任何其他无关应用。",
       "step2": "将设备系统更新至最新固件，并安装所有可用的安全补丁。",
       "step3": "对设备执行“恢复出厂设置”。",
       "disable_wifi": "彻底关闭 Wi-Fi。",
@@ -1082,24 +1081,24 @@
       "enable_airplane": "开启飞行模式。",
       "speakers_off": "确保扬声器已静音关闭。声波信道在理论上仍可被用于低速传输数据，建议将其关闭以实现真正严格的物理隔离（Air-Gap）。",
       "ios": {
-        "step4": "使用您的日常主力手机开启个人热点，并设置一个临时的高复杂度密码。我们将短暂通过此热点下载 AirGap Vault。",
+        "step4": "使用您的日常主力手机开启个人热点，并设置一个临时的高复杂度密码。我们将短暂通过此热点下载 Blackout。",
         "step5": "激活并设置您的专用离线设备；当系统提示连接 Wi-Fi 时，连接到上方创建的个人热点。",
         "step6": "登录 Apple ID（最理想的做法是专门为这台离线设备注册一个全新的 Apple ID）。",
         "step7": "设置高强度锁屏密码，并按需启用生物识别保护。",
-        "step8": "打开 App Store 下载并安装官方正版 AirGap Vault。",
+        "step8": "安装项目提供的已签名 Blackout 版本，并核实安装包来源。",
         "disable_cellular": "切勿插卡并关闭蜂窝移动网络（在系统设置中关闭蜂窝数据）。蜂窝网络会让设备接触互联网，违背冷钱包离线存储的初衷。",
         "disconnect_hotspot": "在您的日常手机上断开所有热点连接，并立即修改或关闭个人热点密码。"
       },
       "android": {
-        "step4": "在联网电脑或手机上，从 AirGap 官方 GitHub Release 页面下载 AirGap Vault APK 安装包（或自行从源码编译）。",
+        "step4": "在联网电脑或手机上，从 Blackout 官方 GitHub Release 页面下载 Blackout APK 安装包（或自行从源码编译）。",
         "step5": "通过 SD 卡或 U 盘将下载好的安装包拷贝至离线设备中进行安装。"
       }
     },
     "removing": {
-      "title": "安全停用与卸载 AirGap Vault",
-      "step1": "在 AirGap Vault 中删除所有已保存的密钥。",
-      "step2": "前往 AirGap Vault“设置”，点击“重置 AirGap Vault（清空数据）”并确认擦除。",
-      "step3": "从设备系统中卸载 AirGap Vault 应用。",
+      "title": "安全停用与卸载 Blackout",
+      "step1": "在 Blackout 中删除所有已保存的密钥。",
+      "step2": "前往 Blackout“设置”，点击“重置 Blackout（清空数据）”并确认擦除。",
+      "step3": "从设备系统中卸载 Blackout 应用。",
       "ios": {
         "step4": "前往 iOS 系统“设置 -> 通用 -> 传输或还原 iPhone”，选择“抹掉所有内容和设置”。"
       },
@@ -1108,12 +1107,12 @@
       }
     },
     "updating": {
-      "title": "离线更新 AirGap Vault",
+      "title": "离线更新 Blackout",
       "ios": {
         "description": "在 iOS 设备上，无法在保持完全离线的情况下更新应用。如需更新，请先确保已妥善备份助记词，然后卸载应用、抹掉设备并按照上述安全设置指南重新安装。"
       },
       "android": {
-        "step1": "在联网设备上，从 AirGap 官方 GitHub 下载最新版本的 AirGap Vault APK 安装包（或自行从源码编译）。",
+        "step1": "在联网设备上，从 Blackout 官方 GitHub 下载最新版本的 Blackout APK 安装包（或自行从源码编译）。",
         "step2": "通过 SD 卡或 U 盘将安装包拷贝至离线设备，直接覆盖安装更新。"
       }
     }

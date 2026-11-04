@@ -8,7 +8,7 @@ const blobURL: string = window.URL.createObjectURL(new Blob([entropyCalculatorWo
 const entropyCalculatorWorker: Worker = new Worker(blobURL)
 
 @Component({
-  selector: 'airgap-touch-entropy',
+  selector: 'blackout-touch-entropy',
   templateUrl: './touch-entropy.component.html',
   styleUrls: ['./touch-entropy.component.scss']
 })

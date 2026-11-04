@@ -6,7 +6,7 @@ import { SecretsService } from 'src/app/services/secrets/secrets.service'
 import * as bip39 from 'bip39'
 
 @Component({
-  selector: 'airgap-social-recovery-generate-setup',
+  selector: 'blackout-social-recovery-generate-setup',
   templateUrl: './social-recovery-generate-setup.page.html',
   styleUrls: ['./social-recovery-generate-setup.page.scss']
 })

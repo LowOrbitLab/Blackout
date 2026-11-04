@@ -1,9 +1,9 @@
 {
-  "name": "airgap-vault",
-  "description": "A secure crypto wallet",
+  "name": "blackout",
+  "description": "Offline cryptocurrency signing wallet",
   "version": "1.0.0",
-  "author": "Papers.ch <contact@papers.ch>",
-  "homepage": "https://papers.ch/",
+  "author": "LowOrbitLab",
+  "homepage": "https://github.com/LowOrbitLab/Blackout",
   "private": true,
   "main": "electron/main.js",
   "scripts": {
@@ -13,13 +13,13 @@
     "signatures:refresh": "python3 scripts/refresh-signatures-sourcify.py",
     "build:signatures": "node scripts/build-signature-db.js",
     "smoke:evm": "node scripts/smoke-decoder.mjs && node scripts/smoke-renderer.mjs",
-    "build": "yarn build:signatures && ng build",
-    "build:prod": "yarn build:signatures && ng build --configuration production",
-    "build:no-sapling": "yarn remove-sapling && yarn prepare-prod-build && yarn build:signatures && ng build --configuration production",
+    "build": "node scripts/apply-blackout-branding.cjs && yarn build:signatures && ng build",
+    "build:prod": "node scripts/apply-blackout-branding.cjs && yarn build:signatures && ng build --configuration production",
+    "build:no-sapling": "node scripts/apply-blackout-branding.cjs && yarn remove-sapling && yarn prepare-prod-build && yarn build:signatures && ng build --configuration production",
     "build:stats": "ng build --stats-json",
     "build:analyze": "yarn build:stats && webpack-bundle-analyzer ./www/stats.json",
-    "build:electron": "yarn build:signatures && ng build --base-href=./",
-    "build:electron:prod": "yarn build:signatures && ng build --base-href=./ --configuration production",
+    "build:electron": "node scripts/apply-blackout-branding.cjs && yarn build:signatures && ng build --base-href=./",
+    "build:electron:prod": "node scripts/apply-blackout-branding.cjs && yarn build:signatures && ng build --base-href=./ --configuration production",
     "memory": "node --max_old_space_size=8048 ./node_modules/@angular/cli/bin/ng serve --port 4201",
     "test": "ng test",
     "test-ci": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng test --code-coverage --watch=false",
@@ -27,7 +27,7 @@
     "lint-ci": "ng lint app --format json > ./lintReport.json || true",
     "lint-fix": "tslint --fix --project tsconfig.json",
     "e2e": "ng e2e",
-    "postinstall": "jetifier && node apply-diagnostic-modules.js && node patch-dependency-versions.js && node fix-qrscanner-gradle.js && node copy-builtin-modules.js",
+    "postinstall": "jetifier && node apply-diagnostic-modules.js && node patch-dependency-versions.js && node fix-qrscanner-gradle.js && node copy-builtin-modules.js && node scripts/apply-blackout-branding.cjs",
     "sonar-scanner": "sonar-scanner",
     "prettier": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "remove-sapling": "replace './assets/sapling/sapling-' './assets/no-sapling-web/sapling-' ./src/app/app.component.ts",
@@ -37,7 +37,11 @@
     "electron:install": "yarn --cwd electron/ install --",
     "install-test-dependencies": "node install-test-deps.js",
     "install-build-dependencies": "node install-build-deps.js",
-    "apply-diagnostic-modules": "node apply-diagnostic-modules.js"
+    "apply-diagnostic-modules": "node apply-diagnostic-modules.js",
+    "brand:apply": "node scripts/apply-blackout-branding.cjs",
+    "brand:assets": "node scripts/generate-brand-assets.cjs",
+    "verify:branding": "node --test --test-timeout=55000 scripts/verify-branding.test.cjs",
+    "electron:prepare": "node scripts/prepare-electron.cjs"
   },
   "resolutions": {
     "@airgap/aeternity": "0.14.0",
@@ -255,5 +259,9 @@
       "cordova-plugin-device-motion": {}
     }
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LowOrbitLab/Blackout.git"
+  }
 }

@@ -7,7 +7,7 @@ type SingleWord = string
 const ADDITIONAL_WORDS: number = 2
 
 @Component({
-  selector: 'airgap-verify-key-alt',
+  selector: 'blackout-verify-key-alt',
   templateUrl: './verify-key-alt.component.html',
   styleUrls: ['./verify-key-alt.component.scss']
 })
