@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core'
 })
 export class SecurityLevelSelfCheckPage implements OnInit {
   checkPhrases: string[] = [
-    'Seedphrase was created in an offline setup',
-    'Seedphrase is backed-up on a metal plate',
-    'Seedphrase was created by using Coin Flip / Dice Rolls',
-    'Seedphrase is backed-up via Social Recovery',
-    'Seedphrase is protected with a BIP 39 Passphrase',
-    'Seedphrase was never exposed to the internet',
-    'AirGap Vault is installed on an offline device',
-    'AirGap Vault runs on a device which was factory reset before the installation',
-    'When updating the Vault the device was never connected to the internet',
-    'AirGap Vault runs on an AirGap Knox managed device'
+    'security-level-self-check.check_1',
+    'security-level-self-check.check_2',
+    'security-level-self-check.check_3',
+    'security-level-self-check.check_4',
+    'security-level-self-check.check_5',
+    'security-level-self-check.check_6',
+    'security-level-self-check.check_7',
+    'security-level-self-check.check_8',
+    'security-level-self-check.check_9',
+    'security-level-self-check.check_10'
   ]
 
   constructor() {}

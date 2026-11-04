@@ -16,13 +16,13 @@
       <h5>{{ aggregatedInfo.totalFees.toFixed() | feeConverter : { protocol: airGapTxs[0].protocolIdentifier } | async }}</h5>
     </ion-col>
     <ion-col size="4">
-      <small>Amount</small>
+      <small>{{ 'signed-transaction.amount_label' | translate }}</small>
     </ion-col>
     <ion-col size="4">
-      <small>Operations</small>
+      <small>{{ 'signed-transaction.operations_label' | translate }}</small>
     </ion-col>
     <ion-col size="4">
-      <small>Fee</small>
+      <small>{{ 'signed-transaction.fee_label' | translate }}</small>
     </ion-col>
   </ion-row>
 </ng-container>

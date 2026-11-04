@@ -20,7 +20,7 @@
     <ion-card-header>
       <ion-row>
         <ion-col>
-          <ion-card-title>SIMPLE</ion-card-title>
+          <ion-card-title>{{ 'onboarding-advanced-mode.simple.title' | translate }}</ion-card-title>
         </ion-col>
         <ion-col size="1">
           <ion-checkbox *ngIf="advancedModeType === advancedModeTypes.SIMPLE" [checked]="true"></ion-checkbox>
@@ -28,7 +28,7 @@
       </ion-row>
     </ion-card-header>
 
-    <ion-card-content>Disable advanced features to simplify the app.</ion-card-content>
+    <ion-card-content>{{ 'onboarding-advanced-mode.simple.description' | translate }}</ion-card-content>
   </ion-card>
 
   <!-- TODO: Use better colors for "not selected" and "selected"-->
@@ -41,7 +41,7 @@
     <ion-card-header>
       <ion-row>
         <ion-col>
-          <ion-card-title>ADVANCED</ion-card-title>
+          <ion-card-title>{{ 'onboarding-advanced-mode.advanced.title' | translate }}</ion-card-title>
         </ion-col>
         <ion-col size="1">
           <ion-checkbox *ngIf="advancedModeType === advancedModeTypes.ADVANCED" [checked]="true"></ion-checkbox>
@@ -49,16 +49,16 @@
       </ion-row>
     </ion-card-header>
     <ion-card-content>
-      This will enable advanced features.
+      {{ 'onboarding-advanced-mode.advanced.description' | translate }}
 
       <ul>
-        <li>BIP39 Passphrases</li>
-        <li>Lifehash Identicons</li>
+        <li>{{ 'onboarding-advanced-mode.advanced.feature_1' | translate }}</li>
+        <li>{{ 'onboarding-advanced-mode.advanced.feature_2' | translate }}</li>
       </ul>
     </ion-card-content>
   </ion-card>
 
-  <p *ngIf="!isSettingsModal">You can change this later in the settings.</p>
+  <p *ngIf="!isSettingsModal">{{ 'onboarding-advanced-mode.footer_text' | translate }}</p>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button shape="round" color="primary" [disabled]="advancedModeType === advancedModeTypes.UNDETERMINED" (click)="next()">

@@ -36,7 +36,7 @@
       <ion-item class="ion-no-padding" *ngIf="isAdvancedMode" lines="full">
         <ion-label position="stacked" color="primary">{{ 'wallet-select-coins.custom-path.label' | translate }}</ion-label>
         <ng-container *ngIf="!singleSelectedProtocol">
-          <p>Derivation Path can only be set if one protocol is selected.</p>
+          <p>{{ 'wallet-select-coins.custom-path.disabled_text' | translate }}</p>
           <ng-container *ngIf="!singleSelectedProtocol">
             <ion-input [disabled]="true" placeholder="{{ 'wallet-select-coins.custom-path.placeholder' | translate }}"></ion-input>
           </ng-container>
@@ -59,15 +59,15 @@
 
       <ng-container *ngIf="isBip39PassphraseEnabled">
         <ion-item class="ion-no-padding" *ngIf="isBip39PassphraseEnabled" lines="full">
-          <ion-label position="stacked" color="primary">BIP-39 Passphrase</ion-label>
+          <ion-label position="stacked" color="primary">{{ 'bip85-generate.bip39-passphrase' | translate }}</ion-label>
           <ion-input
             [type]="revealBip39Passphrase ? 'text' : 'password'"
             [(ngModel)]="bip39Passphrase"
-            placeholder="BIP-39 Passphrase"
+            placeholder="{{ 'bip85-generate.bip39-passphrase' | translate }}"
           ></ion-input>
         </ion-item>
 <ion-item class="ion-no-padding ion-margin-bottom">
-          Reveal Passphrase
+          {{ 'bip85-generate.bip39-passphrase-reveal' | translate }}
           <ion-checkbox [(ngModel)]="revealBip39Passphrase" slot="end"></ion-checkbox>
         </ion-item>
       </ng-container>

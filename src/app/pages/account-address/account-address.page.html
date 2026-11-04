@@ -34,13 +34,15 @@
         <span class="selectable typography--mono">{{ wallet.derivationPath }}</span>
       </p>
       <p *ngIf="isAppAdvancedMode$ | async">
-        <ion-chip color="light" *ngIf="wallet.isExtendedPublicKey">HD Wallet</ion-chip>
-        <ion-chip color="light" *ngIf="secret.fingerprint !== wallet.masterFingerprint">BIP39 passphrase</ion-chip>
+        <ion-chip color="light" *ngIf="wallet.isExtendedPublicKey">{{ 'wallet-address.hd-wallet_chip' | translate }}</ion-chip>
+        <ion-chip color="light" *ngIf="secret.fingerprint !== wallet.masterFingerprint">
+          {{ 'wallet-address.bip39-passphrase_chip' | translate }}
+        </ion-chip>
       </p>
     </ion-col>
   </ion-row>
 
-  <p class="ion-padding-horizontal ion-padding-bottom">You can sync this account with:</p>
+  <p class="ion-padding-horizontal ion-padding-bottom">{{ 'wallet-address.sync-with_label' | translate }}</p>
 
   <ion-row *ngFor="let option of syncOptions" class="ion-padding-bottom">
     <ion-col size="12">
@@ -54,8 +56,7 @@
   <ng-container *ngIf="showMetaMaskMigrationOnboarding">
     <ion-row>
       <ion-col>
-        To use AirGap Vault with MetaMask or Rabby wallet, please migrate this account. To do so, simply remove and re-add this Ethereum
-        account. For help, visit our docs.
+        {{ 'wallet-address.metamask-migration_text' | translate }}
       </ion-col>
     </ion-row>
   </ng-container>
@@ -64,9 +65,9 @@
     <ng-template>
       <ion-header>
         <ion-toolbar>
-          <ion-title>Address QR</ion-title>
+          <ion-title>{{ 'wallet-address.address-qr_title' | translate }}</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="modal.dismiss()">Close</ion-button>
+            <ion-button (click)="modal.dismiss()">{{ 'wallet-address.close_label' | translate }}</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>

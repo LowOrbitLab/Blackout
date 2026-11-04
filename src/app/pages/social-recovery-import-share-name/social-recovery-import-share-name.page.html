@@ -8,7 +8,7 @@
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Social Recovery Import</ion-title>
+    <ion-title>{{ 'social-recovery-import.header_title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,16 +20,24 @@
       </div>
     </div>
   </div>
-  <h4 class="font--weight__med">Give your share a name</h4>
-  <p>This will help you remember which share you've entered already</p>
+  <h4 class="font--weight__med">{{ 'social-recovery-import.share-name.heading' | translate }}</h4>
+  <p>{{ 'social-recovery-import.share-name.text' | translate }}</p>
 
   <ion-item>
     <form [formGroup]="socialRecoveryForm">
-      <ion-input type="text" fill="none" label="Enter a name..." label-placement="floating" formControlName="shareName"></ion-input>
+      <ion-input
+        type="text"
+        fill="none"
+        [label]="'social-recovery-import.share-name.placeholder' | translate"
+        label-placement="floating"
+        formControlName="shareName"
+      ></ion-input>
     </form>
   </ion-item>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button (click)="nextState()" color="primary" shape="round" [disabled]="!shareName || shareName.length === 0">Confirm</ion-button>
+    <ion-button (click)="nextState()" color="primary" shape="round" [disabled]="!shareName || shareName.length === 0">
+      {{ 'social-recovery-import.setup.confirm_label' | translate }}
+    </ion-button>
   </ion-fab>
 </ion-content>

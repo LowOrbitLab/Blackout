@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/social-recovery-import-share-validate"></ion-back-button>
     </ion-buttons>
-    <ion-title>Social Recovery Import</ion-title>
+    <ion-title>{{ 'social-recovery-import.header_title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
@@ -26,13 +26,15 @@
         d="M80 176a16 16 0 00-16 16v216c0 30.24 25.76 56 56 56h272c30.24 0 56-24.51 56-54.75V192a16 16 0 00-16-16zM160 176v-32a96 96 0 0196-96h0a96 96 0 0196 96v32"
       />
     </svg>
-    <h1>Success!</h1>
+    <h1>{{ 'social-recovery-import.success.heading' | translate }}</h1>
 
-    <p>Congratulations! You have successfully recovered your secret using your social recovery shares</p>
-    <p>In the next step, you will be asked to give your secret a name and choose your encryption options</p>
+    <p>{{ 'social-recovery-import.success.text_1' | translate }}</p>
+    <p>{{ 'social-recovery-import.success.text_2' | translate }}</p>
   </div>
 
   <div class="button-wrapper">
-    <ion-button color="primary" shape="round" (click)="nextState()">Continue</ion-button>
+    <ion-button color="primary" shape="round" (click)="nextState()">
+      {{ 'social-recovery-import.success.continue_label' | translate }}
+    </ion-button>
   </div>
 </ion-content>

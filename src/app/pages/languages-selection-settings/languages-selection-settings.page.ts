@@ -32,14 +32,29 @@ export class LanguagesSelectionSettingsPage implements OnInit {
 
   public async getCurrentLanguage(): Promise<LanguagesType> {
     const savedLanguage = await this.storageService.get(VaultStorageKey.LANGUAGE_TYPE)
-    const deviceLanguage = this.translateService.getBrowserLang()
+    const deviceLanguage = this.getNormalizedBrowserLanguage()
 
-    return savedLanguage || (deviceLanguage as LanguagesType) || LanguagesType.EN
+    return savedLanguage || deviceLanguage || LanguagesType.EN
   }
 
   public async defaultToDevice() {
-    const deviceLanguage = this.translateService.getBrowserLang() as LanguagesType
+    const deviceLanguage = this.getNormalizedBrowserLanguage()
     this.changeLanguage(deviceLanguage)
+  }
+
+  private getNormalizedBrowserLanguage(): LanguagesType {
+    const rawBrowserLang = this.translateService.getBrowserLang()
+    if (rawBrowserLang === 'zh') {
+      return LanguagesType.ZH_CN
+    }
+    if (rawBrowserLang === 'pt') {
+      return LanguagesType.PT_BR
+    }
+    if (Object.values(LanguagesType).includes(rawBrowserLang as LanguagesType)) {
+      return rawBrowserLang as LanguagesType
+    }
+
+    return LanguagesType.EN
   }
 
   public async changeLanguage(language: LanguagesType): Promise<void> {

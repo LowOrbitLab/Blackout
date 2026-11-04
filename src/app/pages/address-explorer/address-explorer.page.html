@@ -3,17 +3,17 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab-accounts"></ion-back-button>
     </ion-buttons>
-    <ion-title>Address Explorer</ion-title>
+    <ion-title>{{ 'address-explorer.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-segment *ngIf="showChange" (ionChange)="segmentChanged($event)" value="external">
     <ion-segment-button value="external">
-      <ion-label>Receive</ion-label>
+      <ion-label>{{ 'address-explorer.receive_label' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button value="internal">
-      <ion-label>Change</ion-label>
+      <ion-label>{{ 'address-explorer.change_label' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -23,10 +23,10 @@
         <ion-icon name="warning" slot="start" color="dark"></ion-icon>
         <ion-label color="dark" class="ion-text-wrap">
           <h3>
-            <strong>Warning</strong>
+            <strong>{{ 'address-explorer.warning_title' | translate }}</strong>
           </h3>
           <p>
-            Only use those addresses if you know what you are doing. Using the wrong one could mean funds won't show up in your balance!
+            {{ 'address-explorer.warning_text' | translate }}
           </p>
         </ion-label>
       </ion-item>
@@ -47,6 +47,9 @@
   </ion-card>
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more addresses..."></ion-infinite-scroll-content>
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      [loadingText]="'address-explorer.loading_text' | translate"
+    ></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

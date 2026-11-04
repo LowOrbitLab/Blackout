@@ -61,7 +61,12 @@
   "about": {
     "label": "About",
     "version": "Version:",
-    "code": "Code:"
+    "code": "Code:",
+    "open-source_text": "AirGap is a free and open source project.",
+    "social-media_header": "Social Media",
+    "help_header": "Help",
+    "developers_header": "Developers",
+    "made-in_text": "Made in 🇨🇭"
   },
   "shop": {
     "label": "AirGap Shop",
@@ -76,8 +81,19 @@
     "copy_label": "Copy Link"
   },
   "security-level-self-check": {
+    "title": "Security Level Self-Check",
     "heading": "Security Level Self-Check",
-    "description": "Determine your level of security by checking your personal setup. By having all boxes checked you can be assured you have leveraged the full security potential of the AirGap Vault"
+    "description": "Determine your level of security by checking your personal setup. By having all boxes checked you can be assured you have leveraged the full security potential of the AirGap Vault",
+    "check_1": "Seedphrase was created in an offline setup",
+    "check_2": "Seedphrase is backed-up on a metal plate",
+    "check_3": "Seedphrase was created by using Coin Flip / Dice Rolls",
+    "check_4": "Seedphrase is backed-up via Social Recovery",
+    "check_5": "Seedphrase is protected with a BIP 39 Passphrase",
+    "check_6": "Seedphrase was never exposed to the internet",
+    "check_7": "AirGap Vault is installed on an offline device",
+    "check_8": "AirGap Vault runs on a device which was factory reset before the installation",
+    "check_9": "When updating the Vault the device was never connected to the internet",
+    "check_10": "AirGap Vault runs on an AirGap Knox managed device"
   },
   "advanced-mode": {
     "label": "Advanced Mode",
@@ -108,10 +124,24 @@
     "label": "Active Secret:"
   },
   "signed-transaction": {
-    "transaction-unreadable": "We were not able to extract information from this transaction. This does not mean that the transaction is invalid - Please make sure that you know what you are doing, and you can verify that you know that this transaction contains the correct data."
+    "transaction-unreadable": "We were not able to extract information from this transaction. This does not mean that the transaction is invalid - Please make sure that you know what you are doing, and you can verify that you know that this transaction contains the correct data.",
+    "amount_label": "Amount",
+    "operations_label": "Operations",
+    "fee_label": "Fee"
   },
   "onboarding-advanced-mode": {
-    "title": "Welcome to AirGap"
+    "title": "Welcome to AirGap",
+    "simple": {
+      "title": "SIMPLE",
+      "description": "Disable advanced features to simplify the app."
+    },
+    "advanced": {
+      "title": "ADVANCED",
+      "description": "This will enable advanced features.",
+      "feature_1": "BIP39 Passphrases",
+      "feature_2": "Lifehash Identicons"
+    },
+    "footer_text": "You can change this later in the settings."
   },
   "installation-type": {
     "title": "Installation Type",
@@ -241,7 +271,11 @@
       "message": "Something went wrong!",
       "abort-button_label": "Abort",
       "retry-button_label": "Retry"
-    }
+    },
+    "save_title": "Save Your Secret",
+    "edit_title": "Edit Your Secret",
+    "name_placeholder": "Name of your secret...",
+    "setting_disabled": "This setting is disabled. Import your secret again to change it."
   },
   "social-recovery-generate": {
     "intro-state-1-title": "Social Recovery",
@@ -299,7 +333,9 @@
     "placeholder": "wife pulp island ...",
     "warning": "Please double-check the spelling of your secret.",
     "import_label": "Import",
-    "passphrase": "To use the BIP-39 Passphrase feature, ADVANCE MODE must be activated in the settings. If enabled the Passphrase is required for each transaction."
+    "passphrase": "To use the BIP-39 Passphrase feature, ADVANCE MODE must be activated in the settings. If enabled the Passphrase is required for each transaction.",
+    "select-word_label": "Select the correct word for this position.",
+    "last-word_label": "To generate a valid 24 word mnemonic, one of the following words must be your last word."
   },
   "secret-rules": {
     "title": "Read carefully",
@@ -328,7 +364,9 @@
       "text": "Make sure that you followed all the rules and didn't do anything other than writing down your secret on paper.",
       "wait_label_p1": "Please wait until at least ",
       "wait_label_p2": "s are over."
-    }
+    },
+    "show_label": "Show Recovery Phrase",
+    "hide_label": "Hide Recovery Phrase"
   },
   "secret-validate": {
     "title": "Verify your recovery phrase",
@@ -356,7 +394,7 @@
       "de": "German (AI translated)",
       "es": "Spanish (AI translated)",
       "ru": "Russian",
-      "fr":"French (AI translated)",
+      "fr": "French (AI translated)",
       "pt_BR": "Portuguese (Brazil)",
       "zh_CN": "Chinese (China)"
     },
@@ -375,7 +413,51 @@
       "heading": "Number of Shares for Recovery",
       "label": "Share Number"
     },
-    "recover_label": "Recover"
+    "recover_label": "Recover",
+    "header_title": "Social Recovery Import",
+    "intro": {
+      "heading": "Recover Secret with Multiple Shares",
+      "text_1": "To recover your secret, you will need to use multiple social shares",
+      "text_2": "Keep in mind that the number of shares used for recovery must match the number of shares specified during the initial setup of the social recovery process",
+      "text_3": "In the next step, please specify the number of shares to recover your secret",
+      "start_label": "Let's start"
+    },
+    "setup": {
+      "heading": "Select the number of shares you want to recover your secret from",
+      "confirm_label": "Confirm"
+    },
+    "share-name": {
+      "heading": "Give your share a name",
+      "text": "This will help you remember which share you've entered already",
+      "placeholder": "Enter a name..."
+    },
+    "share-validate": {
+      "heading": "Enter the terms of {{shareName}}",
+      "text": "Use the suggested terms or the keyboard",
+      "last-word_label": "One of the following words must be your last word."
+    },
+    "help": {
+      "title": "Social Recovery Help",
+      "heading": "How Social Recovery Works",
+      "shares_title": "Number of Shares",
+      "shares_text": "Select the number of shares that you wish to recover your secret from. This can be anywhere between 2 to 6. Make sure that this corresponds to the same number of shares that was initially selected when creating the shares",
+      "entering_title": "Entering a Share",
+      "entering_text": "Next, you'll be asked to enter the terms for each share. To do so, you can use the terms that are suggested or use our mnemonic secure keyboard. A share can consist of 24 terms. Make sure that you put the terms in the right order too",
+      "all_title": "Enter All Shares",
+      "all_text": "After one share has been entered successfully, you’ll be asked to enter the next one until all shares have been entered"
+    },
+    "errors": {
+      "title": "Error",
+      "text_1": "Unfortunately, there was an error while attempting to recover your secret using your social shares.",
+      "text_2": "Please ensure that you have entered the correct number and combination of related social shares when attempting to recover your secret again",
+      "back_label": "Go Back"
+    },
+    "success": {
+      "heading": "Success!",
+      "text_1": "Congratulations! You have successfully recovered your secret using your social recovery shares",
+      "text_2": "In the next step, you will be asked to give your secret a name and choose your encryption options",
+      "continue_label": "Continue"
+    }
   },
   "social-recovery-setup": {
     "title": "Social Recovery",
@@ -399,7 +481,7 @@
     "title": "Social Recovery",
     "text": "Tap each word to match the correct order:"
   },
-  "isolated-module" : {
+  "isolated-module": {
     "text": "Can't find your favourite coin? Create an Isolated Module to integrate it"
   },
   "contact-book": {
@@ -435,7 +517,20 @@
     "label_recommendations": "Recommendations",
     "label_recommendation_on_who": "We'll make recommendations on who to add based on addresses you interact with frequently",
     "label_suggestions": "Suggestions",
-    "label_note_disable": "Note: You can disable this option later in the settings"
+    "label_note_disable": "Note: You can disable this option later in the settings",
+    "suggestion": {
+      "not-in-book_text": "This address is not in your address book:",
+      "add_question": "Do you want to add it?",
+      "no_label": "No",
+      "yes_label": "Yes",
+      "disable_label": "No, disable address book feature"
+    },
+    "sort": {
+      "name": "Standard (Name)",
+      "address": "Address",
+      "creation_date": "Creation Date",
+      "added_by": "Added by"
+    }
   },
   "contacts-delete-popover": {
     "title": "Reset Entries",
@@ -610,7 +705,13 @@
         "message": "Can't proceed, please update or re-add the account first.",
         "button_label": "Ok"
       }
-    }
+    },
+    "hd-wallet_chip": "HD Wallet",
+    "bip39-passphrase_chip": "BIP39 passphrase",
+    "sync-with_label": "You can sync this account with:",
+    "metamask-migration_text": "To use AirGap Vault with MetaMask or Rabby wallet, please migrate this account. To do so, simply remove and re-add this Ethereum account. For help, visit our docs.",
+    "address-qr_title": "Address QR",
+    "close_label": "Close"
   },
   "interaction-selection": {
     "title": "Wallet Interaction",
@@ -630,7 +731,8 @@
       "text": "Do you want to remove this account? You can always add it back later if you know its correct derivation path!",
       "cancel_label": "Cancel",
       "delete_label": "Delete"
-    }
+    },
+    "address_explorer": "Address Explorer"
   },
   "wallet-select-coins": {
     "title": "Add Account",
@@ -642,7 +744,8 @@
     "advanced_label": "Advanced Mode",
     "custom-path": {
       "label": "Custom Derivation Path",
-      "placeholder": "Custom Derivation Path"
+      "placeholder": "Custom Derivation Path",
+      "disabled_text": "Derivation Path can only be set if one protocol is selected."
     },
     "create_label": "Create"
   },
@@ -651,7 +754,9 @@
     "heading": "Scan this QR code with {{walletName}}",
     "text": "This QR includes your public key, address and your type of coin.",
     "same-device_label": "Same-Device-Sync",
-    "done_label": "Done"
+    "done_label": "Done",
+    "qr-details_label": "QR Details",
+    "copy-data_label": "Copy data to clipboard"
   },
   "wallet-share-select": {
     "title": "Sync Account",
@@ -716,7 +821,7 @@
     "advanced_label": "Advanced Mode",
     "bip39-passphrase": "BIP-39 Passphrase",
     "bip39-passphrase-reveal": "Reveal Passphrase",
-    "bip85-input-app-advance-mode":"Index (0-2147483647)",
+    "bip85-input-app-advance-mode": "Index (0-2147483647)",
     "alert": {
       "header": "BIP-39 Passphrase",
       "message": "You set a BIP39 Passphrase. You will need to enter this passphrase again when you try to derive the same child key!",
@@ -846,7 +951,10 @@
   },
   "wordlist": {
     "title": "Wordlist",
-    "search_placeholder": "Search..."
+    "search_placeholder": "Search...",
+    "no_match": "No exact match was found. Maybe you have a typo in your word? Check the similar words below.",
+    "binary_label": "Binary:",
+    "similar_words": "Similar Words"
   },
   "keyboard": {
     "paste": "Paste",
@@ -854,7 +962,9 @@
     "delete": "Delete Word",
     "shuffle": "Shuffle Keys",
     "mask": "Mask Text",
-    "word_list": "Show Word List"
+    "word_list": "Show Word List",
+    "more_suggestions": "{{ hiddenSuggestions }} more",
+    "no_suggestions": "no suggestions"
   },
   "isolated-modules": {
     "loader_message": "Loading..."
@@ -972,5 +1082,40 @@
         "step2": "Copy the downloaded file from your online computer to the offline device via SD Card or USB Stick and replace the old installation."
       }
     }
+  },
+  "onboarding-welcome": {
+    "slide-1": {
+      "title": "Get peace of mind",
+      "description": "AirGap Vault keeps your keys safe and allows you to interact with wallets seamlessly and securely."
+    },
+    "slide-2": {
+      "title": "Choose your companion wallet",
+      "description": "Connect your Vault with various wallets to enable more possibilities."
+    },
+    "slide-3": {
+      "title": "Go Offline to reach highest security",
+      "description": "Take your private key offline, to create a real air-gap between Vault and Wallet. This is the strongest protection layer against hackers."
+    },
+    "slide-4": {
+      "title": "Always Backup Your Seed Phrase",
+      "description": "Recover all your accounts in case something happens to your device."
+    },
+    "slide-5": {
+      "title": "Unlock powerful features",
+      "description_p1": "Gain access to additional features by turning on the Advanced Mode in the settings.",
+      "description_p2": "Such as BIP-39 passphrase, changing of derivation path and lots more"
+    },
+    "slide-6": {
+      "title": "Let's set up AirGap Vault!",
+      "button_label": "Read Disclaimer"
+    }
+  },
+  "address-explorer": {
+    "title": "Address Explorer",
+    "receive_label": "Receive",
+    "change_label": "Change",
+    "warning_title": "Warning",
+    "warning_text": "Only use those addresses if you know what you are doing. Using the wrong one could mean funds won't show up in your balance!",
+    "loading_text": "Loading more addresses..."
   }
 }

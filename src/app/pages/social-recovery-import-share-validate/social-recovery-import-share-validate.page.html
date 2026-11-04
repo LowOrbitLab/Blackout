@@ -8,7 +8,7 @@
         <ion-icon slot="icon-only" name="help-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Social Recovery Import</ion-title>
+    <ion-title>{{ 'social-recovery-import.header_title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,8 +21,8 @@
       </div>
     </div>
   </div>
-  <h4 class="font--weight__med">Enter the terms of {{shareName}}</h4>
-  <p>Use the suggested terms or the keyboard</p>
+  <h4 class="font--weight__med">{{ 'social-recovery-import.share-validate.heading' | translate: { shareName: shareName } }}</h4>
+  <p>{{ 'social-recovery-import.share-validate.text' | translate }}</p>
 
   <ion-row class="secret--container-45 ion-align-items-center" #secretContainer>
     <ion-col>
@@ -59,7 +59,7 @@
   <hr />
 
   <div *ngIf="lastWordOptions.length > 0" class="ion-padding ion-align-items-center">
-    One of the following words must be your last word.
+    {{ 'social-recovery-import.share-validate.last-word_label' | translate }}
     <br />
     <ion-button
       *ngFor="let word of lastWordOptions"

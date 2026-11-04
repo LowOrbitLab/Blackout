@@ -9,7 +9,7 @@ import { NavigationService } from 'src/app/services/navigation/navigation.servic
   styleUrls: ['./social-recovery-import-errors.page.scss']
 })
 export class SocialRecoveryImportErrorsPage implements OnInit {
-  errorTitle = 'Error'
+  errorTitle = 'social-recovery-import.errors.title'
   errorText = ''
   constructor(private readonly modalController: ModalController, private navigationService: NavigationService) {}
 

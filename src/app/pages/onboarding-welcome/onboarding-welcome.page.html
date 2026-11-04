@@ -9,45 +9,44 @@
     <swiper-slide>
       <img src="assets/img/onboarding-peace-of-mind.svg" />
 
-      <h1>Get peace of mind</h1>
-      <p>AirGap Vault keeps your keys safe and allows you to interact with wallets seamlessly and securely.</p>
+      <h1>{{ 'onboarding-welcome.slide-1.title' | translate }}</h1>
+      <p>{{ 'onboarding-welcome.slide-1.description' | translate }}</p>
     </swiper-slide>
     <swiper-slide>
       <img src="assets/img/onboarding-watch-only.svg" />
 
-      <h1>Choose your companion wallet</h1>
-      <p>Connect your Vault with various wallets to enable more possibilities.</p>
+      <h1>{{ 'onboarding-welcome.slide-2.title' | translate }}</h1>
+      <p>{{ 'onboarding-welcome.slide-2.description' | translate }}</p>
     </swiper-slide>
     <swiper-slide>
       <img src="assets/img/onboarding-offline.svg" />
 
-      <h1>Go Offline to reach highest security</h1>
+      <h1>{{ 'onboarding-welcome.slide-3.title' | translate }}</h1>
       <p>
-        Take your private key offline, to create a real air-gap between Vault and Wallet. This is the strongest protection layer against
-        hackers.
+        {{ 'onboarding-welcome.slide-3.description' | translate }}
       </p>
     </swiper-slide>
     <swiper-slide>
       <img src="assets/img/onboarding-backup-seed-phrase.svg" />
 
-      <h1>Always Backup Your Seed Phrase</h1>
-      <p>Recover all your accounts in case something happens to your device.</p>
+      <h1>{{ 'onboarding-welcome.slide-4.title' | translate }}</h1>
+      <p>{{ 'onboarding-welcome.slide-4.description' | translate }}</p>
     </swiper-slide>
     <swiper-slide>
       <img src="assets/img/onboarding-advanced.svg" />
 
-      <h1>Unlock powerful features</h1>
+      <h1>{{ 'onboarding-welcome.slide-5.title' | translate }}</h1>
       <p>
-        Gain access to additional features by turning on the Advanced Mode in the settings.
+        {{ 'onboarding-welcome.slide-5.description_p1' | translate }}
         <br />
-        Such as BIP-39 passphrase, changing of derivation path and lots more
+        {{ 'onboarding-welcome.slide-5.description_p2' | translate }}
       </p>
     </swiper-slide>
     <swiper-slide>
       <img src="assets/img/onboarding-terms.svg" />
-      <h1>Let's set up AirGap Vault!</h1>
+      <h1>{{ 'onboarding-welcome.slide-6.title' | translate }}</h1>
 
-      <ion-button (click)="readDisclaimer()">Read Disclaimer</ion-button>
+      <ion-button (click)="readDisclaimer()">{{ 'onboarding-welcome.slide-6.button_label' | translate }}</ion-button>
     </swiper-slide>
   </swiper-container>
 </ion-content>

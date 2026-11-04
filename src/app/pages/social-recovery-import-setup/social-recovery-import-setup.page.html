@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/social-recovery-import-intro"></ion-back-button>
     </ion-buttons>
-    <ion-title>Social Recovery Import</ion-title>
+    <ion-title>{{ 'social-recovery-import.header_title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div class="content-wrapper">
     <ion-icon name="extension-puzzle-outline"></ion-icon>
-    <h3>Select the number of shares you want to recover your secret from</h3>
+    <h3>{{ 'social-recovery-import.setup.heading' | translate }}</h3>
 
     <div class="row-center">
       <ion-button
@@ -27,6 +27,8 @@
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-button (click)="nextState()" color="primary" shape="round" [disabled]="numberOfShares < 2">Confirm</ion-button>
+    <ion-button (click)="nextState()" color="primary" shape="round" [disabled]="numberOfShares < 2">
+      {{ 'social-recovery-import.setup.confirm_label' | translate }}
+    </ion-button>
   </ion-fab>
 </ion-content>

@@ -25,7 +25,7 @@
     <ion-card *ngFor="let error of errorHistory" (click)="error.expanded = !error.expanded">
       <ion-item>
         <ion-label>{{error.date | date: 'yyyy-MM-dd HH:mm'}}</ion-label>
-        <ion-button fill="outline" slot="end" color="secondary">Details</ion-button>
+        <ion-button fill="outline" slot="end" color="secondary">{{ 'error-history.details_label' | translate }}</ion-button>
       </ion-item>
 
       <ion-card-content>

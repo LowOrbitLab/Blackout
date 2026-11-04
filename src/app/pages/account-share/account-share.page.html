@@ -29,7 +29,7 @@
       <ion-row class="rawdata--container" *ngIf="interactionUrl">
         <ion-col class="ion-no-padding">
           <ion-item class="ion-no-padding" lines="none">
-            <ion-label>QR Details</ion-label>
+            <ion-label>{{ 'wallet-share.qr-details_label' | translate }}</ion-label>
             <ion-toggle [checked]="displayRawData" (ionChange)="displayRawData = !displayRawData" slot="end"></ion-toggle>
           </ion-item>
         </ion-col>
@@ -40,7 +40,7 @@
   <ion-row class="rawdata--container" *ngIf="interactionUrl">
     <ion-col class="ion-no-padding">
       <pre *ngIf="displayRawData" class="ion-no-margin">{{ interactionUrl | json }}</pre>
-      <ion-button *ngIf="displayRawData" (click)="copyToClipboard()">Copy data to clipboard</ion-button>
+      <ion-button *ngIf="displayRawData" (click)="copyToClipboard()">{{ 'wallet-share.copy-data_label' | translate }}</ion-button>
       <ion-button class="float-right" *ngIf="displayRawData" color="primary" shape="round" (click)="done()">
         {{ 'wallet-share.done_label' | translate }}
       </ion-button>

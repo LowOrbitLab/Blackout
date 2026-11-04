@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/tabs/tab-settings"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>Security Level Self-Check</ion-title>
+    <ion-title>{{ 'security-level-self-check.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
   <ion-list lines="none" class="ion-padding-vertical">
     <ion-item detail="false" class="ion-no-padding" *ngFor="let phrase of checkPhrases">
       <ion-checkbox slot="start"></ion-checkbox>
-      {{phrase}}
+      {{ phrase | translate }}
     </ion-item>
   </ion-list>
   <ion-card></ion-card>

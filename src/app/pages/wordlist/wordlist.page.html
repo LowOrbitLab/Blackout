@@ -18,7 +18,7 @@
 <ion-content>
   <ng-container>
     <p *ngIf="filteredWordlist.length === 0" class="ion-padding">
-      No exact match was found. Maybe you have a typo in your word? Check the similar words below.
+      {{ 'wordlist.no_match' | translate }}
     </p>
     <cdk-virtual-scroll-viewport *ngIf="filteredWordlist.length > 0" itemSize="50" minBufferPx="1000" maxBufferPx="1000">
       <ion-list>
@@ -33,14 +33,14 @@
           </ion-label>
 
           <ion-text color="medium">
-            <p>Binary: {{item.binary}}</p>
+            <p>{{ 'wordlist.binary_label' | translate }} {{item.binary}}</p>
           </ion-text>
         </ion-item>
       </ion-list>
     </cdk-virtual-scroll-viewport>
     <cdk-virtual-scroll-viewport *ngIf="filteredWordlist.length < 20" itemSize="50" minBufferPx="1000" maxBufferPx="1000">
       <ion-list>
-        <ion-list-header>Similar Words</ion-list-header>
+        <ion-list-header>{{ 'wordlist.similar_words' | translate }}</ion-list-header>
         <ion-item *cdkVirtualFor="let item of similarWords">
           <ion-label>
             <h2>
@@ -52,7 +52,7 @@
           </ion-label>
 
           <ion-text color="medium">
-            <p>Binary: {{item.binary}}</p>
+            <p>{{ 'wordlist.binary_label' | translate }} {{item.binary}}</p>
           </ion-text>
         </ion-item>
       </ion-list>

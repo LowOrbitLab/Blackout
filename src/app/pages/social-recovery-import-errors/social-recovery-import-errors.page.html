@@ -1,7 +1,7 @@
 <!-- TODO Tim: translate -->
 <ion-header>
   <ion-toolbar>
-    <ion-title>Error</ion-title>
+    <ion-title>{{ 'social-recovery-import.errors.title' | translate }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
         <ion-icon name="close"></ion-icon>
@@ -30,16 +30,17 @@
       />
       <path d="M256 367.91a20 20 0 1120-20 20 20 0 01-20 20z" />
     </svg>
-    <h1>{{ errorTitle }}</h1>
+    <h1>{{ errorTitle | translate }}</h1>
     <p>{{ errorText }}</p>
-    <p>Unfortunately, there was an error while attempting to recover your secret using your social shares.</p>
+    <p>{{ 'social-recovery-import.errors.text_1' | translate }}</p>
     <p>
-      Please ensure that you have entered the correct number and combination of related social shares when attempting to recover your secret
-      again
+      {{ 'social-recovery-import.errors.text_2' | translate }}
     </p>
   </div>
 
   <div class="button-wrapper">
-    <ion-button color="primary" shape="round" (click)="close()">Go Back</ion-button>
+    <ion-button color="primary" shape="round" (click)="close()">
+      {{ 'social-recovery-import.errors.back_label' | translate }}
+    </ion-button>
   </div>
 </ion-content>

@@ -12,13 +12,13 @@
       </ion-col>
       <ion-col *ngIf="hiddenSuggestions > 0">
         <ion-button shape="round" size="small" [color]="'tertiary'" class="typography--mono lowercase">
-          {{ hiddenSuggestions }} more
+          {{ 'keyboard.more_suggestions' | translate: { hiddenSuggestions: hiddenSuggestions } }}
         </ion-button>
       </ion-col>
     </ion-row>
     <!-- TODO: If we don't have a "placeholder" here, the keyboard goes up and down while typing, which is bad -->
     <ion-button *ngIf="suggestions.length === 0" shape="round" size="small" [color]="'secondary'" class="typography--mono lowercase">
-      no suggestions
+      {{ 'keyboard.no_suggestions' | translate }}
     </ion-button>
   </ion-row>
 

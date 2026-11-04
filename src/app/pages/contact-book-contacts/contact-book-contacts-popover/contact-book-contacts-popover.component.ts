@@ -18,10 +18,10 @@ export class ContactBookContactsPopoverComponent implements OnInit {
   private readonly defaultSortType: SortType | undefined
 
   public sortTypes: { id: string; label: string }[] = [
-    { id: SortType.NAME, label: 'Standard (Name)' },
-    { id: SortType.ADDRESS, label: 'Address' },
-    { id: SortType.DATE_CREATION, label: 'Creation Date' },
-    { id: SortType.ADDED_BY, label: 'Added by' }
+    { id: SortType.NAME, label: 'contact-book.sort.name' },
+    { id: SortType.ADDRESS, label: 'contact-book.sort.address' },
+    { id: SortType.DATE_CREATION, label: 'contact-book.sort.creation_date' },
+    { id: SortType.ADDED_BY, label: 'contact-book.sort.added_by' }
   ]
   public selectedSortType: SortType | undefined
 
