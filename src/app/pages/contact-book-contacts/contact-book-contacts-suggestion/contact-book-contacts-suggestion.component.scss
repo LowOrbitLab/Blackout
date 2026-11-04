@@ -2,29 +2,33 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  border: 2px solid #80808094;
-  border-radius: 6px;
-  padding: 4px 8px;
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
+  padding: 8px 12px;
 
   .suggestion-image-wrapper {
-    height: 40px;
-    width: 40px;
+    height: 36px;
+    width: 36px;
 
     .suggestion-image {
       width: 100%;
       height: 100%;
-      border-radius: 100%;
+      border-radius: 50%;
     }
   }
 
   .suggestion-name-wrapper {
     flex: 1;
+    min-width: 0;
 
     .suggestion-address {
       line-break: anywhere;
       margin: 0px;
+      font-family: var(--ok-font-mono);
+      font-size: 12px;
       font-weight: 500;
-      color: grey;
+      color: var(--ok-text-subdued);
     }
   }
 
@@ -35,6 +39,8 @@
 
     .suggestion-date {
       margin: 0px;
+      font-size: 11px;
+      color: var(--ok-text-disabled);
     }
   }
 
@@ -45,7 +51,7 @@
     }
 
     ion-icon {
-      font-size: 26px;
+      font-size: 24px;
       margin-top: auto;
       margin-bottom: auto;
       margin-left: 8px;

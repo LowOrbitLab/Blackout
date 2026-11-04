@@ -1,10 +1,17 @@
 ion-list {
+  background: transparent;
   ion-radio-group {
     ion-item {
-      margin-left: 5%;
+      --background: var(--ok-bg);
+      background: var(--ok-bg);
+      border: 1px solid var(--ok-border-subdued);
+      border-radius: var(--ok-radius-md);
+      margin-bottom: 10px;
       ion-label {
-        margin-left: 5%;
-        font-size: 20px;
+        margin-left: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--ok-text);
       }
     }
   }
@@ -15,34 +22,32 @@ ion-list {
 }
 
 .radio-list {
-  border: 4px dotted #ccc;
-  border-radius: 10px;
-  border-color: var(--ion-color-primary);
-
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-lg);
+  background: var(--ok-bg);
+  padding: 12px;
 }
 
 .radio-group {
-  background-color:#fff;
+  background-color: transparent;
 }
 
 .custom-item {
-  margin-top: 20px;
-  margin-bottom: 20px;
-
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .selected {
-  color: var(--ion-color-primary);
-  font-weight: bold;
-  font-size: 40px;
+  color: var(--ok-brand);
+  font-weight: 700;
+  font-size: 28px;
 }
 
 ion-radio::part(container) {
   width: 20px;
   height: 20px;
-
   border-radius: 50%;
-  border: 2px solid #ddd;
+  border: 2px solid var(--ok-border);
 }
 
 ion-radio::part(mark) {
@@ -53,17 +58,15 @@ ion-radio::part(mark) {
 }
 
 ion-radio.radio-checked::part(container) {
-  background: #6815ec;
+  background: var(--ok-brand);
   border-color: transparent;
 }
 
 ion-radio.radio-checked::part(mark) {
-  width: 4px;
-  height: 8px;
-
+  width: 5px;
+  height: 9px;
   border-width: 0px 2px 2px 0px;
   border-style: solid;
-  border-color: #fff;
-
+  border-color: #111111;
   transform: rotate(45deg);
 }

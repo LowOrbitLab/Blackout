@@ -5,9 +5,9 @@
   height: calc(40% - 36px);
 }
 hr {
-  border: 2px dashed var(--ion-color-primary);
-  border-style: none none dashed;
-  margin: 8px 0;
+  border: 1px solid var(--ok-divider);
+  border-style: none none solid;
+  margin: 12px 0;
 }
 .word-placeholder {
   min-width: 48px;

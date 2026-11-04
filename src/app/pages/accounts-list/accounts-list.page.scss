@@ -1,4 +1,41 @@
+.ok-accounts-card {
+  background: var(--ok-bg) !important;
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-lg);
+  overflow: hidden;
+  padding: 0;
+  margin-top: 8px;
+  margin-bottom: 24px;
+
+  ion-item-sliding:last-child {
+    airgap-account-item ion-item,
+    > ion-item {
+      --border-width: 0;
+    }
+  }
+}
+
+.ok-empty-state {
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-lg);
+  padding: 32px 20px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+
+  strong {
+    color: var(--ok-text-subdued);
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
 .empty-img {
-  width: 75%;
-  opacity: 0.8;
+  width: 60%;
+  max-width: 220px;
+  opacity: 0.75;
 }

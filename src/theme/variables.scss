@@ -1,169 +1,213 @@
-// Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
+// OneKey V5 Design System Tokens & Ionic Variable Mappings
+// Extracted from OneKeyHQ/app-monorepo (packages/components/tamagui.config.ts & colors/primitive/dark.ts)
 
-/** Ionic CSS Variables **/
 :root {
-  --ion-color-primary: #8874fc;
-  --ion-color-primary-rgb: 127, 108, 237;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #6658ed;
-  --ion-color-primary-tint: #9b9bff;
+  /** 1. OneKey V5 Primitive & Semantic Tokens (Dark Theme Default) **/
+  --ok-bg-app: #0f0f0f;
+  --ok-bg: #1b1b1b;
+  --ok-bg-subdued: #191919;
+  --ok-bg-hover: rgba(255, 255, 255, 0.07);
+  --ok-bg-active: rgba(255, 255, 255, 0.11);
+  --ok-bg-strong: #222222;
+  --ok-bg-elevated: #2a2a2a;
 
-  --ion-color-secondary: #311b58;
-  --ion-color-secondary-rgb: 49, 27, 88;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #2b184d;
-  --ion-color-secondary-tint: #463269;
+  --ok-border-subdued: rgba(255, 255, 255, 0.11);
+  --ok-border: rgba(255, 255, 255, 0.17);
+  --ok-border-active: #eeeeee;
+  --ok-divider: rgba(255, 255, 255, 0.07);
 
-  --ion-color-tertiary: #50239f;
-  --ion-color-tertiary-rgb: 80, 35, 159;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-  --ion-color-tertiary-shade: #633ce0;
-  --ion-color-tertiary-tint: #7e57ff;
+  --ok-text: #eeeeee;
+  --ok-text-subdued: #b4b4b4;
+  --ok-text-placeholder: #6e6e6e;
+  --ok-text-inverse: #111111;
 
-  --ion-color-success: #10dc60;
-  --ion-color-success-rgb: 16, 220, 96;
-  --ion-color-success-contrast: #ffffff;
-  --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #0ec254;
-  --ion-color-success-tint: #28e070;
+  --ok-icon: #e0e0e0;
+  --ok-icon-subdued: #6e6e6e;
 
-  --ion-color-warning: #ffce00;
-  --ion-color-warning-rgb: 255, 206, 0;
-  --ion-color-warning-contrast: #ffffff;
-  --ion-color-warning-contrast-rgb: 255, 255, 255;
-  --ion-color-warning-shade: #e0b500;
-  --ion-color-warning-tint: #ffd31a;
+  --ok-brand: #3edc2f;
+  --ok-brand-hover: #2dd11c;
+  --ok-brand-bg: rgba(62, 220, 47, 0.14);
+  --ok-brand-border: rgba(62, 220, 47, 0.28);
 
-  --ion-color-danger: #f53d3d;
-  --ion-color-danger-rgb: 245, 61, 61;
+  --ok-caution: #fbbf24;
+  --ok-caution-bg: rgba(245, 158, 11, 0.14);
+  --ok-caution-border: rgba(245, 158, 11, 0.28);
+
+  --ok-critical: #f87171;
+  --ok-critical-strong: #ef4444;
+  --ok-critical-bg: rgba(239, 68, 68, 0.14);
+  --ok-critical-border: rgba(239, 68, 68, 0.28);
+
+  --ok-info: #60a5fa;
+  --ok-info-bg: rgba(59, 130, 246, 0.14);
+
+  --ok-radius-xs: 6px;
+  --ok-radius-sm: 8px;
+  --ok-radius-md: 12px;
+  --ok-radius-lg: 16px;
+  --ok-radius-xl: 20px;
+  --ok-radius-full: 9999px;
+
+  --ok-font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ok-font-mono: 'GeistMono-Regular', 'JetBrains Mono', 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /** 2. Ionic Global Application Surfaces & Stepped Colors **/
+  --ion-font-family: var(--ok-font-sans);
+  --ion-background-color: #0f0f0f;
+  --ion-background-color-rgb: 15, 15, 15;
+  --ion-text-color: #eeeeee;
+  --ion-text-color-rgb: 238, 238, 238;
+
+  --ion-toolbar-background: #0f0f0f;
+  --ion-toolbar-color: #eeeeee;
+  --ion-toolbar-border-color: rgba(255, 255, 255, 0.07);
+
+  --ion-tab-bar-background: #0f0f0f;
+  --ion-tab-bar-border-color: rgba(255, 255, 255, 0.07);
+  --ion-tab-bar-color: #6e6e6e;
+  --ion-tab-bar-color-selected: #eeeeee;
+
+  --ion-item-background: #1b1b1b;
+  --ion-item-color: #eeeeee;
+  --ion-item-border-color: rgba(255, 255, 255, 0.07);
+
+  --ion-card-background: #1b1b1b;
+  --ion-card-color: #eeeeee;
+
+  --ion-border-color: rgba(255, 255, 255, 0.07);
+
+  /* Dark-mode stepped colors (from #0f0f0f to #eeeeee) */
+  --ion-color-step-50: #1a1a1a;
+  --ion-color-step-100: #242424;
+  --ion-color-step-150: #2f2f2f;
+  --ion-color-step-200: #3a3a3a;
+  --ion-color-step-250: #454545;
+  --ion-color-step-300: #505050;
+  --ion-color-step-350: #5b5b5b;
+  --ion-color-step-400: #666666;
+  --ion-color-step-450: #717171;
+  --ion-color-step-500: #7f7f7f;
+  --ion-color-step-550: #8a8a8a;
+  --ion-color-step-600: #959595;
+  --ion-color-step-650: #a0a0a0;
+  --ion-color-step-700: #ababab;
+  --ion-color-step-750: #b6b6b6;
+  --ion-color-step-800: #c1c1c1;
+  --ion-color-step-850: #cccccc;
+  --ion-color-step-900: #d7d7d7;
+  --ion-color-step-950: #e2e2e2;
+
+  /** 3. Ionic Semantic Color Palette (OneKey V5 Mapped) **/
+
+  /* Primary: OneKey $bgPrimary (High-contrast crisp white pill with #111111 text) */
+  --ion-color-primary: #eeeeee;
+  --ion-color-primary-rgb: 238, 238, 238;
+  --ion-color-primary-contrast: #111111;
+  --ion-color-primary-contrast-rgb: 17, 17, 17;
+  --ion-color-primary-shade: #d8d8d8;
+  --ion-color-primary-tint: #f5f5f5;
+
+  /* Secondary: OneKey $bgApp / $bg canvas & toolbar surface (#0f0f0f) */
+  --ion-color-secondary: #0f0f0f;
+  --ion-color-secondary-rgb: 15, 15, 15;
+  --ion-color-secondary-contrast: #eeeeee;
+  --ion-color-secondary-contrast-rgb: 238, 238, 238;
+  --ion-color-secondary-shade: #0a0a0a;
+  --ion-color-secondary-tint: #1b1b1b;
+
+  /* Tertiary: OneKey $bgStrong / $bg elevated card & secondary button surface (#222222) */
+  --ion-color-tertiary: #222222;
+  --ion-color-tertiary-rgb: 34, 34, 34;
+  --ion-color-tertiary-contrast: #eeeeee;
+  --ion-color-tertiary-contrast-rgb: 238, 238, 238;
+  --ion-color-tertiary-shade: #1b1b1b;
+  --ion-color-tertiary-tint: #2f2f2f;
+
+  /* Success: OneKey Brand Emerald Green (#3EDC2F) */
+  --ion-color-success: #3edc2f;
+  --ion-color-success-rgb: 62, 220, 47;
+  --ion-color-success-contrast: #0c130c;
+  --ion-color-success-contrast-rgb: 12, 19, 12;
+  --ion-color-success-shade: #2dd11c;
+  --ion-color-success-tint: #56fd46;
+
+  /* Warning / Caution: OneKey Caution Amber (#F59E0B) */
+  --ion-color-warning: #f59e0b;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #111111;
+  --ion-color-warning-contrast-rgb: 17, 17, 17;
+  --ion-color-warning-shade: #d97706;
+  --ion-color-warning-tint: #fbbf24;
+
+  /* Danger / Critical: OneKey Critical Red (#EF4444) */
+  --ion-color-danger: #ef4444;
+  --ion-color-danger-rgb: 239, 68, 68;
   --ion-color-danger-contrast: #ffffff;
   --ion-color-danger-contrast-rgb: 255, 255, 255;
-  --ion-color-danger-shade: #d83636;
-  --ion-color-danger-tint: #f65050;
+  --ion-color-danger-shade: #dc2626;
+  --ion-color-danger-tint: #f87171;
 
-  --ion-color-dark: #222222;
-  --ion-color-dark-rgb: 34, 34, 34;
-  --ion-color-dark-contrast: #ffffff;
-  --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #1e1e1e;
-  --ion-color-dark-tint: #383838;
+  /* Dark: OneKey Subdued Surface (#191919) */
+  --ion-color-dark: #191919;
+  --ion-color-dark-rgb: 25, 25, 25;
+  --ion-color-dark-contrast: #eeeeee;
+  --ion-color-dark-contrast-rgb: 238, 238, 238;
+  --ion-color-dark-shade: #111111;
+  --ion-color-dark-tint: #262626;
 
-  --ion-color-medium: #989aa2;
-  --ion-color-medium-rgb: 152, 154, 162;
-  --ion-color-medium-contrast: #ffffff;
-  --ion-color-medium-contrast-rgb: 255, 255, 255;
-  --ion-color-medium-shade: #86888f;
-  --ion-color-medium-tint: #a2a4ab;
+  /* Medium: OneKey Subdued Text / Icon (#8e8e93) */
+  --ion-color-medium: #8e8e93;
+  --ion-color-medium-rgb: 142, 142, 147;
+  --ion-color-medium-contrast: #111111;
+  --ion-color-medium-contrast-rgb: 17, 17, 17;
+  --ion-color-medium-shade: #6e6e6e;
+  --ion-color-medium-tint: #b4b4b4;
 
-  --ion-color-light: #f4f4f4;
-  --ion-color-light-rgb: 244, 244, 244;
-  --ion-color-light-contrast: #000000;
-  --ion-color-light-contrast-rgb: 0, 0, 0;
-  --ion-color-light-shade: #d7d7d7;
-  --ion-color-light-tint: #f5f5f5;
+  /* Light: OneKey Interactive Surface (#262626 with light contrast, or light text on clear elements) */
+  --ion-color-light: #262626;
+  --ion-color-light-rgb: 38, 38, 38;
+  --ion-color-light-contrast: #eeeeee;
+  --ion-color-light-contrast-rgb: 238, 238, 238;
+  --ion-color-light-shade: #1e1e1e;
+  --ion-color-light-tint: #333333;
 
-  /** gray light **/
-  --ion-color-grayLight: #f4f4f4;
-  --ion-color-grayLight-rgb: 244, 244, 244;
-  --ion-color-grayLight-contrast: #000000;
-  --ion-color-grayLight-contrast-rgb: 255, 255, 255;
-  --ion-color-grayLight-shade: #d7d7d7;
-  --ion-color-grayLight-tint: #f5f5f5;
-}
-/* secondary background color whith corresponding colors */
-airgap-account-add,
-airgap-account-address,
-airgap-account-share,
-airgap-account-share-select,
-airgap-address-explorer,
-airgap-secret-setup,
-airgap-secret-generate,
-airgap-secret-import,
-airgap-secret-add,
-airgap-secret-edit,
-airgap-warning-modal,
-airgap-migration,
-airgap-onboarding-welcome,
-airgap-distribution-onboarding,
-airgap-introduction,
-airgap-installation-type,
-airgap-onboarding-advanced-mode,
-airgap-social-recovery-import,
-airgap-interaction-selection,
-airgap-interaction-selection-settings,
-// airgap-languages-selection-settings,
-airgap-deserialized-detail,
-airgap-transaction-signed,
-airgap-contact-book-contacts-detail,
-airgap-contact-book-onboarding,
-airgap-isolated-modules-onboarding-page,
-airgap-secret-generate-onboarding,
-airgap-social-recovery-generate-intro,
-airgap-social-recovery-generate-setup,
-airgap-social-recovery-generate-rules,
-airgap-social-recovery-generate-share-show,
-airgap-social-recovery-generate-share-validate,
-airgap-social-recovery-generate-finish,
-airgap-social-recovery-setup,
-airgap-social-recovery-import-intro,
-airgap-social-recovery-import-setup,
-airgap-social-recovery-import-share-name,
-airgap-social-recovery-import-share-validate,
-airgap-social-recovery-import-errors,
-airgap-social-recovery-import-help,
-airgap-social-recovery-import-success,
-airgap-secret-generate,
-airgap-secret-generate-dice,
-airgap-secret-generate-coin-flip,
-airgap-secret-validate,
-airgap-secret-rules,
-airgap-secret-show,
-airgap-social-recovery-show-share,
-airgap-social-recovery-validate-share,
-airgap-current-secret,
-airgap-bip85-generate,
-airgap-bip85-show,
-airgap-local-authentication-onboarding,
-airgap-link-page,
-airgap-deserialized-detail,
-airgap-address-explorer {
-  --ion-background-color: var(--ion-color-secondary);
-  ion-toolbar {
-    --background: var(--ion-color-secondary);
-  }
-  --ion-text-color: var(--ion-color-secondary-contrast);
-  ion-toggle {
-    --handle-background: var(--ion-color-secondary-contrast);
-  }
-  ion-radio,
-  ion-label,
-  ion-segment-button,
-  ion-toolbar {
-    --color: var(--ion-color-secondary-contrast);
-  }
-  ion-item,
-  ion-checkbox {
-    --border-color: var(--ion-color-secondary-contrast);
-  }
+  /** gray light (legacy alias mapped to OneKey surface) **/
+  --ion-color-grayLight: #1b1b1b;
+  --ion-color-grayLight-rgb: 27, 27, 27;
+  --ion-color-grayLight-contrast: #eeeeee;
+  --ion-color-grayLight-contrast-rgb: 238, 238, 238;
+  --ion-color-grayLight-shade: #151515;
+  --ion-color-grayLight-tint: #262626;
 }
 
-airgap-accounts-list {
-  ion-toolbar {
-    --background: var(--ion-color-secondary);
-    --color: var(--ion-color-secondary-contrast);
-  }
-  ion-item {
-    --detail-icon-color: var(--ion-color-dark);
-  }
+/* Support legacy color="white" attributes across pages */
+.ion-color-white {
+  --ion-color-base: #eeeeee !important;
+  --ion-color-base-rgb: 238, 238, 238 !important;
+  --ion-color-contrast: #111111 !important;
+  --ion-color-contrast-rgb: 17, 17, 17 !important;
+  --ion-color-shade: #d8d8d8 !important;
+  --ion-color-tint: #ffffff !important;
+}
+
+/* Ensure all pages share the unified OneKey V5 Dark Canvas (#0f0f0f) and Surface (#1b1b1b) */
+ion-app,
+ion-content {
+  --background: var(--ok-bg-app);
+  --color: var(--ok-text);
+  background-color: var(--ok-bg-app);
+  color: var(--ok-text);
+}
+
+ion-header ion-toolbar {
+  --background: var(--ok-bg-app);
+  --color: var(--ok-text);
+  --border-width: 0;
 }
 
 .ios {
   ion-item {
-    --background-activated: transparent;
+    --background-activated: var(--ok-bg-active);
   }
 }
 

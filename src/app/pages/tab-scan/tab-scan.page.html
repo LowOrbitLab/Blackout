@@ -1,44 +1,82 @@
-<ion-header class="ion-no-border" no-shadow>
-  <ion-toolbar color="secondary">
+<ion-header class="ion-no-border ok-scan-header" no-shadow>
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab-secrets"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'tab-scan.title' | translate }}</ion-title>
-    <ion-text slot="end" *ngIf="isMultiQr">{{ percentageScanned | percent}}</ion-text>
+    <ion-title class="ok-scan-title">{{ 'tab-scan.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <button
+        type="button"
+        class="ok-torch-btn"
+        [class.is-active]="torchEnabled"
+        (click)="toggleTorch()"
+        aria-label="Toggle Flashlight"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3h8l-1.5 5.5v11a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5v-11L8 3z"/>
+          <line x1="8" y1="6.5" x2="16" y2="6.5"/>
+          <circle cx="12" cy="12" r="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content forceOverscroll="false" [class.transparent]="hasCameraPermission | async">
-  <ion-grid fixed="true" class="ion-no-padding">
-    <ion-text color="secondary">
-      <p class="ion-padding ion-no-margin">
-        <ng-container *ngIf="!isMultiQr">{{ 'tab-scan.text' | translate }}</ng-container>
-        <ng-container *ngIf="isMultiQr">{{ 'tab-scan.multi-qr_text' | translate }}</ng-container>
-      </p>
-    </ion-text>
+  <!-- Active Camera & Viewfinder Layout -->
+  <div *ngIf="hasCameraPermission | async" class="ok-scan-layout">
+    <zxing-scanner
+      #scanner
+      class="ok-zxing-layer"
+      [formats]="['QR_CODE']"
+      [timeBetweenScans]="0"
+      [delayBetweenScanSuccess]="0"
+      *ngIf="isBrowser || isElectron"
+      (scanSuccess)="checkScan($event)"
+    ></zxing-scanner>
 
-    <ion-progress-bar *ngIf="isMultiQr" style="height: 8px" color="light" [value]="percentageScanned"></ion-progress-bar>
+    <!-- Center Rounded Viewfinder with Glowing Laser Line -->
+    <div class="ok-viewfinder-stage">
+      <div class="ok-viewfinder-box">
+        <span class="ok-corner ok-corner--tl"></span>
+        <span class="ok-corner ok-corner--tr"></span>
+        <span class="ok-corner ok-corner--bl"></span>
+        <span class="ok-corner ok-corner--br"></span>
+        <div class="ok-laser-line"></div>
+      </div>
+    </div>
 
-    <ion-row *ngIf="hasCameraPermission | async" class="row--height__100 ion-justify-content-center ion-align-items-center">
-      <ion-col class="guides--container content--align__center-center">
-        <img class="guides--container__img" src="./assets/img/qr_code_guides.svg" />
-      </ion-col>
-      <zxing-scanner
-        #scanner
-        [formats]="['QR_CODE']"
-        [timeBetweenScans]="0"
-        [delayBetweenScanSuccess]="0"
-        *ngIf="isBrowser || isElectron"
-        (scanSuccess)="checkScan($event)"
-      ></zxing-scanner>
-    </ion-row>
+    <!-- Bottom Instruction & Multi-Frame Segmented Progress -->
+    <div class="ok-scan-footer">
+      <h2 class="ok-scan-footer__heading">{{ 'tab-scan.text' | translate }}</h2>
+      <p class="ok-scan-footer__subtext">{{ 'tab-scan.multi-qr_text' | translate }}</p>
 
+      <div class="ok-scan-segments">
+        <span
+          *ngFor="let seg of progressSegments; let i = index"
+          class="ok-scan-segment"
+          [class.is-filled]="i < filledSegmentsCount"
+        ></span>
+      </div>
+
+      <div class="ok-scan-frame-counter">
+        <ng-container *ngIf="isMultiQr">
+          {{ scannedFramesCount }} / {{ estimatedTotalFrames }} ({{ percentageScanned | percent }})
+        </ng-container>
+        <ng-container *ngIf="!isMultiQr">
+          0 / 8
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <!-- Camera Permission Empty State -->
+  <ion-grid *ngIf="(hasCameraPermission | async) === false" fixed="true" class="ion-no-padding">
     <ion-row
-      *ngIf="(hasCameraPermission | async) === false"
       class="row--height__100 ion-justify-content-center ion-align-items-center"
       (click)="requestPermission()"
     >
-      <ion-col class="ion-text-center">
+      <ion-col class="ion-text-center ion-padding">
         <img src="../assets/img/permission_onboarding_camera.svg" />
         <h3 class="ion-padding-horizontal" [innerHTML]="'tab-scan.empty-state_heading' | translate"></h3>
         <ion-button shape="round" color="primary">{{ 'tab-scan.grant-permission_label' | translate }}</ion-button>

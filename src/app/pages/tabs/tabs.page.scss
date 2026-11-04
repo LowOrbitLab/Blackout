@@ -1,0 +1,68 @@
+.ok-tab-bar {
+  --background: var(--ok-bg-app);
+  --border: 1px solid var(--ok-divider);
+  height: 60px;
+  padding-inline: 12px;
+  background: var(--ok-bg-app);
+  border-top: 1px solid var(--ok-divider);
+}
+
+.ok-tab-button {
+  --color: var(--ok-text-placeholder);
+  --color-selected: var(--ok-text);
+  --ripple-color: transparent;
+  background: transparent;
+
+  ion-icon {
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+
+  ion-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  &.tab-selected {
+    ion-label {
+      font-weight: 600;
+      color: var(--ok-text);
+    }
+  }
+}
+
+.ok-tab-button--scan {
+  max-width: 148px;
+
+  .ok-scan-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: var(--ok-text);
+    color: var(--ok-text-inverse);
+    padding: 8px 18px;
+    border-radius: var(--ok-radius-full);
+    font-weight: 600;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+
+    ion-icon {
+      font-size: 17px;
+      margin: 0;
+      color: var(--ok-text-inverse);
+    }
+
+    ion-label {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0;
+      color: var(--ok-text-inverse);
+    }
+  }
+
+  &:active .ok-scan-pill {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+}

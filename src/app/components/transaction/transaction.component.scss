@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+ion-row.ion-text-center {
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
+  padding: 12px 8px;
+  margin: 8px 16px 12px;
+
+  h5 {
+    font-family: var(--ok-font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ok-text);
+    margin: 4px 0 2px;
+  }
+
+  small {
+    font-size: 11px;
+    color: var(--ok-text-subdued);
+  }
+}

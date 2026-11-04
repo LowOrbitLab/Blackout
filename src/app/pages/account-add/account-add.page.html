@@ -66,7 +66,7 @@
             placeholder="{{ 'bip85-generate.bip39-passphrase' | translate }}"
           ></ion-input>
         </ion-item>
-<ion-item class="ion-no-padding ion-margin-bottom">
+        <ion-item class="ion-no-padding ion-margin-bottom">
           {{ 'bip85-generate.bip39-passphrase-reveal' | translate }}
           <ion-checkbox [(ngModel)]="revealBip39Passphrase" slot="end"></ion-checkbox>
         </ion-item>
@@ -74,14 +74,14 @@
     </ng-container>
   </ion-list>
 
-  <ion-card class="ion-padding" color="primary" (click)="goToIsolatedModule()">
-    <ion-row>
-      <ion-col>
-        <ion-icon style="zoom: 4" src="assets/icons/shapes.svg"></ion-icon>
+  <ion-card class="ion-padding ok-isolated-module-card" (click)="goToIsolatedModule()">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="3" class="ion-text-center">
+        <ion-icon style="zoom: 3.2" src="assets/icons/shapes.svg"></ion-icon>
       </ion-col>
       <ion-col size="9">
         <ion-label class="ion-text-wrap">
-          <h2 style="color: black">{{ 'isolated-module.text' | translate }}</h2>
+          <h2>{{ 'isolated-module.text' | translate }}</h2>
         </ion-label>
       </ion-col>
     </ion-row>

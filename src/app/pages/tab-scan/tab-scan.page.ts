@@ -28,6 +28,28 @@ export class TabScanPage extends ScanBasePage {
 
   public isMultiQr: boolean = false
 
+  public readonly progressSegments: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
+
+  public torchEnabled: boolean = false
+
+  public get scannedFramesCount(): number {
+    return this.parts.size
+  }
+
+  public get estimatedTotalFrames(): number {
+    if (this.percentageScanned > 0 && this.parts.size > 0) {
+      return Math.max(this.parts.size, Math.round(this.parts.size / this.percentageScanned))
+    }
+    return 8
+  }
+
+  public get filledSegmentsCount(): number {
+    if (!this.isMultiQr || this.percentageScanned <= 0) {
+      return 0
+    }
+    return Math.max(1, Math.min(8, Math.round(this.percentageScanned * 8)))
+  }
+
   constructor(
     platform: Platform,
     scanner: QrScannerService,
@@ -37,6 +59,17 @@ export class TabScanPage extends ScanBasePage {
     private readonly ngZone: NgZone // private readonly navigationService: NavigationService
   ) {
     super(platform, scanner, permissionsProvider, securityUtils)
+  }
+
+  public toggleTorch(): void {
+    this.torchEnabled = !this.torchEnabled
+    if (this.zxingScanner) {
+      try {
+        ;(this.zxingScanner as any).torch = this.torchEnabled
+      } catch {
+        // Ignore if device does not support torch in browser/electron
+      }
+    }
   }
 
   async ionViewWillLeave() {

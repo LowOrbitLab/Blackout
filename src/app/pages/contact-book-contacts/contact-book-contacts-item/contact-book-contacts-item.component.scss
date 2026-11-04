@@ -3,13 +3,14 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  transition: all ease 0.2s;
-  padding: 6px 12px;
-  margin: -6px -12px;
-  border-radius: 6px;
+  transition: background-color 0.15s ease;
+  padding: 10px 14px;
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
 
   &:hover {
-    background-color: rgba(128, 128, 128, 0.222);
+    background-color: var(--ok-bg-hover);
   }
 
   .contact-image-wrapper {
@@ -17,24 +18,30 @@
     width: 40px;
 
     .contact-image {
-      border-radius: 100%;
+      border-radius: 50%;
     }
   }
 
   .contact-name-wrapper {
     flex: 1;
+    min-width: 0;
+
     .contact-name {
       margin: 0px;
-      font-weight: 700;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ok-text);
     }
 
     .contact-address {
-      margin: 0px;
+      margin: 2px 0 0 0;
       max-width: 60vw;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      color: rgb(153, 153, 153);
+      font-family: var(--ok-font-mono);
+      font-size: 12px;
+      color: var(--ok-text-subdued);
     }
   }
 
@@ -44,9 +51,9 @@
     align-items: flex-end;
 
     .contact-date {
-      margin: 0px;
-      color: rgb(153, 153, 153);
-      margin-bottom: 4px;
+      margin: 0px 0px 4px 0px;
+      font-size: 11px;
+      color: var(--ok-text-disabled);
     }
   }
 }

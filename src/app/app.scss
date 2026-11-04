@@ -1,79 +1,113 @@
-// App Styles
+// App Styles - OneKey V5 Design System
 // ----------------------------------------------------------------------------
-// Put style rules here that you want to apply to the entire application. These
-// styles are for the entire app and not just one component. Additionally, this
-// file can hold Sass mixins, functions, and placeholder classes to be imported
-// and used throughout the application.
 
 /* styling for translations */
 .style__strong {
-  font-weight: bold;
-}
-.color__primary {
-  color: var(--ion-color-primary);
+  font-weight: 600;
+  color: var(--ok-text);
 }
 
-/* monotype */
-.typography--mono {
-  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-  font-weight: 600;
-  font-size: 14px;
-  word-wrap: break-word;
+.color__primary {
+  color: var(--ok-brand);
 }
+
+/* OneKey V5 Monospace Typography (GeistMono / JetBrains Mono / SF Mono) */
+.typography--mono {
+  font-family: var(--ok-font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  word-wrap: break-word;
+  letter-spacing: -0.01em;
+}
+
 /* font weight - medium */
 .font--weight__med {
   font-weight: 500;
 }
-/* forces the paragraph size */
+
+/* paragraph defaults */
 p {
   font-size: 14px;
+  line-height: 1.5;
+  color: var(--ok-text-subdued);
 }
+
 /* List styling */
 airgap-warning-modal,
 airgap-secret-rules {
   ul {
     padding-inline-start: 0;
     list-style: none;
-    li:before {
-      content: '\00AC';
-      padding-right: 4px;
+    li {
+      padding: 4px 0;
+      color: var(--ok-text-subdued);
+      &:before {
+        content: '•';
+        color: var(--ok-brand);
+        padding-right: 8px;
+        font-weight: bold;
+      }
     }
   }
 }
+
 /* ion-textarea height fix */
 airgap-secret-import ion-textarea textarea {
   height: inherit;
 }
+
 /* sets the identicon component size */
 airgap-identicon {
   width: inherit;
   height: inherit;
-  min-width: 48px;
-  min-height: 48px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 /* removes padding and adds it only if used in the tabs-accounts toolbar */
 airgap-current-secret {
   ion-item {
     --padding-start: 0;
+    --background: transparent;
   }
 }
+
 airgap-accounts-list {
   airgap-current-secret ion-item {
     --padding-start: 16px;
   }
 }
-/* ios specific styling */
-.ios {
-  airgap-account-item {
-    ion-item {
-      --padding-bottom: 4px;
-      --padding-top: 4px;
-    }
-  }
-  airgap-accounts-list {
-    ion-list {
-      padding-top: 8px;
+
+/* OneKey V5 styling for @airgap/angular-core account items */
+airgap-account-item {
+  display: block;
+
+  ion-item {
+    --background: var(--ok-bg);
+    --background-hover: var(--ok-bg-hover);
+    --background-activated: var(--ok-bg-active);
+    --color: var(--ok-text);
+    --border-color: var(--ok-divider);
+    --padding-top: 6px;
+    --padding-bottom: 6px;
+    --min-height: 64px;
+
+    ion-label {
+      h2,
+      h3 {
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--ok-text) !important;
+      }
+
+      p,
+      .typography--mono {
+        color: var(--ok-text-subdued) !important;
+        font-size: 13px;
+      }
     }
   }
 }
@@ -82,7 +116,7 @@ airgap-accounts-list {
   airgap-account-item {
     ion-label {
       .typography--mono {
-        color: var(--ion-color-light);
+        color: var(--ok-text-subdued);
       }
     }
   }
@@ -91,8 +125,11 @@ airgap-accounts-list {
 .airgap-currency-symbol-secret {
   airgap-currency-symbol {
     img {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--ok-bg);
+      background: var(--ok-bg-strong);
     }
   }
 }
@@ -100,7 +137,7 @@ airgap-accounts-list {
 .typography--mono {
   ion-chip {
     ion-label {
-      color: var(--ion-color-light);
+      color: var(--ok-text);
     }
   }
 }
@@ -108,9 +145,14 @@ airgap-accounts-list {
 .deserialized-content {
   airgap-account-item {
     ion-item {
+      --background: var(--ok-bg);
+      border-radius: var(--ok-radius-md);
+      border: 1px solid var(--ok-border-subdued);
+      --border-width: 0;
+
       ion-label {
         .typography--mono {
-          color: var(--ion-color-light);
+          color: var(--ok-text-subdued);
         }
       }
     }
@@ -118,10 +160,14 @@ airgap-accounts-list {
 }
 
 pre {
-  background-color: var(--ion-color-light);
-  color: var(--ion-color-dark);
-  padding: 8px;
-  white-space: pre-wrap; /* css-3 */
+  background-color: var(--ok-bg);
+  color: var(--ok-text);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
+  padding: 12px;
+  font-family: var(--ok-font-mono);
+  font-size: 12px;
+  white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   word-wrap: break-word;
 }

@@ -10,6 +10,29 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
+/* ==========================================================================
+   OneKey V5 Global Typography & Base Resets
+   ========================================================================== */
+body {
+  font-family: var(--ok-font-sans);
+  background-color: var(--ok-bg-app);
+  color: var(--ok-text);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ok-text);
+}
+
 /* Center content vertically and horizontally */
 .content--align__center-center {
   justify-content: center;
@@ -21,7 +44,404 @@
   display: flex;
 }
 
-/* FAB with a button, bottom padding fix for ios devices */
+/* ==========================================================================
+   OneKey V5 Header, Toolbar & Navigation
+   ========================================================================== */
+ion-header {
+  background: var(--ok-bg-app);
+
+  &.header-md::after,
+  &.header-ios ion-toolbar:last-of-type {
+    display: none;
+    --border-width: 0;
+  }
+
+  ion-toolbar {
+    --background: var(--ok-bg-app);
+    --color: var(--ok-text);
+    --border-width: 0 !important;
+    --min-height: 52px;
+    padding-inline: 4px;
+
+    ion-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ok-text);
+    }
+  }
+}
+
+ion-footer {
+  background: var(--ok-bg-app);
+  border-top: 1px solid var(--ok-divider);
+
+  &.footer-md::before {
+    display: none;
+  }
+
+  ion-toolbar,
+  &.ion-color-primary,
+  ion-toolbar.ion-color-primary {
+    --background: var(--ok-bg-app) !important;
+    --color: var(--ok-text) !important;
+    --border-width: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   OneKey V5 Pill Buttons (packages/components/src/primitives/Button)
+   ========================================================================== */
+ion-button {
+  --border-radius: var(--ok-radius-full);
+  --box-shadow: none;
+  font-family: var(--ok-font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+
+  &.button-solid.ion-color-primary {
+    --background: var(--ok-text);
+    --background-hover: #ffffff;
+    --background-activated: #d8d8d8;
+    --color: var(--ok-text-inverse);
+  }
+
+  &.button-solid.ion-color-secondary,
+  &.button-solid.ion-color-tertiary,
+  &.button-solid.ion-color-light {
+    --background: var(--ok-bg-strong);
+    --background-hover: var(--ok-bg-elevated);
+    --background-activated: var(--ok-bg-active);
+    --color: var(--ok-text);
+  }
+
+  &.button-clear.ion-color-light,
+  &.button-clear.ion-color-secondary {
+    --color: var(--ok-text) !important;
+    color: var(--ok-text) !important;
+  }
+
+  &.button-outline {
+    --border-color: var(--ok-border);
+    --color: var(--ok-text);
+  }
+}
+
+/* ==========================================================================
+   OneKey V5 Searchbar (packages/components/src/layouts/SearchBar)
+   ========================================================================== */
+ion-searchbar {
+  --background: var(--ok-bg-hover) !important;
+  --color: var(--ok-text) !important;
+  --placeholder-color: var(--ok-text-placeholder) !important;
+  --icon-color: var(--ok-text-placeholder) !important;
+  --clear-button-color: var(--ok-text-subdued) !important;
+  --border-radius: var(--ok-radius-md) !important;
+  --box-shadow: none !important;
+  padding-top: 4px !important;
+  padding-bottom: 8px !important;
+  padding-inline: 16px !important;
+
+  .searchbar-input-container {
+    min-height: 38px !important;
+    border-radius: var(--ok-radius-md) !important;
+    border: 1px solid transparent;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  &.searchbar-has-focus .searchbar-input-container {
+    border-color: var(--ok-border);
+    background: var(--ok-bg-active);
+  }
+
+  input.searchbar-input {
+    font-size: 14px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+}
+
+/* ==========================================================================
+   OneKey V5 Cards, Lists & ListItems
+   ========================================================================== */
+ion-card {
+  --background: var(--ok-bg);
+  --color: var(--ok-text);
+  background: var(--ok-bg);
+  color: var(--ok-text);
+  border-radius: var(--ok-radius-lg) !important;
+  border: 1px solid var(--ok-border-subdued);
+  box-shadow: none !important;
+  margin: 12px 16px;
+
+  &.ion-color-tertiary,
+  &.ion-color-secondary,
+  &.ion-color-light {
+    --background: var(--ok-bg) !important;
+    --color: var(--ok-text) !important;
+    background: var(--ok-bg) !important;
+    color: var(--ok-text) !important;
+  }
+
+  &.ion-color-warning {
+    --background: var(--ok-caution-bg) !important;
+    --color: var(--ok-caution) !important;
+    background: var(--ok-caution-bg) !important;
+    color: var(--ok-caution) !important;
+    border-color: var(--ok-caution-border) !important;
+  }
+
+  &.ion-color-danger {
+    --background: var(--ok-critical-bg) !important;
+    --color: var(--ok-critical) !important;
+    background: var(--ok-critical-bg) !important;
+    color: var(--ok-critical) !important;
+    border-color: var(--ok-critical-border) !important;
+  }
+
+  ion-card-title {
+    color: var(--ok-text);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  ion-card-subtitle {
+    color: var(--ok-text-subdued);
+    font-size: 13px;
+    text-transform: none;
+  }
+
+  ion-card-content {
+    color: var(--ok-text-subdued);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+ion-list {
+  background: transparent !important;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+ion-list-header {
+  --background: transparent;
+  --color: var(--ok-text-subdued);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 16px;
+  padding-bottom: 6px;
+  min-height: 32px;
+
+  ion-label {
+    font-size: 12px !important;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ok-text-subdued) !important;
+    margin: 0;
+  }
+}
+
+ion-item {
+  --background: var(--ok-bg);
+  --background-hover: var(--ok-bg-hover);
+  --background-activated: var(--ok-bg-active);
+  --color: var(--ok-text);
+  --border-color: var(--ok-divider);
+  --detail-icon-color: var(--ok-text-placeholder);
+  --detail-icon-opacity: 1;
+  --min-height: 52px;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  font-size: 15px;
+
+  ion-icon[slot='start'] {
+    color: var(--ok-icon);
+    font-size: 20px;
+    margin-inline-end: 14px;
+  }
+
+  &.ion-color-light {
+    --background: var(--ok-bg-strong) !important;
+    --color: var(--ok-text) !important;
+    border-radius: var(--ok-radius-md);
+  }
+
+  &.ion-color-warning {
+    --background: var(--ok-caution-bg) !important;
+    --color: var(--ok-caution) !important;
+    border: 1px solid var(--ok-caution-border);
+    border-radius: var(--ok-radius-md);
+
+    ion-label,
+    ion-icon,
+    h3,
+    h4,
+    p {
+      color: var(--ok-caution) !important;
+    }
+  }
+}
+
+ion-label {
+  font-size: 14px;
+  color: var(--ok-text);
+
+  &.ion-color-light,
+  &.ion-color-white {
+    --ion-color-base: var(--ok-text) !important;
+    color: var(--ok-text) !important;
+  }
+
+  p {
+    color: var(--ok-text-subdued);
+    font-size: 13px;
+  }
+}
+
+ion-text.ion-color-light,
+ion-text.ion-color-white,
+ion-text.ion-color-secondary,
+ion-icon.ion-color-white,
+ion-icon.ion-color-light {
+  --ion-color-base: var(--ok-text) !important;
+  color: var(--ok-text) !important;
+}
+
+/* ==========================================================================
+   OneKey V5 Form Controls (Toggles, Checkboxes, Radios, Inputs, Chips, Badges)
+   ========================================================================== */
+ion-toggle {
+  --background: rgba(255, 255, 255, 0.16);
+  --background-checked: var(--ok-brand) !important;
+  --handle-background: #ffffff;
+  --handle-background-checked: #0c130c !important;
+}
+
+ion-checkbox {
+  --background: transparent;
+  --background-checked: var(--ok-brand) !important;
+  --border-color: rgba(255, 255, 255, 0.28);
+  --border-color-checked: var(--ok-brand) !important;
+  --checkmark-color: #0c130c !important;
+  --border-radius: 6px;
+}
+
+ion-radio {
+  --color: rgba(255, 255, 255, 0.28);
+  --color-checked: var(--ok-brand) !important;
+}
+
+ion-input,
+ion-textarea {
+  --color: var(--ok-text);
+  --placeholder-color: var(--ok-text-placeholder);
+}
+
+ion-chip {
+  --background: var(--ok-bg-hover);
+  --color: var(--ok-text-subdued);
+  border-radius: var(--ok-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  height: 26px;
+
+  &.ion-color-light {
+    --background: var(--ok-bg-strong) !important;
+    --color: var(--ok-text) !important;
+  }
+}
+
+ion-badge {
+  border-radius: var(--ok-radius-xs);
+  padding: 4px 8px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* ==========================================================================
+   OneKey V5 Overlays (Modals, Popovers, Alerts, Action Sheets)
+   ========================================================================== */
+ion-popover {
+  --background: var(--ok-bg-strong);
+  --color: var(--ok-text);
+  --box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+
+  ion-content {
+    --background: var(--ok-bg-strong);
+  }
+
+  ion-list,
+  ion-item {
+    --background: var(--ok-bg-strong);
+    --color: var(--ok-text);
+  }
+}
+
+ion-modal {
+  --background: var(--ok-bg-app);
+  --color: var(--ok-text);
+}
+
+ion-alert {
+  --background: var(--ok-bg) !important;
+  --max-width: 340px;
+
+  .alert-wrapper {
+    border-radius: var(--ok-radius-lg) !important;
+    border: 1px solid var(--ok-border-subdued);
+    background: var(--ok-bg) !important;
+  }
+
+  .alert-title {
+    color: var(--ok-text) !important;
+    font-weight: 600;
+  }
+
+  .alert-sub-title,
+  .alert-message {
+    color: var(--ok-text-subdued) !important;
+  }
+
+  .alert-button {
+    color: var(--ok-text) !important;
+    font-weight: 600;
+    text-transform: none;
+  }
+}
+
+ion-action-sheet {
+  --background: var(--ok-bg) !important;
+  --color: var(--ok-text) !important;
+  --button-color: var(--ok-text) !important;
+  --button-background-selected: var(--ok-bg-active) !important;
+}
+
+/* ==========================================================================
+   FABs & Bottom Action Bars
+   ========================================================================== */
+ion-fab[vertical='bottom'][horizontal='end'] {
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  left: 16px;
+  right: 16px;
+  display: flex;
+
+  ion-button {
+    width: 100%;
+    margin: 0;
+    --border-radius: var(--ok-radius-full);
+    --padding-start: 24px;
+    --padding-end: 24px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+  }
+}
+
 .ios {
   .can-go-back {
     ion-fab.fab-vertical-bottom {
@@ -30,26 +450,24 @@
   }
 }
 
-/* FAB bottom padding fix for Android edge-to-edge display */
 .md {
   ion-fab.fab-vertical-bottom {
-    bottom: env(safe-area-inset-bottom, 0px);
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }
-ion-label {
-  font-size: 12px;
-}
 
-/* Common Components styling */
-
-// from-to.component
+/* ==========================================================================
+   AirGap Shared Components & QR Code Quiet Zone Styling
+   ========================================================================== */
 .from-to-line {
-  border-left: 1px solid var(--ion-color-light) !important;
+  border-left: 2px solid var(--ok-border) !important;
 }
 
 .lifehash {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--ok-radius-md);
+  border: 1px solid var(--ok-border-subdued);
   image-rendering: pixelated;
 }
 
@@ -60,28 +478,42 @@ airgap-currency-symbol {
   }
 }
 
+/* Ensure QR codes always have a crisp white quiet-zone card for reliable optical scanning */
+airgap-qr,
+airgap-iac-qr,
+qrcode {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: var(--ok-radius-lg);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+
+  img,
+  canvas {
+    border-radius: 4px;
+  }
+}
+
 swiper-container {
-  --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #cccccc);
-  --swiper-pagination-color: var(--ion-color-primary, #3880ff);
-  --swiper-pagination-progressbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.25);
-  --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
-  --swiper-scrollbar-drag-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.5);
+  --swiper-pagination-bullet-inactive-color: rgba(255, 255, 255, 0.25);
+  --swiper-pagination-color: var(--ok-text);
+  --swiper-pagination-progressbar-bg-color: rgba(255, 255, 255, 0.15);
+  --swiper-scrollbar-bg-color: rgba(255, 255, 255, 0.1);
+  --swiper-scrollbar-drag-bg-color: rgba(255, 255, 255, 0.5);
 }
 
 swiper-slide {
   display: flex;
   position: relative;
-
   flex-direction: column;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   height: 100%;
-
   font-size: 18px;
-
   text-align: center;
   box-sizing: border-box;
 }

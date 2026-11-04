@@ -7,54 +7,61 @@
 
     <ion-buttons slot="primary">
       <ion-button (click)="presentEditPopover($event)">
-        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="wallet" class="ion-padding">
-  <ion-row class="ion-padding">
-    <ion-col>
-      <ion-avatar>
-        <airgap-identicon [address]="wallet.receivingPublicAddress"></airgap-identicon>
-      </ion-avatar>
-      <airgap-currency-symbol [symbol]="protocolSymbol" [protocolIdentifier]="protocolIdentifier"></airgap-currency-symbol>
-    </ion-col>
-    <ion-col>
-      <h2 class="ion-no-margin">{{ protocolName }} {{ protocolSymbol }}</h2>
-      <p>
-        {{ 'wallet-address.address_label' | translate }}
-        <br />
-        <span class="selectable typography--mono" (click)="copyAddressToClipboard()">{{ wallet.receivingPublicAddress }}</span>
-      </p>
-      <p>
-        {{ 'wallet-address.path_label' | translate }}
-        <br />
-        <span class="selectable typography--mono">{{ wallet.derivationPath }}</span>
-      </p>
-      <p *ngIf="isAppAdvancedMode$ | async">
+  <div class="ok-account-detail-card">
+    <div class="ok-account-detail-card__header">
+      <div class="ok-account-detail-card__avatar">
+        <ion-avatar>
+          <airgap-identicon [address]="wallet.receivingPublicAddress"></airgap-identicon>
+        </ion-avatar>
+        <airgap-currency-symbol [symbol]="protocolSymbol" [protocolIdentifier]="protocolIdentifier"></airgap-currency-symbol>
+      </div>
+      <div class="ok-account-detail-card__title">
+        <h2>{{ protocolName }}</h2>
+        <span class="ok-account-detail-card__symbol">{{ protocolSymbol }}</span>
+      </div>
+    </div>
+
+    <div class="ok-account-detail-card__section">
+      <div class="ok-account-detail-card__label">{{ 'wallet-address.address_label' | translate }}</div>
+      <div class="ok-account-detail-card__address selectable typography--mono" (click)="copyAddressToClipboard()">
+        <span>{{ wallet.receivingPublicAddress }}</span>
+        <ion-icon name="copy-outline"></ion-icon>
+      </div>
+    </div>
+
+    <div class="ok-account-detail-card__meta-row">
+      <div>
+        <div class="ok-account-detail-card__label">{{ 'wallet-address.path_label' | translate }}</div>
+        <span class="selectable typography--mono ok-account-detail-card__path">{{ wallet.derivationPath }}</span>
+      </div>
+
+      <div class="ok-account-detail-card__chips" *ngIf="isAppAdvancedMode$ | async">
         <ion-chip color="light" *ngIf="wallet.isExtendedPublicKey">{{ 'wallet-address.hd-wallet_chip' | translate }}</ion-chip>
         <ion-chip color="light" *ngIf="secret.fingerprint !== wallet.masterFingerprint">
           {{ 'wallet-address.bip39-passphrase_chip' | translate }}
         </ion-chip>
-      </p>
-    </ion-col>
-  </ion-row>
+      </div>
+    </div>
+  </div>
 
-  <p class="ion-padding-horizontal ion-padding-bottom">{{ 'wallet-address.sync-with_label' | translate }}</p>
+  <p class="ok-sync-heading">{{ 'wallet-address.sync-with_label' | translate }}</p>
 
-  <ion-row *ngFor="let option of syncOptions" class="ion-padding-bottom">
-    <ion-col size="12">
-      <ion-button expand="block" color="light" (click)="share(option)" shape="round">
-        <img src="assets/logos/{{option.icon}}" style="width: 24px; height: 24px" />
-        &nbsp; {{option.name}}
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <div class="ok-sync-actions">
+    <ion-button *ngFor="let option of syncOptions" expand="block" color="light" (click)="share(option)" shape="round">
+      <img src="assets/logos/{{ option.icon }}" style="width: 22px; height: 22px; border-radius: 50%;" alt="" />
+      &nbsp; {{ option.name }}
+    </ion-button>
+  </div>
 
   <ng-container *ngIf="showMetaMaskMigrationOnboarding">
-    <ion-row>
+    <ion-row class="ion-margin-top">
       <ion-col>
         {{ 'wallet-address.metamask-migration_text' | translate }}
       </ion-col>
@@ -63,7 +70,7 @@
 
   <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
     <ng-template>
-      <ion-header>
+      <ion-header class="ion-no-border">
         <ion-toolbar>
           <ion-title>{{ 'wallet-address.address-qr_title' | translate }}</ion-title>
           <ion-buttons slot="end">
@@ -71,9 +78,9 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
-        <ion-row class="ion-justify-content-center ion-padding-bottom">
-          <airgap-qr [qrdata]="wallet.receivingPublicAddress" [level]="'L'" [size]="300"></airgap-qr>
+      <ion-content class="ion-padding">
+        <ion-row class="ion-justify-content-center ion-padding-vertical">
+          <airgap-qr [qrdata]="wallet.receivingPublicAddress" [level]="'L'" [size]="280"></airgap-qr>
         </ion-row>
       </ion-content>
     </ng-template>

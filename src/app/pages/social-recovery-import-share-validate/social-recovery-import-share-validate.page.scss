@@ -6,7 +6,7 @@
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 84px;
 }
 
 .content-wrapper {
@@ -28,7 +28,7 @@ h2 {
   line-height: 1.5rem;
   text-align: center;
   margin-bottom: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--ok-text);
 }
 
 .states-wrapper {
@@ -38,13 +38,10 @@ h2 {
   width: 70%;
   gap: 4px;
 
-
-
   .state {
-    height: 100%;
     font-size: large;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--ok-text);
     width: 30px;
     height: 30px;
     padding: 0px;
@@ -60,9 +57,8 @@ h2 {
   }
 }
 
-
 ion-textarea {
-  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+  font-family: var(--ok-font-mono);
   font-weight: 600;
   text-transform: lowercase;
   height: 24vh;
@@ -79,9 +75,9 @@ ion-textarea {
 }
 
 hr {
-  border: 2px dashed var(--ion-color-primary);
-  border-style: none none dashed;
-  margin: 8px 0;
+  border: 1px solid var(--ok-divider);
+  border-style: none none solid;
+  margin: 12px 0;
 }
 
 .word-placeholder {
@@ -97,18 +93,15 @@ hr {
 }
 
 .btn-current {
-  border: 2px dashed var(--ion-color-primary);
-  border-radius: 25px;
+  border: 1.5px dashed var(--ok-brand);
+  border-radius: var(--ok-radius-full);
 }
 
 .btn-blank {
-  border: 2px dashed var(--ion-color-tertiary);
-  border-radius: 25px;
-}
-.text--medium {
-  margin-right: 0.25rem;
+  border: 1px dashed var(--ok-border);
+  border-radius: var(--ok-radius-full);
 }
 
-ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+.text--medium {
+  margin-right: 0.25rem;
 }

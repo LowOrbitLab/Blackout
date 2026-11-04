@@ -9,9 +9,9 @@
   bottom: 56px;
 }
 hr {
-  border: 2px dashed var(--ion-color-primary);
-  border-style: none none dashed;
-  margin: 8px 0;
+  border: 1px solid var(--ok-divider);
+  border-style: none none solid;
+  margin: 12px 0;
 }
 .word-placeholder {
   min-width: 48px;
@@ -32,19 +32,21 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
   width: 100%;
   margin-bottom: 28vh;
+  gap: 6px;
 
   .tag {
     --padding-bottom: 8px;
     --padding-top: 8px;
-    --padding-start: 18px;
-    --padding-end: 18px;
-    --border-width: 1px
+    --padding-start: 14px;
+    --padding-end: 14px;
+    --border-width: 1px;
     height: fit-content;
 
     .number {
-      font-size: 0.65rem;
-      line-height: 0.75rem;
-      color: rgb(192, 192, 192);
+      font-family: var(--ok-font-mono);
+      font-size: 0.7rem;
+      line-height: 0.85rem;
+      color: var(--ok-text-subdued);
       width: 100%;
       text-align: start;
       margin: 0px;
@@ -52,44 +54,46 @@ hr {
     }
 
     .text {
-      font-size: 0.65rem;
-      line-height: 0.75rem;
+      font-family: var(--ok-font-mono);
+      font-size: 0.75rem;
+      line-height: 0.85rem;
       text-transform: lowercase;
-      font-weight: 700;
+      font-weight: 600;
       margin: 0px;
     }
   }
 
   .current {
-    --background: transparent;
-    --background-hover: transparent;
-    --background-activated: transparent;
-    --background-focused: transparent;
+    --background: var(--ok-brand-bg);
+    --background-hover: var(--ok-brand-bg);
+    --background-activated: var(--ok-brand-bg);
+    --background-focused: var(--ok-brand-bg);
 
-    --border-style : dashed;
-    --border-width: 1px;
-    --border-color: var(--ion-color-primary);
+    --border-style: dashed;
+    --border-width: 1.5px;
+    --border-color: var(--ok-brand);
   }
 }
 
 .error-wrapper {
   display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    svg {
-      overflow: visible;
-      height: 50px;
-      width: 50px;
-      margin-bottom: 24px;
-    }
+  svg {
+    overflow: visible;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 24px;
+  }
 
-    p {
-      font-size: 0.75rem;
-      line-height: 0.85rem;
-      font-weight: 500;
-      margin: 0px;
-      text-align: center;
-    }
-} 
+  p {
+    font-size: 0.8125rem;
+    line-height: 1.2rem;
+    font-weight: 500;
+    margin: 0px;
+    text-align: center;
+    color: var(--ok-critical);
+  }
+}

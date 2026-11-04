@@ -1,8 +1,16 @@
-airgap-qr {
-  width: 340px;
-  height: 340px;
+airgap-qr,
+airgap-iac-qr {
+  margin: 12px auto;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ok-text);
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 88px;
 }

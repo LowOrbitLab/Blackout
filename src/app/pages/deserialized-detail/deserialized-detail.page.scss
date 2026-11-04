@@ -1,5 +1,6 @@
 .warning-icon {
-  font-size: 4rem;
+  font-size: 2.5rem;
+  color: var(--ok-caution);
 }
 
 .word-break__all {
@@ -9,8 +10,14 @@
 .deserialized-content {
   --margin-bottom: 32px;
   margin-bottom: 32px;
+
+  > p {
+    font-size: 13px;
+    color: var(--ok-text-subdued);
+    margin: 4px 0 8px;
+  }
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 88px;
 }

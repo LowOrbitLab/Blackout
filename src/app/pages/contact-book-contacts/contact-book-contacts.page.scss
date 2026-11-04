@@ -1,35 +1,33 @@
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
-}
-
-ion-toolbar {
-  --background: var(--ion-color-secondary);
-}
-
-ion-toolbar {
-  --color: var(--ion-color-secondary-contrast);
+  --padding-bottom: 84px;
 }
 
 .contacts-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 
   .contacts-letter {
-    border-bottom: 1px solid black;
-    margin: 24px 0px 0px 0px;
+    border-bottom: 1px solid var(--ok-divider);
+    padding-bottom: 6px;
+    margin: 20px 0px 0px 0px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ok-text-subdued);
+    text-transform: uppercase;
   }
 }
 
 .suggestions-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   margin-top: 12px;
 
   .suggestions-header {
-    font-size: 1rem;
-    margin-bottom: 0px;
-    font-weight: 800;
+    font-size: 13px;
+    color: var(--ok-text-subdued);
+    margin-bottom: 4px;
+    font-weight: 600;
   }
 }

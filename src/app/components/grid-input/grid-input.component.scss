@@ -1,15 +1,17 @@
 .active {
-  background-color: var(--ion-color-primary);
+  background-color: var(--ok-brand);
+  color: #111111;
+  border-radius: var(--ok-radius-xs);
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
 }
+
 td {
   height: 6vh;
   display: inline-block;
-
   vertical-align: middle;
   text-align: center;
   margin-left: auto;

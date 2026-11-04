@@ -1,15 +1,69 @@
 airgap-currency-symbol {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
+
 ion-avatar {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .white {
-  color: white;
+  color: var(--ok-text);
 }
 
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 96px;
+}
+
+ion-list {
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-lg);
+  padding: 4px 12px;
+  margin-bottom: 16px;
+
+  ion-item {
+    --background: transparent;
+    --min-height: 54px;
+    border-bottom: 1px solid var(--ok-divider);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ok-text);
+
+      span {
+        font-weight: 600;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.ok-isolated-module-card {
+  --background: var(--ok-bg);
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-lg);
+  margin: 16px 0;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: var(--ok-bg-hover);
+    border-color: var(--ok-border);
+  }
+
+  h2 {
+    color: var(--ok-text);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+  }
 }

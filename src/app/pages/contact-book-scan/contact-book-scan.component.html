@@ -1,40 +1,45 @@
-<ion-header class="ion-no-border" no-shadow>
-  <ion-toolbar color="secondary">
+<ion-header class="ion-no-border ok-scan-header" no-shadow>
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'contact-book-scan.title' | translate }}</ion-title>
+    <ion-title class="ok-scan-title">{{ 'contact-book-scan.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content forceOverscroll="false" [class.transparent]="hasCameraPermission | async">
-  <ion-grid fixed="true" class="ion-no-padding">
-    <ion-text color="secondary">
-      <p class="ion-padding ion-no-margin">
-        <ng-container>{{ 'contact-book-scan.text' | translate }}</ng-container>
-      </p>
-    </ion-text>
+  <div *ngIf="hasCameraPermission | async" class="ok-scan-layout">
+    <zxing-scanner
+      #scanner
+      class="ok-zxing-layer"
+      [formats]="['QR_CODE']"
+      [timeBetweenScans]="0"
+      [delayBetweenScanSuccess]="0"
+      *ngIf="isBrowser || isElectron"
+      (scanSuccess)="checkScan($event)"
+    ></zxing-scanner>
 
-    <ion-row *ngIf="hasCameraPermission | async" class="row--height__100 ion-justify-content-center ion-align-items-center">
-      <ion-col class="guides--container content--align__center-center">
-        <img class="guides--container__img" src="./assets/img/qr_code_guides.svg" />
-      </ion-col>
-      <zxing-scanner
-        #scanner
-        [formats]="['QR_CODE']"
-        [timeBetweenScans]="0"
-        [delayBetweenScanSuccess]="0"
-        *ngIf="isBrowser || isElectron"
-        (scanSuccess)="checkScan($event)"
-      ></zxing-scanner>
-    </ion-row>
+    <div class="ok-viewfinder-stage">
+      <div class="ok-viewfinder-box">
+        <span class="ok-corner ok-corner--tl"></span>
+        <span class="ok-corner ok-corner--tr"></span>
+        <span class="ok-corner ok-corner--bl"></span>
+        <span class="ok-corner ok-corner--br"></span>
+        <div class="ok-laser-line"></div>
+      </div>
+    </div>
 
+    <div class="ok-scan-footer">
+      <h2 class="ok-scan-footer__heading">{{ 'contact-book-scan.text' | translate }}</h2>
+    </div>
+  </div>
+
+  <ion-grid *ngIf="(hasCameraPermission | async) === false" fixed="true" class="ion-no-padding">
     <ion-row
       class="row--height__100 ion-justify-content-center ion-align-items-center"
-      *ngIf="(hasCameraPermission | async) === false"
       (click)="requestPermission()"
     >
-      <ion-col class="ion-text-center">
+      <ion-col class="ion-text-center ion-padding">
         <img src="../assets/img/permission_onboarding_camera.svg" />
         <h3 class="ion-padding-horizontal" [innerHTML]="'contact-book-scan.empty-state_heading' | translate"></h3>
         <ion-button shape="round" color="primary">{{ 'contact-book-scan.grant-permission_label' | translate }}</ion-button>

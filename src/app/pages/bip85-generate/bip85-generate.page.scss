@@ -1,11 +1,14 @@
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 84px;
 }
 
 .input_index {
-  background-color: white;
-  color: black;
+  background-color: var(--ok-bg-strong);
+  border: 1px solid var(--ok-border-subdued);
+  color: var(--ok-text);
+  font-family: var(--ok-font-mono);
   max-width: 120px;
   text-align: right;
-  border-radius: 5px;
+  border-radius: var(--ok-radius-sm);
+  --padding-end: 8px;
 }

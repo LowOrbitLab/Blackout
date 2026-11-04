@@ -1,23 +1,17 @@
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
-}
-
-ion-toolbar {
-  --background: var(--ion-color-secondary);
-}
-
-ion-toolbar {
-  --color: var(--ion-color-secondary-contrast);
+  --padding-bottom: 84px;
 }
 
 .delete-button {
   width: calc(100% - 24px);
-  background-color: white;
-  font-size: 14px;
-  padding: 0px;
-  height: 38px;
-  color: red;
-  border-radius: 6px;
+  background-color: var(--ok-critical-bg);
+  border: 1px solid var(--ok-critical-border);
+  color: var(--ok-critical);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 0 16px;
+  height: 44px;
+  border-radius: var(--ok-radius-full);
   margin: 24px 12px 0px 12px;
-  border: 1px solid rgb(194, 194, 194);
+  cursor: pointer;
 }
