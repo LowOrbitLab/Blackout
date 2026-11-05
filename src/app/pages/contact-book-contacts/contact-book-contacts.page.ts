@@ -27,6 +27,8 @@ export class ContactBookContactsPage implements OnInit {
 
   public contacts$ = this.contactsService.getContactsInfo$()
   public suggestions: string[] = []
+  /** Current search text; tells "no matches" apart from an empty address book. */
+  public searchTerm: string = ''
   constructor(
     private readonly popoverCtrl: PopoverController,
     private readonly navigationService: NavigationService,
@@ -43,7 +45,8 @@ export class ContactBookContactsPage implements OnInit {
   }
 
   public async onSearch(event: any) {
-    const value = event.target.value.toLowerCase()
+    const value = (event.target.value ?? '').toLowerCase()
+    this.searchTerm = value.trim()
     const storedContacts = await this.contactsService.getContactsInfo()
 
     const result = storedContacts.filter(

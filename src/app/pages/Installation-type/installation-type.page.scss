@@ -56,6 +56,16 @@ ion-content {
     }
   }
 
+  /* Without this the grid's 5px column padding pushed the title off the line
+     the description starts on */
+  ion-card-header {
+    padding-bottom: 4px;
+
+    ion-col {
+      padding: 0;
+    }
+  }
+
   ion-col[size='1'] {
     display: flex;
     align-items: center;

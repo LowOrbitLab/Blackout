@@ -7,7 +7,9 @@ ion-row.ion-text-center {
   border: 1px solid var(--ok-border-subdued);
   border-radius: var(--ok-radius-lg);
   padding: 12px 8px;
-  margin: 8px 16px 12px;
+  /* The page already supplies the 16px gutter; a second 16px made this card
+     narrower than the account card right above it */
+  margin: 12px 0;
 
   h5 {
     font-family: var(--ok-font-mono);

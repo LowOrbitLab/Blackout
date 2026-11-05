@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+/* Line the callouts up with the cards above them: the grid added 5px per
+   side and the utility classes stacked 16px gaps above and below each one */
+ion-row {
+  padding-top: 0;
+}
+
+ion-col {
+  padding: 0;
+}
+
+ion-item {
+  margin: 0 0 12px;
+}

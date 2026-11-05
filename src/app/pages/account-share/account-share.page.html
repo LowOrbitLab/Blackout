@@ -8,44 +8,40 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-row class="ion-justify-content-center ion-padding-bottom">
-    <div style="width: 300px">
-      <p
-        class="ion-padding-bottom ion-justify-content-center heading--text"
-        [innerHTML]="'wallet-share.heading' | translate: { walletName: walletName }"
-      ></p>
+  <div class="ok-share">
+    <p class="ok-share__heading" [innerHTML]="'wallet-share.heading' | translate: { walletName: walletName }"></p>
 
-      <ion-row class="ion-justify-content-center ion-padding-bottom" *ngIf="interactionUrl">
-        <airgap-iac-qr
-          [messageDefinitionObjects]="interactionUrl"
-          [qrFormatPreference]="companionApp.qrType"
-          [level]="'L'"
-          [size]="300"
-        ></airgap-iac-qr>
-      </ion-row>
-
-      <ion-row class="ion-justify-content-center"><p [innerHTML]="'wallet-share.text' | translate"></p></ion-row>
-
-      <ion-row class="rawdata--container" *ngIf="interactionUrl">
-        <ion-col class="ion-no-padding">
-          <ion-item class="ion-no-padding" lines="none">
-            <ion-label>{{ 'wallet-share.qr-details_label' | translate }}</ion-label>
-            <ion-toggle [checked]="displayRawData" (ionChange)="displayRawData = !displayRawData" slot="end"></ion-toggle>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+    <div class="ok-share__qr" *ngIf="interactionUrl">
+      <airgap-iac-qr
+        [messageDefinitionObjects]="interactionUrl"
+        [qrFormatPreference]="companionApp.qrType"
+        [level]="'L'"
+        [size]="300"
+      ></airgap-iac-qr>
     </div>
-  </ion-row>
 
-  <ion-row class="rawdata--container" *ngIf="interactionUrl">
-    <ion-col class="ion-no-padding">
-      <pre *ngIf="displayRawData" class="ion-no-margin">{{ interactionUrl | json }}</pre>
-      <ion-button *ngIf="displayRawData" (click)="copyToClipboard()">{{ 'wallet-share.copy-data_label' | translate }}</ion-button>
-      <ion-button class="float-right" *ngIf="displayRawData" color="primary" shape="round" (click)="done()">
-        {{ 'wallet-share.done_label' | translate }}
-      </ion-button>
-    </ion-col>
-  </ion-row>
+    <p class="ok-share__text" [innerHTML]="'wallet-share.text' | translate"></p>
+
+    <div class="ok-share__details" *ngIf="interactionUrl">
+      <ion-item lines="none">
+        <ion-label>{{ 'wallet-share.qr-details_label' | translate }}</ion-label>
+        <ion-toggle
+          slot="end"
+          [attr.aria-label]="'wallet-share.qr-details_label' | translate"
+          [checked]="displayRawData"
+          (ionChange)="displayRawData = !displayRawData"
+        ></ion-toggle>
+      </ion-item>
+    </div>
+
+    <div class="ok-share__raw" *ngIf="interactionUrl && displayRawData">
+      <pre class="ion-no-margin">{{ interactionUrl | json }}</pre>
+      <div class="ok-share__raw-actions">
+        <ion-button color="tertiary" shape="round" (click)="copyToClipboard()">{{ 'wallet-share.copy-data_label' | translate }}</ion-button>
+        <ion-button color="primary" shape="round" (click)="done()">{{ 'wallet-share.done_label' | translate }}</ion-button>
+      </div>
+    </div>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!displayRawData">
     <ion-button color="primary" shape="round" (click)="done()">{{ 'wallet-share.done_label' | translate }}</ion-button>

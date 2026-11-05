@@ -15,7 +15,7 @@
     <p class="ok-wipe-banner__text">{{ 'danger-zone.wipe.confirm.description' | translate }}</p>
   </div>
 
-  <div class="ok-settings-section">
+  <div class="ok-wipe-checks">
     <ion-list lines="none">
       <ion-item button detail="false" (click)="hasBackup = !hasBackup">
         <ion-label class="ion-text-wrap">{{ 'danger-zone.wipe.confirm.backup_label' | translate }}</ion-label>
@@ -45,20 +45,14 @@
 </ion-content>
 
 <ion-footer class="ion-no-border">
-  <ion-toolbar class="ion-padding-horizontal ion-padding-bottom">
-    <ion-grid class="ion-no-padding">
-      <ion-row class="ok-wipe-actions">
-        <ion-col>
-          <ion-button expand="block" fill="outline" shape="round" (click)="cancel()">
-            {{ 'danger-zone.wipe.confirm.cancel_label' | translate }}
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button expand="block" color="danger" shape="round" [disabled]="!canWipe" (click)="confirm()">
-            {{ 'danger-zone.wipe.confirm.confirm_label' | translate }}
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-toolbar>
+    <div class="ok-wipe-actions">
+      <ion-button color="tertiary" shape="round" (click)="cancel()">
+        {{ 'danger-zone.wipe.confirm.cancel_label' | translate }}
+      </ion-button>
+      <ion-button color="danger" shape="round" [disabled]="!canWipe" (click)="confirm()">
+        {{ 'danger-zone.wipe.confirm.confirm_label' | translate }}
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-footer>

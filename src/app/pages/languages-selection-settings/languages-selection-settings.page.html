@@ -10,14 +10,16 @@
 <ion-content>
   <div class="ok-lang-top">
     <div class="ok-settings-section">
+      <!-- An action, not a second selection: the choice is stored as a concrete
+           language, so a check mark here sat next to the checked radio below -->
       <ion-item button lines="none" detail="false" (click)="defaultToDevice()">
         <ion-icon name="globe-outline" slot="start"></ion-icon>
         <ion-label>
           {{ 'language-selection-settings.selector.device' | translate }}
         </ion-label>
-        <ion-badge *ngIf="isDeviceLanguageSelected" color="success" class="ok-lang-system-badge" slot="end">
-          ✓
-        </ion-badge>
+        <ion-note slot="end" class="ok-lang-device">
+          {{ 'language-selection-settings.selector.' + deviceLanguage | translate }}
+        </ion-note>
       </ion-item>
     </div>
 

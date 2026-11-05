@@ -10,7 +10,9 @@
     <p class="number">{{ i + 1 }}</p>
     <p class="text">{{ word }}</p>
   </ion-button>
-  <ion-button class="tag current" fill="outline" shape="round" color="tertiary" *ngIf="currentSelectedWords.length < splittedSecret.length">
+  <!-- No color: a coloured outline button ignores --border-color / --background,
+       so the dashed brand outline of .current never showed -->
+  <ion-button class="tag current" fill="outline" shape="round" *ngIf="currentSelectedWords.length < splittedSecret.length">
     <p class="number">{{ currentSelectedWords.length + 1 }}</p>
     <p class="text">{{ '' }}</p>
   </ion-button>

@@ -1,32 +1,38 @@
+/* Wipe confirmation: a critical banner, two acknowledgements and the typed
+   phrase. Built only from the --ok-* tokens in variables.scss; the previous
+   names (--ok-bg-surface, --ok-radius-card, ...) never existed, so every block
+   rendered square, unfilled and with a serif fallback font. */
+
 .ok-wipe-banner {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 14px 16px;
   margin-bottom: 16px;
-  background: var(--ok-color-danger-soft);
-  border: 1px solid rgba(255, 91, 91, 0.28);
-  border-radius: var(--ok-radius-card);
+  background: var(--ok-critical-bg);
+  border: 1px solid var(--ok-critical-border);
+  border-radius: var(--ok-radius-lg);
 
   &__icon {
     flex-shrink: 0;
     font-size: 22px;
-    color: var(--ok-color-danger);
+    color: var(--ok-critical);
     margin-top: 1px;
   }
 
   &__text {
     margin: 0;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5;
-    color: #ffb8b8;
+    color: var(--ok-text);
   }
 }
 
-.ok-settings-section {
-  background: var(--ok-bg-surface);
-  border: 1px solid var(--ok-border);
-  border-radius: var(--ok-radius-card);
+/* Same grouped surface as the settings sections, but flush with the content
+   gutter (the global .ok-settings-section adds its own 16px side margin) */
+.ok-wipe-checks {
+  background: var(--ok-bg);
+  border-radius: var(--ok-radius-lg);
   overflow: hidden;
   margin-bottom: 16px;
 
@@ -41,24 +47,30 @@
     --padding-start: 16px;
     --inner-padding-end: 16px;
     --min-height: 56px;
+    --border-width: 0;
+    --inner-border-width: 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid var(--ok-border);
+      border-bottom: 1px solid var(--ok-divider);
     }
 
     ion-label {
       font-size: 14px;
+      font-weight: 500;
       line-height: 1.45;
       color: var(--ok-text);
       margin: 12px 0;
+    }
+
+    ion-checkbox {
+      margin-inline-start: 12px;
     }
   }
 }
 
 .ok-wipe-input-card {
-  background: var(--ok-bg-surface);
-  border: 1px solid var(--ok-border);
-  border-radius: var(--ok-radius-card);
+  background: var(--ok-bg);
+  border-radius: var(--ok-radius-lg);
   padding: 16px;
 
   &__label {
@@ -72,23 +84,44 @@
 }
 
 .ok-wipe-input {
-  --background: var(--ok-bg-canvas);
+  --background: var(--ok-bg-app);
   --color: var(--ok-text);
-  --placeholder-color: var(--ok-text-muted);
+  --placeholder-color: var(--ok-text-placeholder);
+  --placeholder-opacity: 1;
   --padding-start: 14px;
   --padding-end: 14px;
   --padding-top: 12px;
   --padding-bottom: 12px;
-  border: 1px solid var(--ok-border-strong);
-  border-radius: var(--ok-radius-control);
-  font-family: 'Courier New', monospace;
+  /* The focus state is the border below, not MD's underline highlight */
+  --highlight-height: 0;
+  --border-radius: var(--ok-radius-md);
+  border: 1px solid var(--ok-border-subdued);
+  border-radius: var(--ok-radius-md);
+  /* The inner wrapper paints the field colour as a square box */
+  overflow: hidden;
+  font-family: var(--ok-font-mono);
   font-size: 14px;
+  transition: border-color var(--ok-duration-base) var(--ok-ease-out);
+
+  &.has-focus {
+    border-color: var(--ok-border);
+  }
+}
+
+/* Ionic already pads the last footer toolbar by the bottom safe area */
+ion-footer ion-toolbar {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
 }
 
 .ok-wipe-actions {
-  gap: 8px;
+  display: flex;
+  gap: 12px;
 
   ion-button {
+    flex: 1;
     margin: 0;
     height: 46px;
     font-weight: 600;

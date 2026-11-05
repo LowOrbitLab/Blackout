@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  margin-top: 6px;
+}
+
+.ok-entropy__value {
+  font-family: var(--ok-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ok-text);
+  transition: color var(--ok-duration-base) var(--ok-ease-out);
+
+  &--done {
+    color: var(--ok-brand);
+  }
+}
+
+.ok-entropy__bar {
+  width: 48px;
+  height: 4px;
+  margin: 6px auto 0;
+  border-radius: var(--ok-radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--ok-text);
+    transition: width var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out);
+  }
+
+  .ok-entropy__fill--done {
+    background: var(--ok-brand);
+  }
+}

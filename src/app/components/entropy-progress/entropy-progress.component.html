@@ -1,1 +1,4 @@
-<div>{{ progressInPercent }}%</div>
+<div class="ok-entropy__value" [class.ok-entropy__value--done]="progressInPercent >= 100">{{ progressInPercent }}%</div>
+<div class="ok-entropy__bar" aria-hidden="true">
+  <span [style.width.%]="progressInPercent" [class.ok-entropy__fill--done]="progressInPercent >= 100"></span>
+</div>

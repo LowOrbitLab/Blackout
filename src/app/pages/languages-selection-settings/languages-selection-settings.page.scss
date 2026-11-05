@@ -2,14 +2,11 @@
   padding-top: 12px;
 }
 
-.ok-lang-system-badge {
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
+.ok-lang-device {
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--ok-text-subdued);
 }

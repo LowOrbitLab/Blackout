@@ -88,6 +88,15 @@
     transition: border-color var(--ok-duration-base) var(--ok-ease-out), background-color var(--ok-duration-base) var(--ok-ease-out),
       transform var(--ok-duration-fast) var(--ok-ease-out);
 
+    span {
+      min-width: 0;
+      line-height: 1.55;
+      /* Two even lines instead of a full line plus a one-character orphan,
+         which is easy to miss when comparing an address (Chromium 114+;
+         older WebViews keep the plain wrap) */
+      text-wrap: balance;
+    }
+
     &:active {
       transform: scale(0.99);
       border-color: var(--ok-border);

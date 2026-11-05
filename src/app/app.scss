@@ -40,12 +40,18 @@ blackout-secret-rules {
     padding-inline-start: 0;
     list-style: none;
     li {
-      padding: 4px 0;
+      position: relative;
+      /* Hanging indent: wrapped lines align with the text, not the bullet */
+      padding: 4px 0 4px 16px;
+      /* Same size as the paragraphs around the list (it inherited 16px) */
+      font-size: 14px;
+      line-height: 1.5;
       color: var(--ok-text-subdued);
       &:before {
         content: '•';
+        position: absolute;
+        left: 2px;
         color: var(--ok-brand);
-        padding-right: 8px;
         font-weight: bold;
       }
     }
@@ -173,6 +179,14 @@ airgap-account-item {
       }
     }
   }
+}
+
+/* From / To on the signing and signed screens: break long addresses into even
+   lines (Chromium 114+), so the last few characters are not left as an easy to
+   overlook orphan on their own line while the user compares the address */
+airgap-titled-address .typography--mono {
+  word-break: break-all;
+  text-wrap: balance;
 }
 
 pre {

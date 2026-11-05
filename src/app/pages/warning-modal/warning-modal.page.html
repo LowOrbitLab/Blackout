@@ -5,7 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-row class="ion-padding-horizontal" [innerHtml]="description"></ion-row>
+  <!-- A block, not an ion-row: in a flex row the paragraphs and the list of the
+       translated HTML stopped collapsing their margins and drifted apart -->
+  <div class="ok-warning-body ion-padding-horizontal" [innerHtml]="description"></div>
 
   <ion-row class="ion-justify-content-center" *ngIf="imageUrl"><img class="warning-img" [src]="imageUrl" /></ion-row>
 

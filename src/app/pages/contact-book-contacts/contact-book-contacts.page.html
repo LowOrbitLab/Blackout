@@ -15,7 +15,7 @@
     <ion-searchbar placeholder="{{'contact-book.label_search_contacts' | translate}}" (ionInput)="onSearch($event)"></ion-searchbar>
     <ion-buttons slot="primary" (click)="onClickSort($event)">
       <ion-button>
-        <ion-icon slot="icon-only" name="funnel"></ion-icon>
+        <ion-icon slot="icon-only" name="funnel-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -23,6 +23,23 @@
 
 <ion-content class="ion-padding">
   <ng-container *ngIf="contacts$ | async as contacts">
+    <div class="ok-contacts-empty" *ngIf="contacts.length === 0 && suggestions.length === 0">
+      <span class="ok-contacts-empty__icon">
+        <ion-icon [name]="searchTerm ? 'search-outline' : 'people-outline'"></ion-icon>
+      </span>
+      <ng-container *ngIf="searchTerm; else emptyBook">
+        <h3>{{ 'contact-book.label_no_results' | translate }}</h3>
+      </ng-container>
+      <ng-template #emptyBook>
+        <h3>{{ 'contact-book.label_empty_title' | translate }}</h3>
+        <p>{{ 'contact-book.label_empty_text' | translate }}</p>
+        <ion-button color="tertiary" shape="round" (click)="onClickNew($event)">
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+          {{ 'contact-book.label_add' | translate }}
+        </ion-button>
+      </ng-template>
+    </div>
+
     <div class="contacts-wrapper" *ngFor="let key of getHeading(contacts)">
       <h3 *ngIf="sortType === sortEnum.NAME; else default" class="contacts-letter">{{key | uppercase}}</h3>
       <ng-template #default>

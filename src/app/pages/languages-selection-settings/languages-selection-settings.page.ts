@@ -19,8 +19,8 @@ export class LanguagesSelectionSettingsPage implements OnInit {
     return Object.values(LanguagesType)
   }
 
-  public get isDeviceLanguageSelected(): boolean {
-    return this.selectedType === this.getNormalizedBrowserLanguage()
+  public get deviceLanguage(): LanguagesType {
+    return this.getNormalizedBrowserLanguage()
   }
 
   constructor(

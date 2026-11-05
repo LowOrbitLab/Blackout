@@ -5,43 +5,46 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <img [src]="installationType === 'OFFLINE' ? 'assets/img/companion-apps.svg' : 'assets/img/app-switching.svg'" />
-  <ion-item style="margin-top: 10%;" lines="none">
-    <ion-header>
-      <h1>
-        <strong>
-          <strong [innerHTML]="'introduction.header' | translate: { installationType: installationType}"></strong>
-        </strong>
-      </h1>
-    </ion-header>
-    <ion-icon
-      [name]="installationType === 'OFFLINE' ? 'cloud-offline-outline': 'wifi-outline'"
-      slot="end"
-      color="white"
-      size="large"
-    ></ion-icon>
-  </ion-item>
+  <div class="ok-intro" *ngIf="installationType !== installationTypes.UNDETERMINED">
+    <img
+      class="ok-intro__art"
+      alt=""
+      [src]="installationType === installationTypes.OFFLINE ? 'assets/img/companion-apps.svg' : 'assets/img/app-switching.svg'"
+    />
 
-  <ion-item lines="none">
+    <div class="ok-intro__heading">
+      <span class="ok-intro__icon">
+        <ion-icon [name]="installationType === installationTypes.OFFLINE ? 'cloud-offline-outline' : 'wifi-outline'"></ion-icon>
+      </span>
+      <!-- The device type is translated before it is interpolated; the raw
+           enum value used to show up as "OFFLINE" in the middle of a sentence -->
+      <h1
+        [innerHTML]="'introduction.header' | translate: { installationType: ('introduction.device-type.' + installationType | translate) }"
+      ></h1>
+    </div>
+
     <p *ngIf="installationType === installationTypes.ONLINE; else offlineDesc">
       {{ 'introduction.online-desc' | translate }}
     </p>
     <ng-template #offlineDesc>
-      <p>
-        {{ 'introduction.offline-desc' | translate }}
-      </p>
+      <p>{{ 'introduction.offline-desc' | translate }}</p>
     </ng-template>
-  </ion-item>
 
-  <ion-item style="margin-top: 1px;" lines="none" *ngIf="installationType === installationTypes.OFFLINE">
-    <p>
+    <p *ngIf="installationType === installationTypes.OFFLINE">
       {{ 'introduction.offline-companion_text' | translate }}
     </p>
-  </ion-item>
 
-  <ion-button *ngIf="installationType === installationTypes.ONLINE" expand="block" shape="round" color="tertiary" (click)="downloadApp()">
-    {{ 'introduction.wallet_install_label' | translate }}
-  </ion-button>
+    <ion-button
+      *ngIf="installationType === installationTypes.ONLINE"
+      class="ok-intro__install"
+      expand="block"
+      shape="round"
+      color="tertiary"
+      (click)="downloadApp()"
+    >
+      {{ 'introduction.wallet_install_label' | translate }}
+    </ion-button>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button shape="round" color="primary" (click)="accept()">{{ 'introduction.skip_label' | translate }}</ion-button>

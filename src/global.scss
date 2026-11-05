@@ -80,9 +80,15 @@ ion-header {
 
     /* Header icon actions follow OneKey's tertiary IconButton: no resting
        surface, a round highlight only while hovered or pressed. Back button
-       and icon-only buttons share it (the scanner torch toggle mirrors it). */
-    ion-back-button,
-    ion-buttons ion-button.button-has-icon-only {
+       and icon-only buttons share it (the scanner torch toggle mirrors it).
+       The selectors carry the in-toolbar / in-buttons state classes on purpose:
+       ion-buttons' own `.sc-ion-buttons-md-s .button-clear` rules are more
+       specific than a plain descendant selector and set the hover/focus fill
+       to currentColor, which with the opacity below became a solid white disc
+       over the icon (hover on desktop, focus after a tap), and kept MD's 48px
+       box. Inside a coloured toolbar Ionic's rule weighs four classes. */
+    ion-buttons ion-back-button.button.in-toolbar.ion-activatable.ion-focusable,
+    ion-buttons ion-button.button.button-has-icon-only.in-buttons.in-toolbar.ion-activatable {
       --background: transparent;
       --background-hover: var(--ok-bg-hover);
       --background-hover-opacity: 1;
@@ -94,13 +100,13 @@ ion-header {
       --border-radius: var(--ok-radius-full);
       --padding-start: 0;
       --padding-end: 0;
+      --padding-top: 0;
+      --padding-bottom: 0;
       --color: var(--ok-text);
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      min-height: 36px;
-      --min-width: 36px;
-      --min-height: 36px;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
       margin: 0;
       transition: transform var(--ok-duration-fast) var(--ok-ease-out);
 
@@ -109,7 +115,7 @@ ion-header {
       }
     }
 
-    ion-back-button {
+    ion-buttons ion-back-button.button.in-toolbar.ion-activatable.ion-focusable {
       --icon-font-size: 22px;
       --icon-margin-start: 0;
       --icon-margin-end: 0;
@@ -117,8 +123,8 @@ ion-header {
       --icon-padding-end: 0;
     }
 
-    ion-buttons ion-button.button-has-icon-only ion-icon {
-      font-size: 20px;
+    ion-buttons ion-button.button.button-has-icon-only.in-buttons.in-toolbar ion-icon[slot='icon-only'] {
+      font-size: 22px;
     }
   }
 
@@ -172,31 +178,47 @@ ion-button {
     opacity: 0.4;
   }
 
-  &.button-solid.ion-color-primary {
-    --background: var(--ok-text);
-    --background-hover: #ffffff;
-    --background-activated: #d8d8d8;
-    --color: var(--ok-text-inverse);
-  }
-
+  /* A button with a color paints from --ion-color-base / --ion-color-contrast,
+     never from --background / --color. Solid light, secondary and tertiary
+     buttons are OneKey's secondary pill (raised dark surface, light label);
+     the same colours as clear or outline buttons are text and stay light. */
+  &.button-solid.ion-color-light,
   &.button-solid.ion-color-secondary,
-  &.button-solid.ion-color-tertiary,
-  &.button-solid.ion-color-light {
-    --background: var(--ok-bg-strong);
-    --background-hover: var(--ok-bg-elevated);
-    --background-activated: var(--ok-bg-active);
-    --color: var(--ok-text);
+  &.button-solid.ion-color-tertiary {
+    --ion-color-base: var(--ok-bg-strong) !important;
+    --ion-color-base-rgb: 34, 34, 34 !important;
+    --ion-color-contrast: var(--ok-text) !important;
+    --ion-color-contrast-rgb: 238, 238, 238 !important;
+    --ion-color-shade: var(--ok-bg) !important;
+    --ion-color-tint: var(--ok-bg-elevated) !important;
   }
 
-  &.button-clear.ion-color-light,
-  &.button-clear.ion-color-secondary {
-    --color: var(--ok-text) !important;
-    color: var(--ok-text) !important;
+  &.button-clear.ion-color-secondary,
+  &.button-clear.ion-color-tertiary,
+  &.button-outline.ion-color-secondary,
+  &.button-outline.ion-color-tertiary {
+    --ion-color-base: var(--ok-text) !important;
+    --ion-color-base-rgb: 238, 238, 238 !important;
   }
 
   &.button-outline {
     --border-color: var(--ok-border);
     --color: var(--ok-text);
+  }
+
+  /* Floating and docked actions stay opaque when disabled: they sit over
+     scrolling content, which showed through a 40% opacity pill. In-flow
+     buttons keep the dimmed look, so a disabled option that is also the
+     selected one (social recovery setup) still reads as selected. */
+  ion-fab &.button-solid.button-disabled,
+  ion-footer &.button-solid.button-disabled,
+  .button-wrapper &.button-solid.button-disabled,
+  .buttons-wrapper &.button-solid.button-disabled {
+    opacity: 1;
+    --background: var(--ok-bg-strong);
+    --color: var(--ok-text-disabled);
+    --ion-color-base: var(--ok-bg-strong) !important;
+    --ion-color-contrast: var(--ok-text-disabled) !important;
   }
 }
 
@@ -217,6 +239,10 @@ ion-searchbar {
   /* toolbar --padding-start (8px) + 8px = the 16px content gutter */
   padding-inline: 8px !important;
   height: auto !important;
+  /* iOS ships `contain: strict` with a fixed 60px height; once the height is
+     auto that containment collapses the host to its padding and clips the
+     field to a 12px sliver */
+  contain: none !important;
 
   .searchbar-input-container {
     min-height: 40px !important;
@@ -329,8 +355,12 @@ ion-card {
   }
 }
 
-ion-list {
-  background: transparent !important;
+/* Ionic paints lists with the item colour through .list-md / .list-ios. Match
+   that weight instead of using !important, so a page can still give its own
+   list a surface (account-add's chain list lost its fill to !important). */
+ion-list.list-md,
+ion-list.list-ios {
+  background: transparent;
   padding-top: 4px;
   padding-bottom: 4px;
 }
@@ -381,31 +411,89 @@ ion-item {
     font-size: 20px;
     margin-inline-end: 14px;
   }
+}
 
-  &.ion-color-light {
-    --background: var(--ok-bg-strong) !important;
-    --color: var(--ok-text) !important;
-  }
-
-  /* Any item given a colour (light, warning, danger, tertiary, ...) becomes a
-     standalone surface, so it must carry its own rounded clip */
-  &[class*='ion-color-'] {
-    border-radius: var(--ok-radius-md);
-    overflow: hidden;
-  }
+/* An item given a colour is a standalone surface: a callout (warnings on the
+   signing screen, setup notices) or a filled input. Ionic paints coloured
+   items from --ion-color-base / --ion-color-contrast, so --background has no
+   effect on them; overriding the base turned the solid amber / grey fills,
+   whose amber or #191919 text was unreadable, into OneKey alert surfaces.
+   `.ion-color` is the marker Ionic sets on the item itself; an item whose
+   label alone has a colour only gets an ion-color-* class and stays plain. */
+ion-item.ion-color {
+  --ok-tone: var(--ok-icon);
+  --ok-tone-bg: var(--ok-bg-strong);
+  --ok-tone-border: var(--ok-border-subdued);
+  --ion-color-base: var(--ok-tone-bg) !important;
+  --ion-color-base-rgb: 34, 34, 34 !important;
+  --ion-color-contrast: var(--ok-text) !important;
+  --ion-color-contrast-rgb: 238, 238, 238 !important;
+  --ion-color-shade: var(--ok-tone-bg) !important;
+  --ion-color-tint: var(--ok-tone-bg) !important;
+  --detail-icon-color: var(--ok-text-subdued);
+  border: 1px solid var(--ok-tone-border);
+  border-radius: var(--ok-radius-md);
+  overflow: hidden;
 
   &.ion-color-warning {
-    --background: var(--ok-caution-bg) !important;
-    --color: var(--ok-caution) !important;
-    border: 1px solid var(--ok-caution-border);
+    --ok-tone: var(--ok-caution);
+    --ok-tone-bg: var(--ok-caution-bg);
+    --ok-tone-border: var(--ok-caution-border);
+  }
 
-    ion-label,
-    ion-icon,
-    h3,
-    h4,
-    p {
-      color: var(--ok-caution) !important;
-    }
+  &.ion-color-danger {
+    --ok-tone: var(--ok-critical);
+    --ok-tone-bg: var(--ok-critical-bg);
+    --ok-tone-border: var(--ok-critical-border);
+  }
+
+  &.ion-color-success {
+    --ok-tone: var(--ok-brand);
+    --ok-tone-bg: var(--ok-brand-bg);
+    --ok-tone-border: var(--ok-brand-border);
+  }
+
+  /* OneKey Alert: the icon carries the tone, text is primary with a subdued
+     body; warning / critical / success titles take the tone as well (below).
+     Labels and icons tinted color="dark" by the templates follow the same. */
+  ion-icon,
+  ion-icon[slot='start'] {
+    color: var(--ok-tone) !important;
+  }
+
+  /* A coloured icon is painted by an !important rule inside its shadow root,
+     which outranks any outer !important colour; retarget the base instead */
+  ion-icon.ion-color {
+    --ion-color-base: var(--ok-tone) !important;
+  }
+
+  ion-label,
+  ion-label.ion-color,
+  h2,
+  h3 {
+    color: var(--ok-text) !important;
+  }
+
+  ion-label p,
+  ion-label h4,
+  p,
+  h4 {
+    color: var(--ok-text-subdued) !important;
+  }
+
+  ion-label strong,
+  ion-label b,
+  ion-label .style__strong {
+    color: var(--ok-text) !important;
+  }
+}
+
+ion-item.ion-color-warning,
+ion-item.ion-color-danger,
+ion-item.ion-color-success {
+  ion-label h3,
+  ion-label h3 strong {
+    color: var(--ok-tone) !important;
   }
 }
 
@@ -423,6 +511,14 @@ ion-label {
     color: var(--ok-text-subdued);
     font-size: 13px;
   }
+}
+
+/* Tab and segment buttons colour their label from their own selected state;
+   the blanket label colour above painted every unselected tab and segment
+   as if it were the selected one. */
+ion-tab-button ion-label,
+ion-segment-button ion-label {
+  color: inherit;
 }
 
 ion-text.ion-color-light,
@@ -529,12 +625,14 @@ ion-toggle {
   }
 }
 
+/* Ionic 7 reads --checkbox-background(-checked); the older --background names
+   were ignored, which left checked boxes white with a green rim */
 ion-checkbox {
-  --background: transparent;
-  --background-checked: var(--ok-brand) !important;
+  --checkbox-background: transparent;
+  --checkbox-background-checked: var(--ok-brand);
   --border-color: rgba(255, 255, 255, 0.28);
-  --border-color-checked: var(--ok-brand) !important;
-  --checkmark-color: #0c130c !important;
+  --border-color-checked: var(--ok-brand);
+  --checkmark-color: #0c130c;
   --border-radius: var(--ok-radius-xs);
 }
 
@@ -638,9 +736,10 @@ ion-chip {
   padding-inline: 8px;
   margin: 0;
 
+  /* Coloured chips paint from --ion-color-base inside their shadow root */
   &.ion-color-light {
-    --background: var(--ok-bg-strong) !important;
-    --color: var(--ok-text) !important;
+    background: var(--ok-bg-strong);
+    color: var(--ok-text);
   }
 }
 
@@ -770,8 +869,20 @@ ion-segment {
     letter-spacing: 0;
   }
 
+  /* MD pins the indicator to the bottom edge as an underline, where a 100%
+     --indicator-height resolves to 0 and no segment ever looked selected.
+     Stretch the indicator part over the whole button instead (iOS already
+     does), so both modes show the raised pill. */
+  ion-segment-button::part(indicator) {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    padding: 0;
+  }
+
   ion-segment-button::part(indicator-background) {
     border-radius: var(--ok-radius-full);
+    background: var(--ok-bg-elevated);
   }
 }
 
@@ -862,6 +973,20 @@ ion-fab[vertical='bottom'][horizontal='end'] {
   right: 16px;
   display: flex;
 
+  /* The action floats over the scroll area; fade the canvas in behind it so
+     long lists and addresses no longer run visibly under and around the pill */
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: -16px;
+    right: -16px;
+    top: -24px;
+    bottom: calc(-16px - env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to bottom, rgba(var(--ion-background-color-rgb), 0), var(--ok-bg-app) 24px);
+    pointer-events: none;
+  }
+
   ion-button {
     width: 100%;
     margin: 0;
@@ -875,18 +1000,11 @@ ion-fab[vertical='bottom'][horizontal='end'] {
   }
 }
 
-.ios {
-  .can-go-back {
-    ion-fab.fab-vertical-bottom {
-      bottom: 24px;
-    }
-  }
-}
-
-.md {
-  ion-fab.fab-vertical-bottom {
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  }
+/* One bottom offset on both platforms. An iOS-only `bottom: 24px` for pages
+   with a back stack used to win over the rule above and drop the safe-area
+   inset, which put the pill on top of the home indicator. */
+ion-fab.fab-vertical-bottom {
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ==========================================================================
@@ -1018,6 +1136,28 @@ airgap-qr qrcode {
   animation: none;
 }
 
+/* The renderer pins the canvas to its pixel size (300px on the share and
+   signed screens); with the quiet zone that is 328px, wider than the content
+   of a 320px or zoomed display, where the card was cut off at both edges.
+   Let it scale down with the column and keep the modules crisp. */
+airgap-iac-qr,
+airgap-qr,
+airgap-qr qrcode,
+airgap-qr .qrcode {
+  max-width: 100%;
+}
+
+airgap-qr {
+  box-sizing: border-box;
+}
+
+airgap-qr canvas,
+airgap-qr img {
+  max-width: 100% !important;
+  height: auto !important;
+  image-rendering: pixelated;
+}
+
 airgap-iac-qr {
   display: flex;
   flex-direction: column;
@@ -1041,6 +1181,57 @@ airgap-iac-qr {
     font-size: 13px;
     font-weight: 500;
   }
+}
+
+/* Recovery phrase grid (backup and BIP85 child phrase screens): numbered
+   words in two columns, read left to right, so they can be copied one by
+   one instead of from a wrapped run of text */
+.ok-phrase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+
+  &__word {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    min-width: 0;
+    padding: 11px 12px;
+    border-radius: var(--ok-radius-md);
+    background: var(--ok-bg);
+    border: 1px solid var(--ok-border-subdued);
+  }
+
+  &__index {
+    flex-shrink: 0;
+    min-width: 18px;
+    font-family: var(--ok-font-mono);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--ok-text-placeholder);
+    text-align: end;
+  }
+
+  /* Nested (not &__text) so it outweighs .typography--mono's 13px from app.scss */
+  .ok-phrase__text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ok-text);
+    text-transform: lowercase;
+  }
+
+  .ok-phrase__text--masked {
+    color: transparent;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+    user-select: none;
+  }
+}
+
+ion-button.ok-phrase__toggle {
+  margin: 16px 0 0;
+  height: 44px;
 }
 
 /* Camera preview from zxing (browser / Electron) fills its layer */

@@ -1,4 +1,4 @@
-<ion-toolbar color="primary" class="ion-no-padding">
+<ion-toolbar class="ion-no-padding">
   <ion-row>
     <ion-col size="3" class="ion-no-padding">
       <ion-button color="light" fill="clear" (click)="leftAction()" [disabled]="!leftEnabled">
@@ -8,7 +8,7 @@
     </ion-col>
     <ion-col size="6" class="ion-no-padding">
       <ion-row class="full--height ion-justify-content-center ion-align-items-center">
-        <ion-icon name="md-radio-button-on" [color]="progress === n ? 'tertiary' : 'light'" *ngFor="let n of progressArray"></ion-icon>
+        <ion-icon name="md-radio-button-on" [color]="progress === n ? 'light' : 'medium'" *ngFor="let n of progressArray"></ion-icon>
       </ion-row>
     </ion-col>
     <ion-col size="3" class="ion-no-padding">

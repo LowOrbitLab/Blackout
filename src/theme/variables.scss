@@ -160,13 +160,19 @@
   --ion-color-danger-shade: #dc2626;
   --ion-color-danger-tint: #f87171;
 
-  /* Dark: OneKey Subdued Surface (#191919) */
-  --ion-color-dark: #191919;
-  --ion-color-dark-rgb: 25, 25, 25;
-  --ion-color-dark-contrast: #eeeeee;
-  --ion-color-dark-contrast-rgb: 238, 238, 238;
-  --ion-color-dark-shade: #111111;
-  --ion-color-dark-tint: #262626;
+  /* Light and dark are both FOREGROUND colours, not Ionic's dark-mode swap.
+     The templates come from upstream's purple theme, where color="light" means
+     light text or a light control on the brand surface (clear Back/Next buttons,
+     the active pagination dot, close icons) and color="dark" means strong text
+     inside warning callouts. As surfaces (#262626 / #191919) both rendered
+     those labels invisible. Places that use them as a surface (solid buttons,
+     callout items, cards, chips) get their dark surface from global.scss. */
+  --ion-color-dark: #eeeeee;
+  --ion-color-dark-rgb: 238, 238, 238;
+  --ion-color-dark-contrast: #111111;
+  --ion-color-dark-contrast-rgb: 17, 17, 17;
+  --ion-color-dark-shade: #d8d8d8;
+  --ion-color-dark-tint: #f5f5f5;
 
   /* Medium: OneKey Subdued Text / Icon (#8e8e93) */
   --ion-color-medium: #8e8e93;
@@ -176,13 +182,12 @@
   --ion-color-medium-shade: #6e6e6e;
   --ion-color-medium-tint: #b4b4b4;
 
-  /* Light: OneKey Interactive Surface (#262626 with light contrast, or light text on clear elements) */
-  --ion-color-light: #262626;
-  --ion-color-light-rgb: 38, 38, 38;
-  --ion-color-light-contrast: #eeeeee;
-  --ion-color-light-contrast-rgb: 238, 238, 238;
-  --ion-color-light-shade: #1e1e1e;
-  --ion-color-light-tint: #333333;
+  --ion-color-light: #eeeeee;
+  --ion-color-light-rgb: 238, 238, 238;
+  --ion-color-light-contrast: #111111;
+  --ion-color-light-contrast-rgb: 17, 17, 17;
+  --ion-color-light-shade: #d8d8d8;
+  --ion-color-light-tint: #f5f5f5;
 
   /** gray light (legacy alias mapped to OneKey surface) **/
   --ion-color-grayLight: #1b1b1b;

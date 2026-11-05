@@ -148,10 +148,9 @@
     <ion-button
       class="row-button"
       shape="round"
-      color="tertiary"
       *ngFor="let i of [0, 1, 2]"
       (click)="changeState(i)"
-      [color]="i === state ? 'light' : 'medium'"
+      [color]="i === state ? 'primary' : 'medium'"
     ></ion-button>
   </div>
 

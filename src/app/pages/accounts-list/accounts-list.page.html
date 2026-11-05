@@ -5,7 +5,9 @@
         <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title *ngIf="secret">{{ 'tab-wallets.title' | translate }} {{ secret.label }}</ion-title>
+    <!-- The wallet name alone: the "Accounts of" prefix read as "所属账户： Main Vault"
+         in Chinese and pushed the centred iOS title into the menu button -->
+    <ion-title *ngIf="secret">{{ secret.label }}</ion-title>
 
     <ng-container *ngIf="deleteView; else threeDotMenu">
       <ion-buttons slot="primary">

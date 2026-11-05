@@ -54,14 +54,25 @@ svg {
   height: 80vh;
 }
 
+/* Bottom action: the same full-width pill, gutter and safe-area offset as
+   the floating actions on the other pages (it was a small centred pill 10px
+   above the screen edge, under the gesture bar on edge-to-edge phones) */
 .button-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+
+  ion-button {
+    flex: 1;
+    max-width: 480px;
+    height: 48px;
+    margin: 0;
+    font-size: 15px;
+  }
 }
 
 .triple-svgs {

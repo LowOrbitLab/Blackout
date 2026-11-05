@@ -1,8 +1,10 @@
 swiper-container {
   height: 100%;
-  --swiper-pagination-color: var(--ok-accent);
-  --swiper-pagination-bullet-inactive-color: var(--ok-text-muted);
-  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  /* Undefined tokens here made the whole declaration invalid, so Swiper fell
+     back to its default blue for the active bullet */
+  --swiper-pagination-color: var(--ok-text);
+  --swiper-pagination-bullet-inactive-color: var(--ok-text-placeholder);
+  --swiper-pagination-bullet-inactive-opacity: 0.6;
 }
 
 swiper-slide {

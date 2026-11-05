@@ -3,6 +3,11 @@
   height: 30vh;
 }
 
+/* Room for the floating button (48px + 16px offset) and its fade */
 ion-content {
-  --padding-bottom: var(--ion-padding, 64px);
+  --padding-bottom: 104px;
+}
+
+.ok-warning-body {
+  padding-top: 4px;
 }
