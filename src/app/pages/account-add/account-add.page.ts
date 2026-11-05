@@ -1,5 +1,6 @@
 import { Component } from '@angular/core'
 import { ModalController, AlertController } from '@ionic/angular'
+import { TranslateService } from '@ngx-translate/core'
 import { ICoinProtocol, ProtocolSymbols } from '@airgap/coinlib-core'
 
 import { ErrorCategory, handleErrorLocal } from '../../services/error-handler/error-handler.service'
@@ -57,7 +58,8 @@ export class AccountAddPage {
     private readonly protocolService: ProtocolService,
     private readonly modalController: ModalController,
     private readonly navigationService: NavigationService,
-    private readonly alertController: AlertController
+    private readonly alertController: AlertController,
+    private readonly translateService: TranslateService
   ) {
     const state = this.navigationService.getState()
     this.secret = state.secret
@@ -209,26 +211,25 @@ export class AccountAddPage {
 
     if (this.bip39Passphrase.length > 0) {
       const alert = await this.alertController.create({
-        header: 'BIP-39 Passphrase',
-        message:
-          'You set a BIP-39 Passphrase. You will need to enter this passphrase again when you import your secret. If you lose your passphrase, you will lose access to your account!',
+        header: this.translateService.instant('wallet-select-coins.bip39-alert.header'),
+        message: this.translateService.instant('wallet-select-coins.bip39-alert.message'),
         backdropDismiss: false,
         inputs: [
           {
             name: 'understood',
             type: 'checkbox',
-            label: 'I understand',
+            label: this.translateService.instant('wallet-select-coins.bip39-alert.understood'),
             value: 'understood',
             checked: false
           }
         ],
         buttons: [
           {
-            text: 'Cancel',
+            text: this.translateService.instant('common.cancel_label'),
             role: 'cancel'
           },
           {
-            text: 'Ok',
+            text: this.translateService.instant('common.ok_label'),
             handler: async (result: string[]) => {
               if (result.includes('understood')) {
                 addAccount()

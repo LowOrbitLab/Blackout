@@ -91,7 +91,7 @@
     "check_6": "Seedphrase was never exposed to the internet",
     "check_7": "Blackout is installed on an offline device",
     "check_8": "Blackout runs on a device which was factory reset before the installation",
-    "check_9": "When updating the Vault the device was never connected to the internet",
+    "check_9": "When updating Blackout the device was never connected to the internet",
     "check_10": "Blackout runs on an AirGap Knox managed device"
   },
   "advanced-mode": {
@@ -145,7 +145,7 @@
   "installation-type": {
     "title": "Installation Type",
     "setup_label": "What's your setup?",
-    "setup_text": "To configure the Vault correctly, tell us how you intend to set up your device's connectivity. This will help us to determine the ideal interaction with other wallets",
+    "setup_text": "To configure Blackout correctly, tell us how you intend to set up your device's connectivity. This will help us to determine the ideal interaction with other wallets",
     "online_label": "online",
     "online_text": "This device is connected to the internet",
     "offline_label": "offline",
@@ -154,6 +154,10 @@
   "introduction": {
     "title": "Install AirGap Wallet",
     "header": "Interacting With Your {{installationType}} Device",
+    "device-type": {
+      "OFFLINE": "Offline",
+      "ONLINE": "Online"
+    },
     "online-desc": "By design, Blackout never connects with any online service. Your secrets never leave Blackout and are therefore safe from online threats. To check your balance and create transactions, use a companion app like AirGap Wallet",
     "offline-desc": "By design, Blackout never connects with any online service. To check your balance and create transactions, use a companion app like AirGap Wallet",
     "offline-companion_text": "Install the companion app on a device with internet access, and rest assured that only public information is shared between the two apps. Your secrets never leave the Blackout, keeping them safe from online threats",
@@ -233,8 +237,8 @@
       "text": "Generate a number of secret shares <br /> to distribute to social contacts."
     },
     "interaction": {
-      "label": "Vault and Wallet interaction",
-      "text": "Select whether Vault and Wallet are installed on the same device or on separate devices."
+      "label": "Blackout and Wallet interaction",
+      "text": "Select whether Blackout and the wallet are installed on the same device or on separate devices."
     },
     "secret-recovery-key": {
       "label": "Secret Recovery Key",
@@ -327,6 +331,10 @@
     "continue_label": "Continue"
   },
   "secret-import": {
+    "invalid-mnemonic_alert": {
+      "header": "Invalid Mnemonic",
+      "message": "The text in your clipboard is not a valid mnemonic."
+    },
     "title": "Import secret",
     "text": "You can import an existing secret to Blackout. Fill in the words from your secret.",
     "placeholder": "wife pulp island ...",
@@ -362,7 +370,8 @@
       "heading": "Are you sure you are not a super human?",
       "text": "Make sure that you followed all the rules and didn't do anything other than writing down your secret on paper.",
       "wait_label_p1": "Please wait until at least ",
-      "wait_label_p2": "s are over."
+      "wait_label_p2": "s are over.",
+      "okay_label": "Okay"
     },
     "show_label": "Show Recovery Phrase",
     "hide_label": "Hide Recovery Phrase"
@@ -485,6 +494,10 @@
   },
   "contact-book": {
     "label_add": "Add",
+    "label_empty_title": "No addresses yet",
+    "label_empty_text": "Add an address by hand or by scanning its QR code. You can also save the counterparty while signing a transaction.",
+    "label_no_results": "No matching addresses",
+    "title_new_entry": "New Address Entry",
     "label_edit": "Edit",
     "label_cancel": "Cancel",
     "label_finish": "Finish",
@@ -551,6 +564,7 @@
     "grant-permission_label": "Continue"
   },
   "tab-settings": {
+    "clipboard-empty_toast": "Clipboard is empty",
     "about": "About",
     "shop": "AirGap Shop",
     "title": "Settings",
@@ -735,6 +749,12 @@
   },
   "wallet-select-coins": {
     "title": "Add Account",
+    "deriving_label": "Deriving your wallet...",
+    "bip39-alert": {
+      "header": "BIP-39 Passphrase",
+      "message": "You set a BIP-39 Passphrase. You will need to enter this passphrase again when you import your secret. If you lose your passphrase, you will lose access to your account!",
+      "understood": "I understand"
+    },
     "select-type": {
       "label": "Select Account Type",
       "single-address_label": "Single Address Wallet",
@@ -943,10 +963,30 @@
     "head": "Head",
     "tail": "Tail"
   },
+  "common": {
+    "ok_label": "OK",
+    "cancel_label": "Cancel"
+  },
   "error-history": {
     "title": "Error History",
     "empty_label": "Error list is empty! 🎉",
-    "details_label": "Details"
+    "details_label": "Details",
+    "copy_alert": {
+      "header": "Copy Error History",
+      "sub-header": "WARNING",
+      "message": "<b>Error history may contain private keys. Only copy logs from a test wallet without funds.</b><br /><br />Keep the Blackout error report locally and remove sensitive information before sharing it.",
+      "understood": "I understand",
+      "copy_label": "Copy"
+    },
+    "copied_toast": "Local error history copied to clipboard",
+    "no-errors_alert": {
+      "header": "No errors",
+      "message": "No recent errors occurred, so there is nothing to copy to your clipboard."
+    },
+    "clear_alert": {
+      "header": "Clear errors",
+      "message": "Do you want to clear your error history?"
+    }
   },
   "wordlist": {
     "title": "Wordlist",

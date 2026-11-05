@@ -172,7 +172,7 @@
   "installation-type": {
     "title": "安装方式",
     "setup_label": "您的设备将如何使用？",
-    "setup_text": "为了正确配置 Vault，请选择当前设备的联网状态。这将帮助我们为您配置最合适的钱包交互方式",
+    "setup_text": "为了正确配置 Blackout，请选择当前设备的联网状态。这将帮助我们为您配置最合适的钱包交互方式",
     "online_label": "联网设备",
     "online_text": "此设备会连接互联网",
     "offline_label": "离线设备",
@@ -181,6 +181,10 @@
   "introduction": {
     "title": "安装 AirGap Wallet",
     "header": "与您的{{installationType}}配合使用",
+    "device-type": {
+      "OFFLINE": "离线设备",
+      "ONLINE": "联网设备"
+    },
     "online-desc": "根据架构设计，Blackout 绝不连接任何在线服务。您的私钥与助记词绝不会离开 Blackout，从而免受网络威胁。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
     "offline-desc": "根据架构设计，Blackout 绝不连接任何在线服务。如需查看余额和发起交易，请配合 AirGap Wallet 等观察钱包使用",
     "offline-companion_text": "请在另一台可联网的日常设备上安装配对观察钱包，两个应用之间仅通过二维码传输公开信息。您的密钥绝不会离开 Blackout，确保免受一切网络威胁",
@@ -264,7 +268,7 @@
       "text": "生成多份助记词恢复分片，<br />分发给您信任的亲友或存放在不同地点。"
     },
     "interaction": {
-      "label": "Vault 与钱包交互方式",
+      "label": "Blackout 与钱包交互方式",
       "text": "选择 Blackout 与观察钱包是安装在同一台设备上，还是分别安装在两台独立设备上。"
     },
     "secret-recovery-key": {
@@ -315,7 +319,7 @@
     "intro-state-3-title2": "选择分片总数与恢复阈值",
     "intro-state-3-text1": "首先，指定您要生成的恢复分片总份数，并设置恢复密钥至少需要集齐几份分片。",
     "intro-state-3-title3": "抄写并验证每份分片",
-    "intro-state-3-text2": "Vault 会为您生成对应的多份恢复分片。请逐一抄写备份；在下一步中，系统将引导您逐份核对，以确保抄写准确无误。",
+    "intro-state-3-text2": "Blackout 会为您生成对应的多份恢复分片。请逐一抄写备份；在下一步中，系统将引导您逐份核对，以确保抄写准确无误。",
     "intro-state-3-title4": "分片不等于普通助记词",
     "intro-state-3-text3": "虽然每份恢复分片看起来也像一组助记词单词，但它们并非您的原始助记词，无法单独直接导入普通钱包。",
     "setup-state-1-text1": "选择您要生成的社交恢复分片总份数",
@@ -354,6 +358,10 @@
     "continue_label": "继续"
   },
   "secret-import": {
+    "invalid-mnemonic_alert": {
+      "header": "助记词无效",
+      "message": "剪贴板中的内容不是有效的助记词。"
+    },
     "title": "导入助记词",
     "text": "您可以将已有的助记词导入 Blackout。请按顺序输入您的助记词单词。",
     "placeholder": "wife pulp island ...",
@@ -391,7 +399,8 @@
       "heading": "您真的已经全部抄写完毕了吗？",
       "text": "请确保您已严格遵守安全准则，将助记词完整手抄在纸上，切勿采取截屏或拍照等危险方式。",
       "wait_label_p1": "请至少等待 ",
-      "wait_label_p2": " 秒后再继续。"
+      "wait_label_p2": " 秒后再继续。",
+      "okay_label": "好的"
     }
   },
   "secret-validate": {
@@ -508,10 +517,14 @@
     "text": "请按正确顺序点击每个单词："
   },
   "isolated-module": {
-    "text": "找不到您需要的币种？可导入独立模块（Isolated Module）进行扩展支持"
+    "text": "找不到您需要的币种？可导入隔离模块（Isolated Module）进行扩展支持"
   },
   "contact-book": {
     "label_add": "添加",
+    "label_empty_title": "地址簿中还没有地址",
+    "label_empty_text": "可以手动输入或扫描地址二维码添加，签署交易时也可以直接保存对方地址。",
+    "label_no_results": "没有匹配的地址",
+    "title_new_entry": "新建地址",
     "label_edit": "编辑",
     "label_cancel": "取消",
     "label_finish": "完成",
@@ -578,6 +591,7 @@
     "grant-permission_label": "继续"
   },
   "tab-settings": {
+    "clipboard-empty_toast": "剪贴板为空",
     "about": "关于",
     "shop": "AirGap 商店",
     "title": "设置",
@@ -770,6 +784,12 @@
   },
   "wallet-select-coins": {
     "title": "添加账户",
+    "deriving_label": "正在派生账户…",
+    "bip39-alert": {
+      "header": "BIP39 密码短语提示",
+      "message": "您设置了 BIP39 密码短语。日后导入该助记词时必须再次输入完全一致的密码短语；一旦遗失密码短语，将永久无法访问该账户！",
+      "understood": "我已了解"
+    },
     "select-type": {
       "label": "选择账户类型",
       "single-address_label": "单地址钱包",
@@ -956,7 +976,7 @@
         "ok": "好的"
       }
     },
-    "isolated-modules_label": "独立模块（Isolated Modules）"
+    "isolated-modules_label": "隔离模块（Isolated Modules）"
   },
   "secret-generate-dice-roll": {
     "title": "掷骰子生成",
@@ -978,10 +998,30 @@
     "head": "正面（Head）",
     "tail": "反面（Tail）"
   },
+  "common": {
+    "ok_label": "好的",
+    "cancel_label": "取消"
+  },
   "error-history": {
     "title": "本地错误日志",
     "empty_label": "暂无错误记录！🎉",
-    "details_label": "详情"
+    "details_label": "详情",
+    "copy_alert": {
+      "header": "复制错误日志",
+      "sub-header": "警告",
+      "message": "<b>错误日志中可能包含私钥。请只复制不存放资金的测试钱包所产生的日志。</b><br /><br />请将 Blackout 错误报告保存在本地，分享前务必删除其中的敏感信息。",
+      "understood": "我已了解",
+      "copy_label": "复制"
+    },
+    "copied_toast": "本地错误日志已复制到剪贴板",
+    "no-errors_alert": {
+      "header": "暂无错误",
+      "message": "最近没有错误记录，没有可复制的内容。"
+    },
+    "clear_alert": {
+      "header": "清空错误日志",
+      "message": "确定要清空错误日志吗？"
+    }
   },
   "wordlist": {
     "title": "BIP39 助记词词库",
@@ -1004,9 +1044,9 @@
     "loader_message": "正在加载模块..."
   },
   "isolated-modules-list-page": {
-    "title": "独立模块",
+    "title": "隔离模块",
     "items": {
-      "search_placeholder": "搜索独立模块"
+      "search_placeholder": "搜索隔离模块"
     },
     "alert": {
       "add": {
@@ -1029,7 +1069,7 @@
     "alert": {
       "remove": {
         "header": "移除模块",
-        "message": "确定要移除该独立模块吗？",
+        "message": "确定要移除该隔离模块吗？",
         "cancel_label": "取消",
         "proceed_label": "移除"
       },

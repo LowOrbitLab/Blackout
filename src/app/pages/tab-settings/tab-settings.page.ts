@@ -138,7 +138,7 @@ export class TabSettingsPage implements OnInit {
 
   private async showClipboardEmptyToast(): Promise<void> {
     const toast: HTMLIonToastElement = await this.toastController.create({
-      message: 'Clipboard is empty',
+      message: this.translateService.instant('tab-settings.clipboard-empty_toast'),
       duration: 2000,
       position: 'bottom'
     })

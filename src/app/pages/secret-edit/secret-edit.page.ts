@@ -116,11 +116,11 @@ export class SecretEditPage {
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: this.translateService.instant('common.cancel_label'),
           role: 'cancel'
         },
         {
-          text: 'Ok',
+          text: this.translateService.instant('common.ok_label'),
           handler: async (result: string[]) => {
             if (result.includes('understood')) {
               const entropy = await this.secretsService.retrieveEntropyForSecret(this.secret)
@@ -193,7 +193,7 @@ export class SecretEditPage {
       position: 'top',
       buttons: [
         {
-          text: 'Ok',
+          text: this.translateService.instant('common.ok_label'),
           role: 'cancel'
         }
       ]

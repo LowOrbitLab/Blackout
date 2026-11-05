@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { AlertController, ModalController } from '@ionic/angular'
+import { TranslateService } from '@ngx-translate/core'
 import { handleErrorLocal, ErrorCategory } from 'src/app/services/error-handler/error-handler.service'
 import { NavigationService } from 'src/app/services/navigation/navigation.service'
 
@@ -52,7 +53,8 @@ export class SocialRecoveryImportShareValidatePage implements OnInit {
     private navigationService: NavigationService,
     private readonly deviceService: DeviceService,
     private readonly alertController: AlertController,
-    private readonly socialRecoveryImportShareService: SocialRecoveryImportShareService
+    private readonly socialRecoveryImportShareService: SocialRecoveryImportShareService,
+    private readonly translateService: TranslateService
   ) {
     this.secretWordsValid = this.setWordEmitter.pipe(
       map(() => {
@@ -157,12 +159,12 @@ export class SocialRecoveryImportShareValidatePage implements OnInit {
       this.setWordEmitter.next(this.selectedWord ?? '')
     } else {
       const alert = await this.alertController.create({
-        header: 'Invalid Mnemonic',
-        message: 'The text in your clipboard is not a valid mnemonic.',
+        header: this.translateService.instant('secret-import.invalid-mnemonic_alert.header'),
+        message: this.translateService.instant('secret-import.invalid-mnemonic_alert.message'),
         backdropDismiss: false,
         buttons: [
           {
-            text: 'Ok'
+            text: this.translateService.instant('common.ok_label')
           }
         ]
       })
@@ -241,7 +243,7 @@ export class SocialRecoveryImportShareValidatePage implements OnInit {
             backdropDismiss: false,
             buttons: [
               {
-                text: 'Ok'
+                text: this.translateService.instant('common.ok_label')
               }
             ]
           })

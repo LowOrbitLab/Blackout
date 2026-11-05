@@ -533,7 +533,7 @@ export class SecretsService {
 
   public async addWallets(secret: MnemonicSecret, configs: AddWalletConifg[]): Promise<AirGapWallet[]> {
     const loading: HTMLIonLoadingElement = await this.loadingCtrl.create({
-      message: 'Deriving your wallet...'
+      message: this.translateService.instant('wallet-select-coins.deriving_label')
     })
     loading.present().catch(handleErrorLocal(ErrorCategory.IONIC_LOADER))
 
@@ -645,7 +645,7 @@ export class SecretsService {
       backdropDismiss: false,
       buttons: [
         {
-          text: 'Okay!',
+          text: this.translateService.instant('common.ok_label'),
           role: 'cancel'
         }
       ]

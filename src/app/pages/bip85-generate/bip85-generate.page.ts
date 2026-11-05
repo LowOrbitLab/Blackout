@@ -55,11 +55,11 @@ export class Bip85GeneratePage {
         ],
         buttons: [
           {
-            text: 'Cancel',
+            text: this.translateService.instant('common.cancel_label'),
             role: 'cancel'
           },
           {
-            text: 'Ok',
+            text: this.translateService.instant('common.ok_label'),
             handler: async (result: string[]) => {
               if (result.includes('understood')) {
                 this.navigateToNextPage()

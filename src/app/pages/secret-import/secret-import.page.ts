@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core'
 import { AlertController } from '@ionic/angular'
+import { TranslateService } from '@ngx-translate/core'
 
 import { BIPSigner } from '../../models/BIP39Signer'
 import { MnemonicSecret } from '../../models/secret'
@@ -42,7 +43,8 @@ export class SecretImportPage {
   constructor(
     private readonly deviceService: DeviceService,
     private readonly navigationService: NavigationService,
-    private readonly alertController: AlertController
+    private readonly alertController: AlertController,
+    private readonly translateService: TranslateService
   ) {
     this.secretWordsValid = this.setWordEmitter.pipe(
       map(() => {
@@ -125,12 +127,12 @@ export class SecretImportPage {
       this.setWordEmitter.next(this.selectedWord ?? '')
     } else {
       const alert = await this.alertController.create({
-        header: 'Invalid Mnemonic',
-        message: 'The text in your clipboard is not a valid mnemonic.',
+        header: this.translateService.instant('secret-import.invalid-mnemonic_alert.header'),
+        message: this.translateService.instant('secret-import.invalid-mnemonic_alert.message'),
         backdropDismiss: false,
         buttons: [
           {
-            text: 'Ok'
+            text: this.translateService.instant('common.ok_label')
           }
         ]
       })
