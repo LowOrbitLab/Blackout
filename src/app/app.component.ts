@@ -99,8 +99,11 @@ export class AppComponent implements AfterViewInit {
       await this.securityUtils.toggleAutomaticAuthentication({ automatic: true })
     }
 
-    if (this.platform.is('android')) {
-      await EdgeToEdge.setBackgroundColor({ color: '#0F0F0F' })
+    // Native only: the plugin has no web implementation, and Ionic also reports
+    // 'android' for the web build opened in Android Chrome, where the rejection
+    // used to abort start-up before the disclaimer and setup checks ran.
+    if (this.platform.is('android') && this.platform.is('hybrid')) {
+      await EdgeToEdge.setBackgroundColor({ color: '#0F0F0F' }).catch(handleErrorLocal(ErrorCategory.OTHER))
     }
 
     this.initChecks()
