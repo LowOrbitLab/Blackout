@@ -24,8 +24,11 @@ export class SecretShowPage {
   public lifehashData: string | undefined
 
   public isBlurred: boolean = true
-  blurText =
-    '****** **** ***** **** ******* ***** ***** ****** ***** *** ***** ******* ***** **** ***** ********* ***** ****** ***** **** ***** ******* ***** ****'
+
+  /** Revealed words; filled only while the phrase is shown, emptied again when it is hidden. */
+  public words: string[] = []
+  /** One masked slot per word, so the hidden grid has the real length but no words in the DOM. */
+  public readonly placeholderSlots: number[]
 
   public isAdvancedMode$: Observable<boolean> = this.storageService
     .subscribe(VaultStorageKey.ADVANCED_MODE_TYPE)
@@ -40,6 +43,11 @@ export class SecretShowPage {
     private readonly storageService: VaultStorageService
   ) {
     this.secret = this.navigationService.getState().secret
+    this.placeholderSlots = Array.from({ length: this.mnemonicWords().length }, (_, index) => index)
+  }
+
+  private mnemonicWords(): string[] {
+    return this.secret.recoverMnemonicFromHex(this.secret.secretHex).trim().split(/\s+/)
   }
 
   public async ionViewDidEnter(): Promise<void> {
@@ -51,12 +59,16 @@ export class SecretShowPage {
 
   public ionViewWillLeave(): void {
     this.deviceService.disableScreenshotProtection()
+    // Hidden again when the user comes back from the validation step
+    this.isBlurred = true
+    this.words = []
   }
 
   public timeout: NodeJS.Timer
 
   changeBlur() {
     this.isBlurred = !this.isBlurred
+    this.words = this.isBlurred ? [] : this.mnemonicWords()
 
     if (this.timeout) {
       clearTimeout(this.timeout)
@@ -64,6 +76,7 @@ export class SecretShowPage {
 
     this.timeout = setTimeout(() => {
       this.isBlurred = true
+      this.words = []
     }, 30_000)
   }
 
@@ -75,7 +88,8 @@ export class SecretShowPage {
           'secret-show.too-fast_alert.heading',
           'secret-show.too-fast_alert.text',
           'secret-show.too-fast_alert.wait_label_p1',
-          'secret-show.too-fast_alert.wait_label_p2'
+          'secret-show.too-fast_alert.wait_label_p2',
+          'secret-show.too-fast_alert.okay_label'
         ])
         .pipe(first())
         .subscribe(async (values: string[]) => {
@@ -84,11 +98,12 @@ export class SecretShowPage {
           const text: string = values['secret-show.too-fast_alert.text']
           const waitLabelP1: string = values['secret-show.too-fast_alert.wait_label_p1']
           const waitLabelP2: string = values['secret-show.too-fast_alert.wait_label_p2']
+          const okayLabel: string = values['secret-show.too-fast_alert.okay_label']
 
           const alert: HTMLIonAlertElement = await this.alertController.create({
             header: title,
             message: `${heading} <br/> ${text} <br/> ${waitLabelP1} <strong>${SHOW_SECRET_MIN_TIME_IN_SECONDS.toString()}${waitLabelP2}</strong>`,
-            buttons: ['Okay']
+            buttons: [okayLabel]
           })
           alert.present().catch(handleErrorLocal(ErrorCategory.IONIC_ALERT))
         })

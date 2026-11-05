@@ -22,9 +22,26 @@
     </ion-col>
   </ion-row>
 
-  <h6 [id]="isBlurred ? 'blur' : ''" class="typography--mono">{{ isBlurred ? blurText : childMnemonic }}</h6>
+  <!-- Same numbered grid as the backup screen; masked slots while hidden -->
+  <div class="ok-phrase">
+    <ng-container *ngIf="!isBlurred; else maskedPhrase">
+      <div class="ok-phrase__word" *ngFor="let word of childWords; let i = index">
+        <span class="ok-phrase__index">{{ i + 1 }}</span>
+        <span class="ok-phrase__text typography--mono">{{ word }}</span>
+      </div>
+    </ng-container>
+    <ng-template #maskedPhrase>
+      <div class="ok-phrase__word" *ngFor="let slot of placeholderSlots">
+        <span class="ok-phrase__index">{{ slot + 1 }}</span>
+        <span class="ok-phrase__text ok-phrase__text--masked">••••••</span>
+      </div>
+    </ng-template>
+  </div>
 
-  <ion-button (click)="changeBlur()">{{ (isBlurred ? 'secret-show.show_label' : 'secret-show.hide_label') | translate }}</ion-button>
+  <ion-button class="ok-phrase__toggle" color="tertiary" shape="round" (click)="changeBlur()">
+    <ion-icon slot="start" [name]="isBlurred ? 'eye-outline' : 'eye-off-outline'"></ion-icon>
+    {{ (isBlurred ? 'secret-show.show_label' : 'secret-show.hide_label') | translate }}
+  </ion-button>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-button shape="round" color="primary" (click)="goToSecretSetupPage()">{{ 'bip85-show.add' | translate }}</ion-button>

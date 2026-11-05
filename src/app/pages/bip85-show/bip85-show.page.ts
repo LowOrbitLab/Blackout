@@ -32,8 +32,16 @@ export class Bip85ShowPage {
   public bip39Passphrase: string = ''
 
   public isBlurred: boolean = true
-  blurText =
-    '****** **** ***** **** ******* ***** ***** ****** ***** *** ***** ******* ***** **** ***** ********* ***** ****** ***** **** ***** ******* ***** ****'
+
+  /** Words of the child phrase, only while it is revealed. */
+  public get childWords(): string[] {
+    return this.isBlurred || !this.childMnemonic ? [] : this.childMnemonic.trim().split(/\s+/)
+  }
+
+  /** Masked slots for the hidden grid: the real length, no words in the DOM. */
+  public get placeholderSlots(): number[] {
+    return Array.from({ length: Number(this.mnemonicLength) || 12 }, (_, index) => index)
+  }
 
   public isAdvancedMode$: Observable<boolean> = this.storageService
     .subscribe(VaultStorageKey.ADVANCED_MODE_TYPE)
